@@ -23,10 +23,10 @@ Rails 5.2.3
 https://drive.google.com/file/d/1UFGnr9Wfy4I4iR5YtPunEs4HRobCcIdT/view?usp=sharing
 
 ## テーブル定義書
-https://drive.google.com/file/d/1022e_kiRdDDV252iUlJtitJQhQAi_5Ej/view?usp=sharing
+https://drive.google.com/file/d/1C8ps1nUPJNUEhxSGoQcRp4bb7fLfsbdK/view?usp=sharing
 
 ## ER図
-https://drive.google.com/file/d/1RywQmiKezp0WlJd52q_n132_pV7Mlr0q/view?usp=sharing
+https://drive.google.com/file/d/1TPpw2vz6ZdGOTUQOdSJ6OpdQSdouqH13/view?usp=sharing
 
 ## 画面遷移図
 https://drive.google.com/file/d/12coq1cqrGBNe2DLu7naVTb4YH5rndnbO/view?usp=sharing
