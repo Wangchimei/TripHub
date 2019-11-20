@@ -20,13 +20,13 @@ Rails 5.2.3
 - [ ] ユーザフォーロー機能
 
 ## カタログ設計
-https://drive.google.com/file/d/1UFGnr9Wfy4I4iR5YtPunEs4HRobCcIdT/view?usp=sharing
+https://drive.google.com/file/d/1R0O7ygGzgbY4058xtdGCCMOlUri4GKpD/view?usp=sharing
 
 ## テーブル定義書
-https://drive.google.com/file/d/1C8ps1nUPJNUEhxSGoQcRp4bb7fLfsbdK/view?usp=sharing
+https://drive.google.com/file/d/1QsQtJmmbIcSBq-F4T1CxJMVV-amkfk-Q/view?usp=sharing
 
 ## ER図
-https://drive.google.com/file/d/1TPpw2vz6ZdGOTUQOdSJ6OpdQSdouqH13/view?usp=sharing
+https://drive.google.com/file/d/1RnaYn3BTTPnye8A2exWeVA9O9Hixquj0/view?usp=sharing
 
 ## 画面遷移図
 https://drive.google.com/file/d/12coq1cqrGBNe2DLu7naVTb4YH5rndnbO/view?usp=sharing
