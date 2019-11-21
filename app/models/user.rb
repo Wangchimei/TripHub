@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :country
-  belongs_to :state
-  belongs_to :city
-
+  belongs_to :state, optional: true
+  belongs_to :city, optional: true
 end
