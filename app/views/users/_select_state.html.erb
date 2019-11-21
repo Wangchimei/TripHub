@@ -1,0 +1,2 @@
+<%= label :user, :state_id %><br>
+<%= collection_select :user, :state_id, State.where(country_id: country_id), :id, :name %>

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :users, only: [:index, :show] do
+    get 'get_states', on: :collection # /users/get_states
+    get 'get_cities', on: :collection # /users/get_states
+  end
 end
