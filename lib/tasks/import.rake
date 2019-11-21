@@ -32,7 +32,6 @@ namespace :import do
           name: row["name"],
           iso2: row["iso2"],
           iso3: row["iso3"],
-          phone_code: row["phone_code"],
           capital: row["capital"],
           currency: row["currency"],
           continent_id: row["continent_id"]
