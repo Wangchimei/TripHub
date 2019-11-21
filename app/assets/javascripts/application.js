@@ -7,14 +7,15 @@
 $(document).on("change", "#user_country_id", function () {
   return $.ajax({
     type: "GET",
-    url: "/users/get_states",
+    url: "/locations/get_states",
     data: {
       country_id: $(this).val()
     }
   }).done(function (data) {
     // test = $(".state-area").text(data);
     // console.log(test);
-    if (data) {
+    // debugger
+    if (data.includes('option')) {
       $(".state-area").html(data);
       $(".state-area").show();
     } else {
@@ -27,12 +28,12 @@ $(document).on("change", "#user_country_id", function () {
 $(document).on("change", "#user_state_id", function () {
   return $.ajax({
     type: "GET",
-    url: "/users/get_cities",
+    url: "/locations/get_cities",
     data: {
       state_id: $(this).val()
     }
   }).done(function (data) {
-    if (data) {
+    if (data.includes('option')) {
       $(".city-area").html(data);
       $(".city-area").show();
     } else {
