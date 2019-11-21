@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_21_024536) do
+ActiveRecord::Schema.define(version: 2019_11_21_043555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,5 +33,16 @@ ActiveRecord::Schema.define(version: 2019_11_21_024536) do
     t.index ["continent_id"], name: "index_countries_on_continent_id"
   end
 
+  create_table "states", force: :cascade do |t|
+    t.string "name"
+    t.string "country_code"
+    t.string "state_code"
+    t.bigint "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_states_on_country_id"
+  end
+
   add_foreign_key "countries", "continents"
+  add_foreign_key "states", "countries"
 end
