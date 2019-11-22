@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data: 2019-11-22
+  start_time: 2019-11-22 15:18:40
+  end_time: 2019-11-22 15:18:40
+  trip: one
+
+two:
+  data: 2019-11-22
+  start_time: 2019-11-22 15:18:40
+  end_time: 2019-11-22 15:18:40
+  trip: two
