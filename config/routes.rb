@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'spots/new'
+  get 'spots/edit'
+  get 'userspots/index'
+  get 'userspots/new'
+  get 'userspots/edit'
+  get 'userspots/show'
+  get 'dailies/new'
+  get 'dailies/edit'
+  get 'trips/index'
+  get 'trips/new'
+  get 'trips/edit'
+  get 'trips/show'
   root 'users#welcome'
   devise_for :users,
     path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' },
