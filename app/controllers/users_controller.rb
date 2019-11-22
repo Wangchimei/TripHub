@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def welcome; end
 
-  def index
+  def dashboard
     @users = User.all
   end
 
