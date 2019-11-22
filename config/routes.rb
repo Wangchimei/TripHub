@@ -20,4 +20,8 @@ Rails.application.routes.draw do
   resources :dailies
   resources :userspots
   resources :spots
+
+  resources :countries, only: [:index]
+  resources :states, only: [:index]
+  resources :cities, only: [:index]
 end
