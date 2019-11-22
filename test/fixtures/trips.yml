@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  trip_image: MyString
+  start_day: 2019-11-22
+  end_day: 2019-11-22
+  status: 1
+  privacy: false
+  est_amount: 1
+  user: one
+
+two:
+  name: MyString
+  description: MyString
+  trip_image: MyString
+  start_day: 2019-11-22
+  end_day: 2019-11-22
+  status: 1
+  privacy: false
+  est_amount: 1
+  user: two
