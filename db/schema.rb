@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(version: 2019_11_22_072055) do
   enable_extension "plpgsql"
 
   create_table "cities", force: :cascade do |t|
-    t.string "name"
-    t.string "state_code"
-    t.string "country_code"
-    t.float "latitude"
-    t.float "longitude"
+    t.string "name", null: false
+    t.string "state_code", null: false
+    t.string "country_code", null: false
+    t.float "latitude", null: false
+    t.float "longitude", null: false
     t.bigint "state_id"
     t.bigint "country_id"
     t.datetime "created_at", null: false
@@ -30,29 +30,29 @@ ActiveRecord::Schema.define(version: 2019_11_22_072055) do
   end
 
   create_table "continents", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "countries", force: :cascade do |t|
-    t.string "name"
-    t.string "iso2"
+    t.string "name", null: false
+    t.string "iso2", null: false
     t.string "iso3"
     t.string "capital"
     t.string "currency"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "continent_id"
-    t.float "latitude"
-    t.float "longitude"
+    t.float "latitude", null: false
+    t.float "longitude", null: false
     t.index ["continent_id"], name: "index_countries_on_continent_id"
   end
 
   create_table "dailies", force: :cascade do |t|
-    t.date "data"
-    t.time "start_time"
-    t.time "end_time"
+    t.date "data", null: false
+    t.time "start_time", null: false
+    t.time "end_time", null: false
     t.bigint "trip_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -60,26 +60,26 @@ ActiveRecord::Schema.define(version: 2019_11_22_072055) do
   end
 
   create_table "spots", force: :cascade do |t|
-    t.string "name"
-    t.integer "admission_fee"
-    t.integer "duration"
+    t.string "name", null: false
+    t.integer "admission_fee", default: 0
+    t.integer "duration", default: 0
     t.string "main_image"
-    t.float "latitude"
-    t.float "longitude"
+    t.float "latitude", null: false
+    t.float "longitude", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "address"
   end
 
   create_table "states", force: :cascade do |t|
-    t.string "name"
-    t.string "country_code"
-    t.string "state_code"
+    t.string "name", null: false
+    t.string "country_code", null: false
+    t.string "state_code", null: false
     t.bigint "country_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "latitude"
-    t.float "longitude"
+    t.float "latitude", null: false
+    t.float "longitude", null: false
     t.index ["country_id"], name: "index_states_on_country_id"
   end
 
@@ -111,13 +111,13 @@ ActiveRecord::Schema.define(version: 2019_11_22_072055) do
   end
 
   create_table "trips", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "description"
     t.string "trip_image"
-    t.date "start_day"
-    t.date "end_day"
-    t.integer "status"
-    t.boolean "privacy"
+    t.date "start_day", null: false
+    t.date "end_day", null: false
+    t.integer "status", default: 0
+    t.boolean "privacy", default: false
     t.integer "est_amount"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -142,7 +142,7 @@ ActiveRecord::Schema.define(version: 2019_11_22_072055) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "name"
+    t.string "name", null: false
     t.string "avatar"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

@@ -34,7 +34,9 @@ namespace :import do
           iso3: row["iso3"],
           capital: row["capital"],
           currency: row["currency"],
-          continent_id: row["continent_id"]
+          continent_id: row["continent_id"],
+          latitude: row["latitude"],
+          longitude: row["longitude"]
       }
     end
     puts "start to create countries data"
@@ -58,7 +60,9 @@ namespace :import do
           name: row["name"],
           country_code: row["country_code"],
           state_code: row["state_code"],
-          country_id: row["country_id"]
+          country_id: row["country_id"],
+          latitude: row["latitude"],
+          longitude: row["longitude"]
       }
     end
     puts "start to create states data"
