@@ -83,8 +83,8 @@ namespace :import do
           name: row["name"],
           country_code: row["country_code"],
           state_code: row["state_code"],
-          # latitude: row["latitude"],
-          # longitude: row["longitude"],
+          latitude: row["latitude"],
+          longitude: row["longitude"],
           state_id: row["state_id"],
           country_id: row["country_id"]
       }

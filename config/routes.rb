@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  root 'users#welcome'
   devise_for :users
-  resources :users, only: [:index, :show]
+  resources :users, only: [:show]
 
   resources :locations, only: :index do
     get 'get_states', on: :collection # /locations/get_states
