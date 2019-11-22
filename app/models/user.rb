@@ -7,4 +7,7 @@ class User < ApplicationRecord
   belongs_to :country
   belongs_to :state, optional: true
   belongs_to :city, optional: true
+
+  has_many :trips, dependent: :destroy
+  has_many :userspots, dependent: :destroy
 end
