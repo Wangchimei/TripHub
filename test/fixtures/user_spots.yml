@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  admission_fee: 1
+  other_cost: 1
+  note: MyString
+  user: one
+  daily: one
+  spot: one
+
+two:
+  admission_fee: 1
+  other_cost: 1
+  note: MyString
+  user: two
+  daily: two
+  spot: two
