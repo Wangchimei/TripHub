@@ -1,7 +1,8 @@
 class Country < ApplicationRecord
   geocoded_by :name
   belongs_to :continent
-  has_many :states
-  has_many :cities
-  has_many :users
+  has_many :states, dependent: :destroy
+  has_many :cities, dependent: :destroy
+  has_many :users, dependent: :destroy
+  has_many :to_countries, dependent: :destroy
 end

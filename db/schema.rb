@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_22_064500) do
+ActiveRecord::Schema.define(version: 2019_11_22_072055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,33 @@ ActiveRecord::Schema.define(version: 2019_11_22_064500) do
     t.index ["country_id"], name: "index_states_on_country_id"
   end
 
+  create_table "to_cities", force: :cascade do |t|
+    t.bigint "city_id"
+    t.bigint "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_to_cities_on_city_id"
+    t.index ["trip_id"], name: "index_to_cities_on_trip_id"
+  end
+
+  create_table "to_countries", force: :cascade do |t|
+    t.bigint "country_id"
+    t.bigint "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_to_countries_on_country_id"
+    t.index ["trip_id"], name: "index_to_countries_on_trip_id"
+  end
+
+  create_table "to_states", force: :cascade do |t|
+    t.bigint "state_id"
+    t.bigint "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["state_id"], name: "index_to_states_on_state_id"
+    t.index ["trip_id"], name: "index_to_states_on_trip_id"
+  end
+
   create_table "trips", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -137,6 +164,12 @@ ActiveRecord::Schema.define(version: 2019_11_22_064500) do
   add_foreign_key "countries", "continents"
   add_foreign_key "dailies", "trips"
   add_foreign_key "states", "countries"
+  add_foreign_key "to_cities", "cities"
+  add_foreign_key "to_cities", "trips"
+  add_foreign_key "to_countries", "countries"
+  add_foreign_key "to_countries", "trips"
+  add_foreign_key "to_states", "states"
+  add_foreign_key "to_states", "trips"
   add_foreign_key "trips", "users"
   add_foreign_key "user_spots", "dailies"
   add_foreign_key "user_spots", "spots"
