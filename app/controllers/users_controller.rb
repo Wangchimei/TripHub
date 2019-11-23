@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def welcome; end
 
   def dashboard
-    @users = User.all
+    @user = User.find(params[:id])
   end
 
   def show

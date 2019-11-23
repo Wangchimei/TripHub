@@ -18,6 +18,6 @@ Rails.application.routes.draw do
 
   resources :trips
   resources :dailies
-  resources :userspots
+  resources :user_spots
   resources :spots
 end

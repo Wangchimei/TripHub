@@ -9,5 +9,5 @@ class User < ApplicationRecord
   belongs_to :city, optional: true
 
   has_many :trips, dependent: :destroy
-  has_many :userspots, dependent: :destroy
+  has_many :user_spots, dependent: :destroy
 end
