@@ -1,2 +1,2 @@
 <%= label :user, :city_id %><br>
-<%= collection_select :user, :city_id, City.where(state_id: state_id), :id, :name %>
+<%= collection_select :user, :city_id, City.where(state_id: state_id).order(:name), :id, :name %>

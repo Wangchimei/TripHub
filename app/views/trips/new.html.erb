@@ -15,6 +15,24 @@
     <%= f.label :end_day %>
     <%= f.date_select :end_day %>
   </div>
+
+  <div class="continent-area">
+    <%= f.label :continent_id %>
+    <%= f.collection_select :continent_id, Continent.order(:name), :id, :name, include_blank: true%>
+  </div>
+
+  <div class="country-area" style="display:none;">
+    <%= render partial: 'locations/select_country', locals: {continent_id: 0} %>
+  </div>
+
+  <div class="state-area" style="display:none;">
+    <%= render partial: 'locations/select_state', locals: {country_id: 0} %>
+  </div>
+
+  <div class="city-area" style="display:none;">
+    <%= render partial: 'locations/select_city', locals: {state_id: 0} %>
+  </div>
+
   <div>
     <%= f.submit %>
     <%= link_to 'Back', trips_path%>
