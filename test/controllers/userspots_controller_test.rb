@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserspotsControllerTest < ActionDispatch::IntegrationTest
+class UserSpotsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get userspots_index_url
     assert_response :success

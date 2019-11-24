@@ -1,2 +1,22 @@
-<h1>Trips#new</h1>
-<p>Find me in app/views/trips/new.html.erb</p>
+<%= form_with(model: @trip, local: true) do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+  <div>
+    <%= f.label :start_day %>
+    <%= f.date_select :start_day %>
+  </div>
+  <div>
+    <%= f.label :end_day %>
+    <%= f.date_select :end_day %>
+  </div>
+  <div>
+    <%= f.submit %>
+    <%= link_to 'Back', trips_path%>
+  </div>
+<% end %>

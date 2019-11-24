@@ -12,9 +12,6 @@ $(document).on("change", "#user_country_id", function () {
       country_id: $(this).val()
     }
   }).done(function (data) {
-    // test = $(".state-area").text(data);
-    // console.log(test);
-    // debugger
     if (data.includes('option')) {
       $(".state-area").html(data);
       $(".state-area").show();

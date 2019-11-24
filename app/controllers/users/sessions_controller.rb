@@ -28,7 +28,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # after sign-in redirect to feeds/index
   def after_sign_in_path_for(resource)
-    user_path(current_user)
+    dashboard_user_path(current_user)
   end
 
   def after_sign_out_path_for(resource)

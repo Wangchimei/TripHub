@@ -1,13 +1,13 @@
 class CreateTrips < ActiveRecord::Migration[5.2]
   def change
     create_table :trips do |t|
-      t.string :name
+      t.string :name, null: false
       t.string :description
       t.string :trip_image
-      t.date :start_day
-      t.date :end_day
-      t.integer :status
-      t.boolean :privacy
+      t.date :start_day, null: false
+      t.date :end_day, null: false
+      t.integer :status, default: 0
+      t.boolean :privacy, default: false
       t.integer :est_amount
       t.references :user, foreign_key: true
 
