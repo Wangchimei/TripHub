@@ -7,6 +7,7 @@
   <% @trip.dailies.each do |daily| %>
     <p>
     <%= daily.date %>
+    <%= link_to 'Edit', edit_trip_daily_path(@trip, daily) %>
     <%= daily.start_time.strftime("%R") %>
     <%= daily.end_time.strftime("%R") %>
     </p>

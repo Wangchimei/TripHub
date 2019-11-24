@@ -21,9 +21,20 @@ class TripsController < ApplicationController
   def edit; end
 
   def update
+    if @trip.update(trip_params)
+      redirect_to trips_path
+      flash[:notice] = "トリップが更新されました"
+    else
+      render :edit
+    end
   end
 
-  def show
+  def show; end
+
+  def destroy
+    @trip.destroy
+    redirect_to trips_path
+    flash[:notice] = "トリップが削除されました"
   end
 
   private
