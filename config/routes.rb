@@ -15,14 +15,18 @@ Rails.application.routes.draw do
     get 'get_countries', on: :collection # /locations/get_countries
     get 'get_states', on: :collection # /locations/get_states
     get 'get_cities', on: :collection # /locations/get_states
+    get 'to_countries', on: :collection # /locations/to_countries
+    get 'to_states', on: :collection # /locations/to_states
+    get 'to_cities', on: :collection # /locations/to_states
   end
 
   resources :trips do
-    resources :dailies
+    resources :dailies do
+      resources :user_spots
+    end
   end
-  resources :user_spots
-  resources :spots
 
+  resources :spots
   resources :countries, only: [:index]
   resources :states, only: [:index]
   resources :cities, only: [:index]

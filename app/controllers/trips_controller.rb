@@ -6,10 +6,14 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
+    1.times {@trip.to_countries.build}
+    1.times {@trip.to_states.build}
+    1.times {@trip.to_cities.build}
   end
 
   def create
     @trip = current_user.trips.build(trip_params)
+
     if @trip.save
       redirect_to new_trip_daily_path(@trip)
       flash[:notice] = "トリップを作成しました"
@@ -44,6 +48,6 @@ class TripsController < ApplicationController
   end
 
   def trip_params
-    params.require(:trip).permit(:name, :description, :trip_image, :start_day, :end_day,:status, :privacy, :est_amount, :user_id)
+    params.require(:trip).permit(:name, :description, :trip_image, :start_day, :end_day,:status, :privacy, :est_amount, :user_id, to_countries_attributes: [:id, :country_id, :_destroy], to_states_attributes: [:id, :state_id, :_destroy], to_cities_attributes: [:id, :city_id, :_destroy])
   end
 end

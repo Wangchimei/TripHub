@@ -1,2 +1,0 @@
-<%= label :user, :country_id %><br>
-<%= collection_select :user, :country_id, Country.where(continent_id: continent_id).order(:name), :id, :name %>

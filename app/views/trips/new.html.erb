@@ -1,4 +1,4 @@
-<%= form_with(model: @trip, local: true) do |f| %>
+<%= form_with(model: @trip) do |f| %>
   <div>
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -21,20 +21,30 @@
     <%= f.collection_select :continent_id, Continent.order(:name), :id, :name, include_blank: true%>
   </div>
 
-  <div class="country-area" style="display:none;">
-    <%= render partial: 'locations/select_country', locals: {continent_id: 0} %>
+  <div class="country-area">
+    <%= f.fields_for :to_countries do |form| %>
+      <%= form.label :country_id %>
+      <%= form.collection_select :country_id, Country.order(:name), :id, :name %>
+      <%#= render partial: 'locations/to_country', locals: { f: form } %>
+    <%end%>
   </div>
 
-  <div class="state-area" style="display:none;">
-    <%= render partial: 'locations/select_state', locals: {country_id: 0} %>
+  <div class="state-area">
+    <%= f.fields_for :to_states do |form| %>
+      <%= form.label :state_id %>
+      <%= form.collection_select :state_id, State.order(:name), :id, :name %>
+    <% end %>
   </div>
 
   <div class="city-area" style="display:none;">
-    <%= render partial: 'locations/select_city', locals: {state_id: 0} %>
+    <%#= f.fields_for :to_cities do |form| %>
+      <%#= render 'locations/to_city', locals: {f: city, state_id: 0}  %>
+    <%# end %>
   </div>
 
   <div>
     <%= f.submit %>
+    <%#= link_to_add_association 'Add Location', f, :to_countries, data: {association_insertion_node: '.travel', association_insertion_method: :append }%>
     <%= link_to 'Back', trips_path%>
   </div>
 <% end %>

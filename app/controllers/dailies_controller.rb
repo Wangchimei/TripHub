@@ -35,6 +35,6 @@ class DailiesController < ApplicationController
   end
 
   def daily_params
-    params.require(:daily).permit(:date, :start_time, :end_time, :trip_id)
+    params.require(:daily).permit(:date, :start_time, :end_time, :trip_id, user_spots_attributes: [:id, :admission_fee,:other_cost, :note, :user_id, :daily_id, :spot_id])
   end
 end

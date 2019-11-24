@@ -1,0 +1,2 @@
+<%= f.label :country_id %>
+<%= f.collection_select :country_id, Country.order(:name), :id, :name %>

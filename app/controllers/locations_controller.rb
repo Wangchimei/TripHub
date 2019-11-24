@@ -13,6 +13,18 @@ class LocationsController < ApplicationController
     render partial: 'select_city', locals: {state_id: params[:state_id]}
   end
 
+  def to_countries
+    render partial: 'to_country', locals: {continent_id: params[:continent_id]}
+  end
+
+  def to_states
+    render partial: 'to_state', locals: {country_id: params[:country_id]}
+  end
+
+  def to_cities
+    render partial: 'to_city', locals: {state_id: params[:state_id]}
+  end
+
   def index
   end
 end

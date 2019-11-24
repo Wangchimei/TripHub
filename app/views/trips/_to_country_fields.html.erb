@@ -1,0 +1,4 @@
+<%= f.label :country_id %>
+<%= f.collection_select :country_id, Country.order(:name), :id, :name %>
+
+<%= link_to_remove_association "remove", f %>

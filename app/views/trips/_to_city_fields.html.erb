@@ -1,0 +1,2 @@
+<%= f.label :city_id %>
+<%= f.collection_select :city_id, City.order(:name), :id, :name %>

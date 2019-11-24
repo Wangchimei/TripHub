@@ -1,0 +1,2 @@
+<%= f.label :state_id %>
+<%= f.collection_select :state_id, State.where(country_id: country_id).order(:name), :id, :name %>
