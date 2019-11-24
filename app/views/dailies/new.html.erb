@@ -1,2 +1,21 @@
-<h1>Dailies#new</h1>
-<p>Find me in app/views/dailies/new.html.erb</p>
+<%= form_with(model: @daily, local: true, url: trip_dailies_path(@trip.id)) do |f| %>
+  <% trip_duration.times do |index| %>
+    <div>
+      <%= f.label :date, "#{@trip.start_day + index }" %>
+      <%= f.label :date, "Day #{index + 1}" %>
+      <%= f.date_select :date, default: @trip.start_day+index %>
+    </div>
+
+    <div>
+      <%= f.label :start_time %>
+      <%= f.time_select :start_time, default: @trip.start_day+index %>
+    </div>
+    <div>
+      <%= f.label :end_time %>
+      <%= f.time_select :end_time, default: @trip.start_day+index %>
+    </div>
+  <% end %>
+
+      <%= f.submit %>
+      <%= link_to 'Back', trips_path%>
+<% end %>

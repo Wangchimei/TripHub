@@ -16,8 +16,9 @@ Rails.application.routes.draw do
     get 'get_cities', on: :collection # /locations/get_states
   end
 
-  resources :trips
-  resources :dailies
+  resources :trips do
+    resources :dailies
+  end
   resources :user_spots
   resources :spots
 end
