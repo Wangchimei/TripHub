@@ -3,7 +3,7 @@
     <div>
       <%= f.label :date, "#{@trip.start_day + index }" %>
       <%= f.label :date, "Day #{index + 1}" %>
-      <%= f.date_select :date, default: @trip.start_day+index %>
+      <%= f.hidden_field :date, value: @trip.start_day+index %>
     </div>
 
     <div>

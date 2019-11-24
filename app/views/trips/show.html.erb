@@ -1,2 +1,13 @@
 <h1>Trips#show</h1>
-<p>Find me in app/views/trips/show.html.erb</p>
+  <p><%= @trip.name %>
+  <%= @trip.description %>
+  <%= @trip.start_day %> to <%= @trip.end_day %>
+  <%= trip_duration %> 日 </p>
+
+  <% @trip.dailies.each do |daily| %>
+    <p>
+    <%= daily.date %>
+    <%= daily.start_time.strftime("%R") %>
+    <%= daily.end_time.strftime("%R") %>
+    </p>
+  <%end%>

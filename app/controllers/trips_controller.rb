@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
-
+  before_action :set_trip, only: %i[edit update show destroy]
   def index
-
+    @trips = current_user.trips.order(created_at: :desc)
   end
 
   def new
@@ -18,8 +18,7 @@ class TripsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
   end
