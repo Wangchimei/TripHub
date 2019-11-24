@@ -1,6 +1,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require jquery3
+//= require cocoon
 //= require_tree .
 
 // State dropdown
