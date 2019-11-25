@@ -20,12 +20,11 @@
     <%= f.label :continent_id %>
     <%= f.collection_select :continent_id, Continent.order(:name), :id, :name, include_blank: true%>
   </div>
-
   <div class="country-area">
     <%= f.fields_for :to_countries do |form| %>
-      <%= form.label :country_id %>
-      <%= form.collection_select :country_id, Country.order(:name), :id, :name %>
-      <%#= render partial: 'locations/to_country', locals: { f: form } %>
+      <%#= form.label :country_id %>
+      <%#= form.collection_select :country_id, Country.order(:name), :id, :name %>
+      <%= render partial: 'locations/to_country', locals: { f: form } %>
     <%end%>
   </div>
 

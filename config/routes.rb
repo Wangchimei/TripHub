@@ -22,9 +22,9 @@ Rails.application.routes.draw do
 
   resources :trips do
     resources :dailies do
-      resources :user_spots
     end
   end
+  resources :user_spots
 
   resources :spots
   resources :countries, only: [:index]

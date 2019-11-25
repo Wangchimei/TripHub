@@ -7,6 +7,7 @@ class DailiesController < ApplicationController
 
   def new
     @daily = Daily.new
+    # 1.times {@daily.user_spots.build}
   end
 
   def create

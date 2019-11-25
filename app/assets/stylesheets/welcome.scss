@@ -1,0 +1,38 @@
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+//Coverpage background
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.bg-image {
+  background-image: url(cover1.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-width: 100vw;
+  height: 100vh;
+  position: relative;
+  // box-shadow: inset 0 0 100rem #00000080;
+}
+
+.overlay {
+  background-color: rgba(37, 37, 37, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.brand-name{
+  font-size: 6rem;
+  color: #e4e4e4;
+  text-shadow: 0 1rem 1rem #14141480;
+  left: 10%;
+  top: 10%;
+  position: absolute;
+}
