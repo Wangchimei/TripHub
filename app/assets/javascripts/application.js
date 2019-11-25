@@ -78,6 +78,7 @@ $(document).on(
         $(".state-area").show();
       } else {
         $(".state-area").hide();
+        $(".city-area").hide();
       }
     });
   }

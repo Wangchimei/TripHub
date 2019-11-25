@@ -1,2 +1,4 @@
-<%= f.label :country_id %>
-<%= f.collection_select :country_id, Country.order(:name), :id, :name %>
+<%= f.fields_for :to_countries do |f| %>
+  <%= f.label :country_id %>
+  <%= f.collection_select :country_id, countries, :id, :name%>
+<%end%>

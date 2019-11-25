@@ -18,27 +18,24 @@
 
   <div class="continent-area">
     <%= f.label :continent_id %>
-    <%= f.collection_select :continent_id, Continent.order(:name), :id, :name, include_blank: true%>
-  </div>
-  <div class="country-area">
-    <%= f.fields_for :to_countries do |form| %>
-      <%#= form.label :country_id %>
-      <%#= form.collection_select :country_id, Country.order(:name), :id, :name %>
-      <%= render partial: 'locations/to_country', locals: { f: form } %>
-    <%end%>
+    <%= f.collection_select :continent_id,
+        Continent.order(:name), :id, :name, include_blank: true
+        %>
   </div>
 
-  <div class="state-area">
-    <%= f.fields_for :to_states do |form| %>
-      <%= form.label :state_id %>
-      <%= form.collection_select :state_id, State.order(:name), :id, :name %>
-    <% end %>
+  <div class="country-area" style="display:none;">
+    <%= render partial: 'locations/to_country',
+        locals: { f: f, countries: @countries} %>
+  </div>
+
+  <div class="state-area" style="display:none;">
+    <%= render partial: 'locations/to_state',
+        locals: { f: f, states: @states} %>
   </div>
 
   <div class="city-area" style="display:none;">
-    <%#= f.fields_for :to_cities do |form| %>
-      <%#= render 'locations/to_city', locals: {f: city, state_id: 0}  %>
-    <%# end %>
+    <%= render partial: 'locations/to_city',
+        locals: { f: f, cities: @cities} %>
   </div>
 
   <div>
