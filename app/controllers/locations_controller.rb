@@ -14,15 +14,21 @@ class LocationsController < ApplicationController
   end
 
   def to_countries
-    render partial: 'to_country', locals: {continent_id: params[:continent_id]}
+    @trip = Trip.to_country_build
+    @countries = Continent.find(params[:continent_id]).countries
+    render partial: "to_countries", layout: false, locals: {countries: @countries}
   end
 
   def to_states
-    render partial: 'to_state', locals: {country_id: params[:country_id]}
+    @trip = Trip.to_state_build
+    @states = Country.find(params[:country_id]).states
+    render partial: "to_states", layout: false, locals: {states: @states}
   end
 
   def to_cities
-    render partial: 'to_city', locals: {state_id: params[:state_id]}
+    @trip = Trip.to_city_build
+    @cities = State.find(params[:state_id]).cities
+    render partial: "to_cities", layout: false, locals: {cities: @cities}
   end
 
   def index

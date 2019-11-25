@@ -1,2 +1,4 @@
-<%= f.label :city_id %>
-<%= f.collection_select :city_id, City.where(state_id: state_id).order(:name), :id, :name %>
+<%= f.fields_for :to_cities do |f| %>
+  <%= f.label :city_id %>
+  <%= f.collection_select :city_id, cities, :id, :name%>
+<%end%>

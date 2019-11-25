@@ -1,0 +1,4 @@
+<%= form_with(model: @trip) do |f| %>
+  <%= render partial: 'locations/to_state',
+          locals: { f: f, states: @states} %>
+<% end %>

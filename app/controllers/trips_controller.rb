@@ -9,6 +9,9 @@ class TripsController < ApplicationController
     1.times {@trip.to_countries.build}
     1.times {@trip.to_states.build}
     1.times {@trip.to_cities.build}
+    @countries = Country.all
+    @states = State.all
+    @cities = City.all
   end
 
   def create
