@@ -13,7 +13,7 @@ class DailiesController < ApplicationController
   def create
     @daily = @trip.dailies.build(daily_params)
     if @daily.save
-      redirect_to trips_path
+      redirect_to trip_path(current_user)
       flash[:notice] = "トリップを作成しました"
     else
       render :new

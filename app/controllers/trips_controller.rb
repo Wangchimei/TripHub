@@ -1,17 +1,14 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[edit update show destroy]
   def index
-    @trips = current_user.trips.order(created_at: :desc)
+    @trips = Trip.where(privacy: true).order(created_at: :desc)
   end
 
   def new
     @trip = Trip.new
-    1.times {@trip.to_countries.build}
-    1.times {@trip.to_states.build}
-    1.times {@trip.to_cities.build}
-    @countries = Country.all
-    @states = State.all
-    @cities = City.all
+    @countries = Country.limit(5)
+    @states = State.limit(5)
+    @cities = City.limit(5)
   end
 
   def create
@@ -29,18 +26,20 @@ class TripsController < ApplicationController
 
   def update
     if @trip.update(trip_params)
-      redirect_to trips_path
+      redirect_to trip_path(current_user)
       flash[:notice] = "トリップが更新されました"
     else
       render :edit
     end
   end
 
-  def show; end
+  def show
+    @trips = current_user.trips.order(created_at: :desc)
+  end
 
   def destroy
     @trip.destroy
-    redirect_to trips_path
+    redirect_to trip_path(current_user)
     flash[:notice] = "トリップが削除されました"
   end
 
