@@ -1,6 +1,10 @@
 class UserSpotsController < ApplicationController
+  before_action :set_trip
 
   def index
+    gon.start_day = @trip.start_day
+    gon.end_day = @trip.end_day
+    gon.cal_end_day = @trip.end_day+1
   end
 
   def create
@@ -18,6 +22,10 @@ class UserSpotsController < ApplicationController
   end
 
   private
+
+  def set_trip
+    @trip = Trip.find(params[:trip_id])
+  end
 
   def set_user_spot
   end
