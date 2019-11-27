@@ -16,7 +16,9 @@ initialize_calendar = function() {
       differenceInTime = end_day.getTime() - start_day.getTime();
       differenceInDays = differenceInTime / (1000 * 3600 * 24);
       tripDuration = differenceInDays + 1;
-      if (tripDuration % 3 === 0) {
+      if (tripDuration === 1 ) {
+        return 1;
+      } else if (tripDuration % 3 === 0) {
         return 3;
       } else {
         return 2;
@@ -90,3 +92,4 @@ initialize_calendar = function() {
     });
   })
 };
+$(document).on("turbolinks:load", initialize_calendar);

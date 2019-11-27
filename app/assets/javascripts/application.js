@@ -48,6 +48,10 @@ $(document).on("change", "#user_state_id", function () {
 // Trip
 // Country dropdown
 $(document).on("change", "#trip_continent_id", function () {
+  $("#trip_to_states_attributes_0_state_id").val("");
+  $("#trip_to_cities_attributes_0_city_id").val("");
+  $(".state-area").hide();
+  $(".city-area").hide();
   return $.ajax({
     type: "GET",
     url: "/locations/to_countries",
@@ -65,10 +69,9 @@ $(document).on("change", "#trip_continent_id", function () {
 });
 
 // State dropdown
-$(document).on(
-  "change",
-  "#trip_to_countries_attributes_0_country_id",
-  function() {
+$(document).on("change", "#trip_to_countries_attributes_0_country_id", function() {
+    $("#trip_to_cities_attributes_0_city_id").val("");
+    $(".city-area").hide();
     return $.ajax({
       type: "GET",
       url: "/locations/to_states",
@@ -88,10 +91,7 @@ $(document).on(
 );
 
 // City dropdown
-$(document).on(
-  "change",
-  "#trip_to_states_attributes_0_state_id",
-  function() {
+$(document).on("change", "#trip_to_states_attributes_0_state_id", function() {
     return $.ajax({
       type: "GET",
       url: "/locations/to_cities",
@@ -101,19 +101,13 @@ $(document).on(
     }).done(function(data) {
       if (data.includes("option")) {
         $(".city-area").html(data);
-        $(".city-area").show();
+        $("#addCityBtn").show();
+        $("#addCityBtn").on("click", function(){
+          $(".city-area").show();
+        });
       } else {
         $(".city-area").hide();
       }
     });
   }
 );
-
-$(document).on('turbolinks:load', function () {
-  $('#resetBtn')
-    .on('click', function () {
-      console.log('ye')
-      $('#resetDestination').show();
-      $('#originalDestination').hide();
-    });
-})

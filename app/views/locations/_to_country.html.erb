@@ -1,5 +1,4 @@
 <%= f.fields_for :to_countries do |f| %>
   <%= f.label :country_id %>
-  <%#= f.collection_select :country_id, countries, :id, :name%>
-  <%= f.collection_select :country_id, countries, :id, :name, {selected: @trip.destination_countries}%>
+  <%= f.collection_select :country_id, countries, :id, :name%>
 <%end%>

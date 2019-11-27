@@ -12,8 +12,8 @@
     <%= f.text_field :date_range, class:"trip-date-range-picker" %>
   </div>
   <div>
-    <%= f.hidden_field :start_day, class:"start_date" %>
-    <%= f.hidden_field :end_day, class:"end_date" %>
+    <%= f.hidden_field :start_day, value: Date.today, class:"start_date" %>
+    <%= f.hidden_field :end_day, value: Date.today, class:"end_date" %>
   </div>
 
   <div class="continent-area">

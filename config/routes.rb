@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get 'to_countries', on: :collection # /locations/to_countries
     get 'to_states', on: :collection # /locations/to_states
     get 'to_cities', on: :collection # /locations/to_states
+    get 'reset', on: :collection
   end
 
   resources :trips do
