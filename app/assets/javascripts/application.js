@@ -108,3 +108,12 @@ $(document).on(
     });
   }
 );
+
+$(document).on('turbolinks:load', function () {
+  $('#resetBtn')
+    .on('click', function () {
+      console.log('ye')
+      $('#resetDestination').show();
+      $('#originalDestination').hide();
+    });
+})

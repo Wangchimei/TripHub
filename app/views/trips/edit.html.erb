@@ -1,4 +1,4 @@
-<%= form_with(model: @trip, local: true) do |f| %>
+<%= form_with(model: @trip) do |f| %>
   <div>
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -8,13 +8,48 @@
     <%= f.text_field :description %>
   </div>
   <div>
-    <%= f.label :start_day %>
-    <%= f.date_select :start_day %>
+    <%= f.label :date_range %>
+    <%= f.text_field :date_range, class:"trip-date-range-picker" %>
   </div>
   <div>
-    <%= f.label :end_day %>
-    <%= f.date_select :end_day %>
+    <%= f.hidden_field :start_day, class:"start_date" %>
+    <%= f.hidden_field :end_day, class:"end_date" %>
   </div>
+
+  <div id="originalDestination">
+    <p>Destination:
+      <% if @trip.to_countries.count == 1 && @trip.to_states.count == 1 %>
+        <%= @trip.destination_countries.first.name %>
+        <%= @trip.destination_states.first.name %>
+        <%= @trip.destination_cities.first.name if @trip.destination_cities.first %>
+      <% end %>
+      <span class="btn btn-sm btn-primary" id="resetBtn"> Reset</span>
+    </p>
+  </div>
+  <div id="resetDestination" style="display:none;">
+    <div class="continent-area">
+        <%= f.label :continent_id %>
+        <%= f.collection_select :continent_id,
+            Continent.order(:name), :id, :name, include_blank: true
+            %>
+    </div>
+
+    <div class="country-area" style="display:none;">
+      <%= render partial: 'locations/to_country',
+          locals: { f: f, countries: @countries} %>
+    </div>
+
+    <div class="state-area" style="display:none;">
+      <%= render partial: 'locations/to_state',
+          locals: { f: f, states: @states} %>
+    </div>
+
+    <div class="city-area" style="display:none;">
+      <%= render partial: 'locations/to_city',
+          locals: { f: f, cities: @cities} %>
+    </div>
+  </div>
+
   <div>
     <%= f.submit %>
     <%= link_to 'Back', user_path(current_user) %>

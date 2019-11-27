@@ -1,14 +1,14 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[edit update show destroy]
+  before_action :set_location, only: %i[new edit]
+
   def index
     @trips = Trip.where(privacy: true).order(created_at: :desc)
   end
 
   def new
     @trip = Trip.new
-    @countries = Country.limit(5)
-    @states = State.limit(5)
-    @cities = City.limit(5)
+
   end
 
   def create
@@ -22,11 +22,16 @@ class TripsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+
+  end
 
   def update
     if @trip.update(trip_params)
-      redirect_to trip_path(current_user)
+      ToCountry.where(trip_id:params[:id]).update(country_id:params[:country_id])
+      ToState.where(trip_id:params[:id]).update(state_id:params[:state_id])
+      ToCity.where(trip_id:params[:id]).update(city_id:params[:city_id])
+      redirect_to user_path(current_user)
       flash[:notice] = "トリップが更新されました"
     else
       render :edit
@@ -46,6 +51,12 @@ class TripsController < ApplicationController
 
   def set_trip
     @trip = Trip.find(params[:id])
+  end
+
+  def set_location
+    @countries = Country.limit(2)
+    @states = State.limit(2)
+    @cities = City.limit(2)
   end
 
   def trip_params
