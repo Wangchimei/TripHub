@@ -1,8 +1,11 @@
-//= require rails-ujs
-//= require activestorage
 //= require jquery3
-//= require cocoon
+//= require jquery_ujs
 //= require turbolinks
+//= require popper
+//= require bootstrap-sprockets
+//= require moment
+//= require fullcalendar
+//= require daterangepicker
 //= require_tree .
 
 // User sign up

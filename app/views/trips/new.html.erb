@@ -8,12 +8,12 @@
     <%= f.text_field :description %>
   </div>
   <div>
-    <%= f.label :start_day %>
-    <%= f.date_select :start_day %>
+    <%= f.label :date_range %>
+    <%= f.text_field :date_range, class:"trip-date-range-picker" %>
   </div>
   <div>
-    <%= f.label :end_day %>
-    <%= f.date_select :end_day %>
+    <%= f.hidden_field :start_day, class:"start_date" %>
+    <%= f.hidden_field :end_day, class:"end_date" %>
   </div>
 
   <div class="continent-area">
