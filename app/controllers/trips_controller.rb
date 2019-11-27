@@ -29,9 +29,6 @@ class TripsController < ApplicationController
 
   def update
     if @trip.update(trip_params)
-      ToCountry.where(trip_id:params[:id]).update(country_id:params[:country_id])
-      ToState.where(trip_id:params[:id]).update(state_id:params[:state_id])
-      ToCity.where(trip_id:params[:id]).update(city_id:params[:city_id])
       redirect_to user_path(current_user)
       flash[:notice] = "トリップが更新されました"
     else
