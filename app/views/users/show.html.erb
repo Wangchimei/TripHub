@@ -1,2 +1,13 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
+
+<% @trips.each do |trip| %>
+  <p><%= trip.name %>
+  <%= trip.description %>
+  <%= trip.start_day %> to <%= trip.end_day %>
+  <%= (trip.end_day-trip.start_day).to_i + 1 %> 日
+  <%= link_to 'Details', trip_path(trip)%>
+  <%= link_to 'Edit', edit_trip_path(trip)%>
+  <%= link_to 'Delete', trip_path(trip, trip_id: trip.id), method: :delete, data: {confirm: "削除しますか？"}%>
+  </p>
+<%end%>

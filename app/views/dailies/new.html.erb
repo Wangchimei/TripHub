@@ -15,39 +15,8 @@
       <%= f.time_select :end_time, default: @trip.start_day+index %>
     </div>
 
-    <div class="spots">
-      <%#= f.collection_check_boxes(:user_spot_ids, current_user.user_spots.all, :id, :admission_fee) do |f| %>
-        <%#= f.label :name do %>
-          <%#= f.check_box :checkbox, id: :name, style: "width: 1rem; height: 1rem;" %>
-          <%#= f.label :name%>
-        <%# end %>
-      <%# end %>
-
-      <% current_user.user_spots.each do |user_spot| %>
-        <%= user_spot.spot.name%>
-        <%= user_spot.spot.admission_fee%>
-      <% end %>
-
-
-      <%#= f.fields_for :user_spots do |f| %>
-        <div>
-          <%#= f.label :admission_fee %>
-          <%#= f.text_field :admission_fee, value: Spot. %>
-        </div>
-        <div>
-          <%#= f.label :other_cost %>
-          <%#= f.text_field :other_cost %>
-        </div>
-        <div>
-          <%#= f.label :note %>
-          <%#= f.text_field :note %>
-        </div>
-      <%# end %>
-    </div>
-  <% end %>
+    <% end %>
 
       <%= f.submit %>
-      <%= link_to 'Back', trips_path%>
-
-  <%#= link_to_add_association 'Add Spots', f, :user_spots, data: {association_insertion_node: '.user_spots', association_insertion_method: :append }%>
+      <%= link_to 'Back', user_path(current_user) %>
 <% end %>

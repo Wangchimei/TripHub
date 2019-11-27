@@ -41,6 +41,6 @@
   <div>
     <%= f.submit %>
     <%#= link_to_add_association 'Add Location', f, :to_countries, data: {association_insertion_node: '.travel', association_insertion_method: :append }%>
-    <%= link_to 'Back', trips_path%>
+    <%= link_to 'Back', user_path(current_user) %>
   </div>
 <% end %>

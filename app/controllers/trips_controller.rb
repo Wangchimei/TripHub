@@ -34,12 +34,11 @@ class TripsController < ApplicationController
   end
 
   def show
-    @trips = current_user.trips.order(created_at: :desc)
   end
 
   def destroy
     @trip.destroy
-    redirect_to trip_path(current_user)
+    redirect_to user_path(current_user)
     flash[:notice] = "トリップが削除されました"
   end
 
