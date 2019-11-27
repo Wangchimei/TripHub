@@ -15,7 +15,7 @@ class TripsController < ApplicationController
     @trip = current_user.trips.build(trip_params)
 
     if @trip.save
-      redirect_to new_trip_daily_path(@trip)
+      redirect_to trip_user_spots_path(@trip)
       flash[:notice] = "トリップを作成しました"
     else
       render :new

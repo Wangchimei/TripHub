@@ -21,10 +21,10 @@ Rails.application.routes.draw do
   end
 
   resources :trips do
-    resources :dailies do
-    end
+    resources :user_spots
+    # resources :dailies do
+    # end
   end
-  resources :user_spots
 
   resources :spots
   resources :countries, only: [:index]
