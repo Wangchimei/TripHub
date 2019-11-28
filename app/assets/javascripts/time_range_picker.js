@@ -1,6 +1,6 @@
-var date_range_picker;
-date_range_picker = function() {
-  $(".date-range-picker").each(function() {
+var time_range_picker;
+time_range_picker = function() {
+  $(".time-range-picker").each(function() {
     $(this)
       .daterangepicker(
         {
@@ -15,9 +15,9 @@ date_range_picker = function() {
           $(".end_hidden").val(end.format("YYYY-MM-DD HH:mm"));
         }
       )
-      // .on("show.daterangepicker", function(ev, picker) {
-      //   picker.container.find(".calendar-table").hide();
-      // });
+      .on("show.daterangepicker", function(ev, picker) {
+        picker.container.find(".calendar-table").hide();
+      });
   });
 };
-$(document).on("turbolinks:load", date_range_picker);
+$(document).on("turbolinks:load", time_range_picker);

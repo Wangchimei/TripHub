@@ -21,12 +21,12 @@ Rails.application.routes.draw do
   end
 
   resources :trips do
-    resources :user_spots, only: [:index, :show]
+    resources :user_spots, only: [:index, :show, :edit]
     # resources :dailies do
     # end
   end
 
-  resources :user_spots, only: [:create, :destroy]
+  resources :user_spots, only: [:new, :create, :destroy]
   resources :spots
   resources :countries, only: [:index]
   resources :states, only: [:index]

@@ -1,0 +1,18 @@
+<%= form_with(model:user_spot) do |f| %>
+  <div class="form-inputs">
+    <%= f.text_field :admission_fee %>
+    <%= f.text_field :other_cost %>
+    <%= f.text_field :note %>
+    <%= f.text_field :date_range, class: "form-control input-sm datetime-range-picker"%>
+    <%= f.hidden_field :start, class: 'form-control input-sm start_hidden' %>
+    <%= f.hidden_field :end, class: 'form-control input-sm end_hidden' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+    <%= link_to 'Delete', user_spots_path
+                class: 'btn btn-danger', 
+                data: { confirm: 'Are you sure?' }, 
+                remote: true unless userspot.new_record? %>
+  </div>
+<% end %>

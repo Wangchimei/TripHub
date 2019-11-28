@@ -7,6 +7,10 @@ class UserSpotsController < ApplicationController
     gon.cal_end_day = @trip.end_day+1
   end
 
+  def new
+    @userspot = UserSpot.new
+  end
+
   def create
     @spot = Spot.find(params[:id])
     admission_fee = @spot.admission_fee

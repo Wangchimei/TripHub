@@ -7,7 +7,8 @@
   <%= trip.start_day %> to <%= trip.end_day %>
   <%= (trip.end_day-trip.start_day).to_i + 1 %> 日
   <%= link_to 'Details', trip_path(trip)%>
-  <%= link_to 'Edit', edit_trip_path(trip)%>
+  <%= link_to 'Edit Trip', edit_trip_path(trip)%>
+  <%= link_to 'Edit Schedule', trip_user_spots_path(trip)%>
   <%= link_to 'Delete', trip_path(trip, trip_id: trip.id), method: :delete, data: {confirm: "削除しますか？"}%>
   </p>
 <%end%>
