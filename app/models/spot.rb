@@ -2,6 +2,7 @@ class Spot < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
   has_many :user_spots, dependent: :destroy
+  has_many :schedules, dependent: :destroy
 
   validates :name, :address, presence: true
   # after_save :update_geocode
