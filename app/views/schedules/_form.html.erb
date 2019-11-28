@@ -1,6 +1,6 @@
 <%= form_with(model:[trip, schedule]) do |f| %>
   <div class="form-inputs">
-    <%= f.text_field :date_range, class: "form-control input-sm date_range_picker"%>
+    <%= f.text_field :date_range, class: "form-control input-sm date-range-picker"%>
     <br>
     <% @saved_spots.each.with_index(1) do |spot, i| %>
       <div>

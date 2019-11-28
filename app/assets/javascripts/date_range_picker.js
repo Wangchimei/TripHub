@@ -3,14 +3,15 @@ date_range_picker = function() {
   $('.date-range-picker').each(function() {
     $(this).daterangepicker(
       {
-        timePicker: false,
+        timePicker: true,
+        timePickerIncrement: 15,
         locale: {
-          format: 'YYYY-MM-DD',
+          format: 'YYYY-MM-DD HH:mm',
         },
       },
       function(start, end, label) {
-        $('.start_date').val(start.format('YYYY-MM-DD'));
-        $('.end_date').val(end.format('YYYY-MM-DD'));
+        $('.start_hidden').val(start.format('YYYY-MM-DD HH:mm'));
+        $('.end_hidden').val(end.format('YYYY-MM-DD HH:mm'));
       },
     );
   });
