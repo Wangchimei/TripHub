@@ -1,11 +1,9 @@
 <%= form_with(model: @trip) do |f| %>
   <div>
     <p>Destination:
-      <% if @trip.to_countries.count == 1 && @trip.to_states.count == 1 %>
-        <%= @trip.destination_countries.first.name %>
-        <%= @trip.destination_states.first.name %>
-        <%= @trip.destination_cities.first.name if @trip.destination_cities.first %>
-      <% end %>
+      <%= @trip.destination_countries.first.name %>
+      <%= @trip.destination_states.first.name if @trip.destination_states.first  %>
+      <%= @trip.destination_cities.first.name if @trip.destination_cities.first %>
     </p>
   </div>
 

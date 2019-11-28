@@ -1,0 +1,9 @@
+<% @spots.each do |spot| %>
+  <%= spot.name %>
+  <%= spot.admission_fee %>
+  <%= spot.duration %>
+  <%= spot.latitude %>
+  <%= spot.longitude %>
+  <%= spot.address %>
+  <% link_to 'Save', %>
+<% end %>

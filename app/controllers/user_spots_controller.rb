@@ -7,6 +7,9 @@ class UserSpotsController < ApplicationController
     gon.cal_end_day = @trip.end_day+1
   end
 
+  def new
+  end
+
   def create
     @spot = Spot.find(params[:id])
     admission_fee = @spot.admission_fee
@@ -14,6 +17,12 @@ class UserSpotsController < ApplicationController
     flash[:notice] = "スポットを保存しました"
   end
 
+  def edit
+  end
+
+  def update
+  end
+  
   def destroy
     @user_spot = UserSpot.find(params[:id])
     @user_spot.destroy
