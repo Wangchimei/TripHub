@@ -1,12 +1,12 @@
-<div class="modal fade" id="new_userspot">
+<div class="modal fade" id="new_schedule">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Create New Event</h4>
+        <h4 class="modal-title">Add spot to your schedule</h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       </div>
       <div class="modal-body">
-        <%= render 'form', user_spot: @user_spot %>
+        <%= render 'form', schedule: @schedule, trip: @trip %>
       </div>
     </div>
   </div>

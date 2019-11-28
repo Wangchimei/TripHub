@@ -3,6 +3,7 @@ class SchedulesController < ApplicationController
   before_action :set_schedule, only: %i[edit update show destroy]
 
   def index
+    gon.trip_id = @trip.id
     gon.start_day = @trip.start_day
     gon.end_day = @trip.end_day
     gon.cal_end_day = @trip.end_day+1
@@ -10,17 +11,12 @@ class SchedulesController < ApplicationController
 
   def new
     @schedule = Schedule.new
+    @saved_spots = current_user.saved_spots
   end
 
   def create
-    # @schedule = Schedule.new(event_params)
-    # @schedule.save
-
-    @schedule = current_user.trips.schedules.build(event_params)
+    @schedule = @trip.schedules.build(schedule_params)
     @schedule.save
-    @spot = Spot.find(params[:spot_id])
-    admission_fee = @spot.admission_fee
-    @schedule.update(admission_fee: admission_fee, spot_id: @spot.id)
   end
 
   def edit; end
@@ -44,6 +40,6 @@ class SchedulesController < ApplicationController
   end
 
   def schedule_params
-    params.require(:schedule).permit(:name, :start, :end, :admission_fee, :other_cost, :duration, :note, :trip_id, :spot_id)
+    params.require(:schedule).permit(:name, :date_range, :start, :end, :admission_fee, :other_cost, :duration, :note, :trip_id, :spot_id)
   end
 end

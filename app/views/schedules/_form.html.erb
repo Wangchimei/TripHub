@@ -1,18 +1,28 @@
-<%= form_with(model:user_spot) do |f| %>
+<%= form_with(model:[trip, schedule]) do |f| %>
   <div class="form-inputs">
-    <%= f.text_field :admission_fee %>
-    <%= f.text_field :other_cost %>
-    <%= f.text_field :note %>
-    <%= f.text_field :date_range, class: "form-control input-sm datetime-range-picker"%>
-    <%= f.hidden_field :start, class: 'form-control input-sm start_hidden' %>
-    <%= f.hidden_field :end, class: 'form-control input-sm end_hidden' %>
+    <%= f.text_field :date_range, class: "form-control input-sm date_range_picker"%>
+    <br>
+    <% @saved_spots.each.with_index(1) do |spot, i| %>
+      <div>
+        <%= f.radio_button :spot_id, spot.id, id:"spot_#{i}", class:"" %>
+        <%= f.label spot.name, for:"spot_#{i}", class:"" %>
+      </div>
+      <div id="editInfo" class="btn btn-sm">Click to edit info</div>
+
+      <div id="infoArea" style="display:none;">
+        <p>Admission Fee: <%= f.text_field :admission_fee, value: spot.admission_fee, class: 'form-control form-control-sm'%></p>
+        <p>Other Cost: <%= f.text_field :other_cost, class: 'form-control form-control-sm' %></p>
+        <p>Memo: <%= f.text_field :note, class: 'form-control form-control-sm' %></p>
+      </div>
+      <%= f.hidden_field :name, value: spot.name %>
+      <%= f.hidden_field :start, class: 'form-control input-sm start_hidden' %>
+      <%= f.hidden_field :end, class: 'form-control input-sm end_hidden' %>
+      <br>
+    <% end %>
   </div>
 
   <div class="form-actions">
     <%= f.button :submit %>
-    <%= link_to 'Delete', user_spots_path
-                class: 'btn btn-danger', 
-                data: { confirm: 'Are you sure?' }, 
-                remote: true unless userspot.new_record? %>
+    <%= link_to 'Delete', trip_schedule_path(schedule), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' }, remote: true unless @schedule.new_record? %>
   </div>
 <% end %>

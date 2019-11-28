@@ -2,7 +2,7 @@
 
 <% @spots.each.with_index(1) do |spot, index| %>
   <p><%= index %> <%= spot.name %>
-  <%= link_to 'Save', user_spots_path(id: spot.id), method: :post %>
+  <%= render partial: 'user_spots/user_spots_form', locals: {spot: spot, user_spots: @user_spots} %>
 
   <p><%= spot.address %></p>
   <p>Admission Fee: <%= spot.admission_fee %></p>

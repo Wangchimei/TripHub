@@ -1,0 +1,7 @@
+<div id="user_spots_<%=spot.id%>">
+ <% if spot.saved_spot?(spot, current_user) %>
+   <%= link_to '', user_spot_path(id: spot.id), method: :delete, remote: true, class:"fas fa-bookmark save-link"%>
+ <% else %>
+   <%= link_to '', user_spots_path(spot_id: spot.id), method: :post, remote: true, class:"far fa-bookmark save-link"%>
+ <% end %>
+</div>
