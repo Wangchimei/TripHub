@@ -1,9 +1,12 @@
-<% @spots.each do |spot| %>
-  <%= spot.name %>
-  <%= spot.admission_fee %>
-  <%= spot.duration %>
-  <%= spot.latitude %>
-  <%= spot.longitude %>
-  <%= spot.address %>
-  <% link_to 'Save', %>
+<%= link_to "CSV", spots_path(format: :csv) %>
+
+<% @spots.each.with_index(1) do |spot, index| %>
+  <p><%= index %> <%= spot.name %>
+  <%= link_to 'Save', trip_user_spots_path, method: :post %>
+
+  <p><%= spot.address %></p>
+  <p>Admission Fee: <%= spot.admission_fee %></p>
+  <p>Time spent: <%= spot.duration %></p>
+  <p><%= spot.latitude %>, <%= spot.longitude %></p>
+  <br>
 <% end %>

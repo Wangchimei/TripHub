@@ -1,6 +1,12 @@
 class SpotsController < ApplicationController
   def index
     @spots = Spot.all
+    respond_to do |format|
+      format.html
+      format.csv do
+        send_data render_to_string, filename: "spots.csv", type: :csv
+      end
+    end
   end
 
   def new
@@ -8,9 +14,9 @@ class SpotsController < ApplicationController
   end
 
   def create
-    @spot = Spot.new(trip_params)
+    @spot = Spot.new(spot_params)
     if @spot.save
-      redirect_to new_trip_daily_path(@trip)
+      redirect_to spots_path
       flash[:notice] = "スポットを作成しました"
     else
       render :new
@@ -20,6 +26,11 @@ class SpotsController < ApplicationController
   def destroy
     @spot= Spot.find(params[:id])
     @spot.destroy
-    redirect_to new_trip_daily_path(@trip)
+    redirect_to spots_path
+  end
+
+  private
+  def spot_params
+    params.require(:spot).permit(:name, :admission_fee, :duration, :main_image, :latitude, :longtitude, :address)
   end
 end

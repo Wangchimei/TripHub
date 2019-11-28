@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_24_065242) do
+ActiveRecord::Schema.define(version: 2019_11_28_040942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,11 +64,11 @@ ActiveRecord::Schema.define(version: 2019_11_24_065242) do
     t.integer "admission_fee", default: 0
     t.integer "duration", default: 0
     t.string "main_image"
-    t.float "latitude", null: false
-    t.float "longitude", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "address"
+    t.string "address", null: false
   end
 
   create_table "states", force: :cascade do |t|

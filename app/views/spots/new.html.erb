@@ -1,2 +1,19 @@
 <h1>Spots#new</h1>
-<p>Find me in app/views/spots/new.html.erb</p>
+<%= form_with(model:@spot) do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+  <div>
+    <%= f.label :admission_fee %>
+    <%= f.text_field :admission_fee %>
+  </div>
+  <div>
+    <%= f.submit %>
+    <%= link_to 'Back', spots_path %>
+  </div>
+<% end %>
