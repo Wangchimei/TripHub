@@ -20,4 +20,8 @@ class Spot < ApplicationRecord
   #   end
   #   self.update(h)
   # end
+  def saved_spot?(spot, user)
+    spot.user_spots.find_by(user_id: user.id)
+  end
+
 end

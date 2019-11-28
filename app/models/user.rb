@@ -10,4 +10,13 @@ class User < ApplicationRecord
 
   has_many :trips, dependent: :destroy
   has_many :user_spots, dependent: :destroy
+
+
+  def save_spot!(spot)
+    spots.create!(spot_id: spot.id)
+  end
+
+  def unsave_spot!(spot)
+    spots.find_by(spot_id: spot.id).destroy
+  end
 end

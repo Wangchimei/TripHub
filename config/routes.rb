@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     resources :schedules
   end
 
-  resources :user_spots
+  resources :user_spots, only: [:create, :destroy]
   resources :spots
   resources :countries, only: [:index]
   resources :states, only: [:index]
