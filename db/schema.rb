@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2019_11_28_080348) do
     t.datetime "end"
     t.integer "admission_fee"
     t.integer "other_cost"
-    t.integer "duration"
+    t.integer "duration", default: 0
     t.string "note"
     t.bigint "trip_id"
     t.bigint "spot_id"

@@ -102,3 +102,30 @@ namespace :import do
     end
   end
 end
+
+namespace :import do
+  desc "Import spots from csv"
+
+  task spots: :environment do
+    path = File.join Rails.root, "db/csv/spots.csv"
+    puts "path: #{path}"
+    spots = []
+    CSV.foreach(path, headers: true) do |row|
+      spots << {
+          name: row["name"],
+          admission_fee: row["admission_fee"],
+          duration: row["duration"],
+          latitude: row["latitude"],
+          longitude: row["longitude"],
+          address: row["address"]
+      }
+    end
+    puts "start to create spots data"
+    begin
+      Spot.create!(spots)
+      puts "Succssfully imported spots data"
+    rescue ActiveModel::UnknownAttributeError => invalid
+      puts "Error : unknown attribute"
+    end
+  end
+end
