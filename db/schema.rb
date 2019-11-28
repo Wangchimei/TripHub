@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_28_040942) do
+ActiveRecord::Schema.define(version: 2019_11_28_054552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,8 +134,13 @@ ActiveRecord::Schema.define(version: 2019_11_28_040942) do
     t.bigint "spot_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start"
+    t.datetime "end"
+    t.bigint "trip_id"
     t.index ["daily_id"], name: "index_user_spots_on_daily_id"
     t.index ["spot_id"], name: "index_user_spots_on_spot_id"
+    t.index ["trip_id"], name: "index_user_spots_on_trip_id"
+    t.index ["user_id", "spot_id"], name: "index_user_spots_on_user_id_and_spot_id", unique: true
     t.index ["user_id"], name: "index_user_spots_on_user_id"
   end
 
@@ -173,6 +178,7 @@ ActiveRecord::Schema.define(version: 2019_11_28_040942) do
   add_foreign_key "trips", "users"
   add_foreign_key "user_spots", "dailies"
   add_foreign_key "user_spots", "spots"
+  add_foreign_key "user_spots", "trips"
   add_foreign_key "user_spots", "users"
   add_foreign_key "users", "cities"
   add_foreign_key "users", "countries"
