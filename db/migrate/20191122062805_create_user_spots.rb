@@ -5,7 +5,6 @@ class CreateUserSpots < ActiveRecord::Migration[5.2]
       t.integer :other_cost
       t.string :note
       t.references :user, foreign_key: true
-      t.references :daily, foreign_key: true
       t.references :spot, foreign_key: true
 
       t.timestamps

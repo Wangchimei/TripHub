@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_28_054552) do
+ActiveRecord::Schema.define(version: 2019_11_28_080348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,14 +49,20 @@ ActiveRecord::Schema.define(version: 2019_11_28_054552) do
     t.index ["continent_id"], name: "index_countries_on_continent_id"
   end
 
-  create_table "dailies", force: :cascade do |t|
-    t.date "date", null: false
-    t.time "start_time", null: false
-    t.time "end_time", null: false
+  create_table "schedules", force: :cascade do |t|
+    t.string "name"
+    t.datetime "start"
+    t.datetime "end"
+    t.integer "admission_fee"
+    t.integer "other_cost"
+    t.integer "duration"
+    t.string "note"
     t.bigint "trip_id"
+    t.bigint "spot_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["trip_id"], name: "index_dailies_on_trip_id"
+    t.index ["spot_id"], name: "index_schedules_on_spot_id"
+    t.index ["trip_id"], name: "index_schedules_on_trip_id"
   end
 
   create_table "spots", force: :cascade do |t|
@@ -126,20 +132,11 @@ ActiveRecord::Schema.define(version: 2019_11_28_054552) do
   end
 
   create_table "user_spots", force: :cascade do |t|
-    t.integer "admission_fee"
-    t.integer "other_cost"
-    t.string "note"
     t.bigint "user_id"
-    t.bigint "daily_id"
     t.bigint "spot_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "start"
-    t.datetime "end"
-    t.bigint "trip_id"
-    t.index ["daily_id"], name: "index_user_spots_on_daily_id"
     t.index ["spot_id"], name: "index_user_spots_on_spot_id"
-    t.index ["trip_id"], name: "index_user_spots_on_trip_id"
     t.index ["user_id", "spot_id"], name: "index_user_spots_on_user_id_and_spot_id", unique: true
     t.index ["user_id"], name: "index_user_spots_on_user_id"
   end
@@ -167,7 +164,8 @@ ActiveRecord::Schema.define(version: 2019_11_28_054552) do
   add_foreign_key "cities", "countries"
   add_foreign_key "cities", "states"
   add_foreign_key "countries", "continents"
-  add_foreign_key "dailies", "trips"
+  add_foreign_key "schedules", "spots"
+  add_foreign_key "schedules", "trips"
   add_foreign_key "states", "countries"
   add_foreign_key "to_cities", "cities"
   add_foreign_key "to_cities", "trips"
@@ -176,9 +174,7 @@ ActiveRecord::Schema.define(version: 2019_11_28_054552) do
   add_foreign_key "to_states", "states"
   add_foreign_key "to_states", "trips"
   add_foreign_key "trips", "users"
-  add_foreign_key "user_spots", "dailies"
   add_foreign_key "user_spots", "spots"
-  add_foreign_key "user_spots", "trips"
   add_foreign_key "user_spots", "users"
   add_foreign_key "users", "cities"
   add_foreign_key "users", "countries"

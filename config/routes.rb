@@ -22,8 +22,6 @@ Rails.application.routes.draw do
 
   resources :trips do
     resources :user_spots, only: [:index, :show, :edit]
-    # resources :dailies do
-    # end
   end
 
   resources :user_spots, only: [:new, :create, :destroy]

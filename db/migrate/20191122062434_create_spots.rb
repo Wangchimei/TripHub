@@ -8,12 +8,6 @@ class CreateSpots < ActiveRecord::Migration[5.2]
       t.float :latitude
       t.float :longitude
 
-      # t.float :address_latitude
-      # t.float :address_longitude
-
-      # t.float :name_latitude
-      # t.float :name_longitude
-
       t.timestamps
     end
   end
