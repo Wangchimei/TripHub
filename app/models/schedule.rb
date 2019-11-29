@@ -6,8 +6,6 @@ class Schedule < ApplicationRecord
   after_save :update_fields
   after_save :update_travel_cost
   after_destroy :update_travel_cost
-  # after_create :set_duration_in_min
-  # after_update :set_duration_in_min
 
   def all_day?
     self.start == self.start.midnight && self.end == self.end.midnight ? true : false
