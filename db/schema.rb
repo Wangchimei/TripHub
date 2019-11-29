@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_29_064033) do
+ActiveRecord::Schema.define(version: 2019_11_29_123051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -161,6 +161,16 @@ ActiveRecord::Schema.define(version: 2019_11_29_064033) do
     t.index ["state_id"], name: "index_users_on_state_id"
   end
 
+  create_table "visited_countries", force: :cascade do |t|
+    t.bigint "country_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_visited_countries_on_country_id"
+    t.index ["user_id", "country_id"], name: "index_visited_countries_on_user_id_and_country_id", unique: true
+    t.index ["user_id"], name: "index_visited_countries_on_user_id"
+  end
+
   add_foreign_key "cities", "countries"
   add_foreign_key "cities", "states"
   add_foreign_key "countries", "continents"
@@ -179,4 +189,6 @@ ActiveRecord::Schema.define(version: 2019_11_29_064033) do
   add_foreign_key "users", "cities"
   add_foreign_key "users", "countries"
   add_foreign_key "users", "states"
+  add_foreign_key "visited_countries", "countries"
+  add_foreign_key "visited_countries", "users"
 end

@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :trips, dependent: :destroy
   has_many :user_spots, dependent: :destroy
   has_many :saved_spots, through: :user_spots, source: :spot
+  has_many :visited_countries, dependent: :destroy
+  has_many :countries_conquered, through: :visited_countries, source: :country
 
   def save_spot!(spot)
     user_spots.create!(spot_id: spot.id)

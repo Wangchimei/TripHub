@@ -4,4 +4,6 @@ class Country < ApplicationRecord
   has_many :cities, dependent: :destroy
   has_many :users, dependent: :destroy
   has_many :to_countries, dependent: :destroy
+  has_many :visited_countries, dependent: :destroy
+  has_many :travellers, through: :visited_countries, sourse: :user
 end
