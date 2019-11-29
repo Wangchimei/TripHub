@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   resources :trips do
     get :toggle_status, on: :member
+    get :toggle_privacy, on: :member
     resources :schedules
   end
 

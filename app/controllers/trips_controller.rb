@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: %i[edit update toggle_status show destroy]
+  before_action :set_trip, only: %i[edit update show destroytoggle_status toggle_privacy]
   before_action :set_location, only: %i[new edit]
 
   def index
@@ -37,7 +37,6 @@ class TripsController < ApplicationController
   end
 
   def toggle_status
-    # @trips = current_user.trips
     @countries = @trip.destination_countries
     if @trip.planning?
       @trip.finished!
@@ -47,6 +46,11 @@ class TripsController < ApplicationController
       current_user.unvisited!(@countries) if only_one_record?(@finshed_trips)
       @trip.planning!
     end
+    redirect_to user_path(current_user)
+  end
+
+  def toggle_privacy
+    @trip.toggle!(:privacy)
     redirect_to user_path(current_user)
   end
 

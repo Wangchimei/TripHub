@@ -8,6 +8,7 @@
   <%= (trip.end_day-trip.start_day).to_i + 1 %> 日
   ¥ <%= trip.est_amount%>
   <%= link_to trip.status, toggle_status_trip_path(trip.id) %>
+  <%= link_to "#{trip.privacy}", toggle_privacy_trip_path(trip.id) %>
 
   <%= link_to 'Details', trip_path(trip)%>
   <%= link_to 'Edit Trip', edit_trip_path(trip)%>
