@@ -140,3 +140,9 @@ $(document).on('click', '#editInfo', function() {
     .next()
     .slideToggle();
 });
+
+$(document).on('click', '.spot-select', function() {
+  $('#schedule_admission_fee').val('');
+  $('#schedule_other_cost').val('');
+  $('#schedule_note').val('');
+});

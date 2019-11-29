@@ -1,28 +1,29 @@
 <%= form_with(model:[trip, schedule]) do |f| %>
-  <div class="form-inputs">
-    <%= f.text_field :date_range, class: "form-control input-sm date-range-picker"%>
+  <div class='form-inputs'>
+    <%= f.text_field :date_range, class: 'form-control input-sm date-range-picker'%>
     <br>
-    <% @saved_spots.each.with_index(1) do |spot, i| %>
+    <p>Changing your spot will set your previous costs</p>
+    <% @saved_spots.each do |spot| %>
       <div>
-        <%= f.radio_button :spot_id, spot.id, id:"spot_#{i}", class:"" %>
-        <%= f.label spot.name, for:"spot_#{i}", class:"" %>
+        <%= f.radio_button :spot_id, spot.id, id: "spot_#{spot.id}", class:'spot-select' %>
+        <%= f.label spot.name, for:"spot_#{spot.id}", class:'' %>
+        Fee: <%= spot.admission_fee %>
       </div>
-      <div id="editInfo" class="btn btn-sm">Click to edit info</div>
-
-      <div id="infoArea" style="display:none;">
-        <p>Admission Fee: <%= f.text_field :admission_fee, value: spot.admission_fee, class: 'form-control form-control-sm'%></p>
+    <% end %>
+      <div class="btn btn-sm" id="editInfo">Click to edit</div>
+      <div id='infoArea' style="display:none;">
+        <p>Admission Fee: <%= f.text_field :admission_fee, class: 'form-control form-control-sm'%></p>
         <p>Other Cost: <%= f.text_field :other_cost, class: 'form-control form-control-sm' %></p>
         <p>Memo: <%= f.text_field :note, class: 'form-control form-control-sm' %></p>
       </div>
-      <%= f.hidden_field :name, value: spot.name %>
+
       <%= f.hidden_field :start, class: 'form-control input-sm start_hidden' %>
       <%= f.hidden_field :end, class: 'form-control input-sm end_hidden' %>
       <br>
-    <% end %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class='form-actions'>
+    <%= f.button :submit, class: 'btn btn-primary' %>
     <%= link_to 'Delete', trip_schedule_path(schedule), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' }, remote: true unless @schedule.new_record? %>
   </div>
 <% end %>

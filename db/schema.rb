@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_28_080348) do
+ActiveRecord::Schema.define(version: 2019_11_29_064033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2019_11_28_080348) do
     t.datetime "start"
     t.datetime "end"
     t.integer "admission_fee"
-    t.integer "other_cost"
+    t.integer "other_cost", default: 0
     t.integer "duration", default: 0
     t.string "note"
     t.bigint "trip_id"

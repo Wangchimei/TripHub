@@ -1,6 +1,6 @@
 class SchedulesController < ApplicationController
-  before_action :set_trip
-  before_action :set_js_variables
+  before_action :set_trip, except: %i[destroy]
+  before_action :set_js_variables, except: %i[destroy]
   before_action :set_schedule, only: %i[edit update show destroy]
 
   def index
@@ -17,7 +17,9 @@ class SchedulesController < ApplicationController
     @schedule.save
   end
 
-  def edit; end
+  def edit
+    @saved_spots = current_user.saved_spots
+  end
 
   def update
     @schedule.update(schedule_params)

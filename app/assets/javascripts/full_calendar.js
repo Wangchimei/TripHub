@@ -13,7 +13,7 @@ initialize_calendar = function() {
     var end_day = new Date(formatDate(gon.end_day));
     var cal_end_day = new Date(formatDate(gon.cal_end_day));
     var schedules = '/trips/' + gon.trip_id + '/schedules.json';
-    var create_link = '/trips/' + gon.trip_id + '/schedules/new';
+    var create_url = '/trips/' + gon.trip_id + '/schedules/new';
     function set_duration() {
       differenceInTime = end_day.getTime() - start_day.getTime();
       differenceInDays = differenceInTime / (1000 * 3600 * 24);
@@ -50,7 +50,7 @@ initialize_calendar = function() {
       events: schedules,
 
       select: function(start, end) {
-        $.getScript(create_link, function() {
+        $.getScript(create_url, function() {
           $('#schedule_date_range').val(
             moment(start).format('YYYY-MM-DD HH:mm') +
               ' - ' +
@@ -79,18 +79,20 @@ initialize_calendar = function() {
         });
       },
 
-      // eventClick: function(event, jsEvent, view) {
-      //   $.getScript(event.edit_url, function() {
-      //     $("#event_date_range").val(
-      //       moment(event.start).format("YYYY-MM-DD HH:mm") +
-      //         " - " +
-      //         moment(event.end).format("YYYY-MM-DD HH:mm")
-      //     );
-      //     date_range_picker();
-      //     $(".start_hidden").val(moment(event.start).format("YYYY-MM-DD HH:mm"));
-      //     $(".end_hidden").val(moment(event.end).format("YYYY-MM-DD HH:mm"));
-      //   });
-      // }
+      eventClick: function(schedule, jsEvent, view) {
+        $.getScript(schedule.edit_url, function() {
+          $('#schedule_date_range').val(
+            moment(schedule.start).format('YYYY-MM-DD HH:mm') +
+              ' - ' +
+              moment(schedule.end).format('YYYY-MM-DD HH:mm'),
+          );
+          date_range_picker();
+          $('.start_hidden').val(
+            moment(schedule.start).format('YYYY-MM-DD HH:mm'),
+          );
+          $('.end_hidden').val(moment(schedule.end).format('YYYY-MM-DD HH:mm'));
+        });
+      },
     });
   });
 };
