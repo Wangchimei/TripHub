@@ -12,8 +12,8 @@ initialize_calendar = function() {
     var start_day = new Date(formatDate(gon.start_day));
     var end_day = new Date(formatDate(gon.end_day));
     var cal_end_day = new Date(formatDate(gon.cal_end_day));
-    var create_link = '/trips/' + gon.trip_id + '/schedules/new';
     var schedules = '/trips/' + gon.trip_id + '/schedules.json';
+    var create_link = '/trips/' + gon.trip_id + '/schedules/new';
     function set_duration() {
       differenceInTime = end_day.getTime() - start_day.getTime();
       differenceInDays = differenceInTime / (1000 * 3600 * 24);
@@ -64,20 +64,20 @@ initialize_calendar = function() {
         calendar.fullCalendar('unselect');
       },
 
-      // eventDrop: function(event, delta, revertFunc) {
-      //   event_data = {
-      //     event: {
-      //       id: event.id,
-      //       start: event.start.format(),
-      //       end: event.end.format()
-      //     }
-      //   };
-      //   $.ajax({
-      //     url: event.update_url,
-      //     data: event_data,
-      //     type: "PATCH"
-      //   });
-      // },
+      eventDrop: function(schedule, delta, revertFunc) {
+        schedule_data = {
+          schedule: {
+            id: schedule.id,
+            start: schedule.start.format(),
+            end: schedule.end.format(),
+          },
+        };
+        $.ajax({
+          url: schedule.update_url,
+          data: schedule_data,
+          type: 'PATCH',
+        });
+      },
 
       // eventClick: function(event, jsEvent, view) {
       //   $.getScript(event.edit_url, function() {

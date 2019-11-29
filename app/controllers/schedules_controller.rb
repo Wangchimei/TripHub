@@ -1,9 +1,9 @@
 class SchedulesController < ApplicationController
   before_action :set_trip
+  before_action :set_js_variables
   before_action :set_schedule, only: %i[edit update show destroy]
 
   def index
-    gon.trip_id = @trip.id
     @schedules = @trip.schedules
   end
 
@@ -31,9 +31,6 @@ class SchedulesController < ApplicationController
 
   def set_trip
     @trip = current_user.trips.find(params[:trip_id])
-    gon.start_day = @trip.start_day
-    gon.end_day = @trip.end_day
-    gon.cal_end_day = @trip.end_day+1
   end
 
   def set_schedule
@@ -42,5 +39,12 @@ class SchedulesController < ApplicationController
 
   def schedule_params
     params.require(:schedule).permit(:name, :start, :end, :admission_fee, :other_cost, :duration, :note, :trip_id, :spot_id)
+  end
+
+  def set_js_variables
+    gon.trip_id = @trip.id
+    gon.start_day = @trip.start_day
+    gon.end_day = @trip.end_day
+    gon.cal_end_day = @trip.end_day+1
   end
 end
