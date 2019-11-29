@@ -22,6 +22,7 @@ class SchedulesController < ApplicationController
   end
 
   def update
+    @schedules = @trip.schedules
     @schedule.update(schedule_params)
   end
 
