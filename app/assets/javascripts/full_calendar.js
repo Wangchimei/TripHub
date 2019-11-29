@@ -46,7 +46,7 @@ initialize_calendar = function() {
       selectHelper: true,
       editable: true,
       eventLimit: true,
-      // events: "/schedules.json",
+      // events: '/schedules.json',
 
       select: function(start, end) {
         $.getScript(create_link, function() {
