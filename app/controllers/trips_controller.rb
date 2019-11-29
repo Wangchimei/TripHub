@@ -37,10 +37,15 @@ class TripsController < ApplicationController
   end
 
   def toggle_status
+    # @trips = current_user.trips
+    @countries = @trip.destination_countries
     if @trip.planning?
-        @trip.finished!
+      @trip.finished!
+      current_user.visited!(@countries) if not_been_to?(@countries)
     elsif @trip.finished?
-        @trip.planning!
+      @finshed_trips = current_user.trips.where(status:1)
+      current_user.unvisited!(@countries) if only_one_record?(@finshed_trips)
+      @trip.planning!
     end
     redirect_to user_path(current_user)
   end
@@ -57,7 +62,7 @@ class TripsController < ApplicationController
   private
 
   def set_trip
-    @trip = Trip.find(params[:id])
+    @trip = current_user.trips.find(params[:id])
   end
 
   def set_location
@@ -68,5 +73,17 @@ class TripsController < ApplicationController
 
   def trip_params
     params.require(:trip).permit(:name, :description, :trip_image, :start_day, :end_day,:status, :privacy, :est_amount, :user_id, to_countries_attributes: [:id, :country_id, :_destroy], to_states_attributes: [:id, :state_id, :_destroy], to_cities_attributes: [:id, :city_id, :_destroy])
+  end
+
+  def not_been_to?(countries)
+    VisitedCountry.find_by(user_id: current_user.id, country_id:countries.first.id).nil?
+  end
+
+  def only_one_record?(finished_trips)
+    counts = 0
+    finished_trips.each do |trip|
+      counts += trip.destination_countries.where(id: @trip.destination_countries.first.id).count
+    end
+    counts == 1
   end
 end

@@ -25,9 +25,9 @@ Rails.application.routes.draw do
     resources :schedules
   end
 
-  resources :user_spots, only: [:create, :destroy]
+  resources :user_spots, only: %i[create destroy]
   resources :spots
-  resources :countries, only: [:index]
-  resources :states, only: [:index]
-  resources :cities, only: [:index]
+  resources :countries, only: %i[index]
+  resources :states, only: %i[index]
+  resources :cities, only: %i[index]
 end

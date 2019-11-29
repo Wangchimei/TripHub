@@ -21,4 +21,12 @@ class User < ApplicationRecord
   def unsave_spot!(spot)
     user_spots.find_by(spot_id: spot.id).destroy
   end
+
+  def visited!(countries)
+    visited_countries.create!(country_id: countries.first.id)
+  end
+
+  def unvisited!(countries)
+    visited_countries.find_by(country_id: countries.first.id).destroy
+  end
 end
