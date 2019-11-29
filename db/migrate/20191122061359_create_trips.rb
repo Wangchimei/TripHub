@@ -8,7 +8,7 @@ class CreateTrips < ActiveRecord::Migration[5.2]
       t.date :end_day, null: false
       t.integer :status, default: 0
       t.boolean :privacy, default: false
-      t.integer :est_amount
+      t.integer :est_amount, default: 0
       t.references :user, foreign_key: true
 
       t.timestamps

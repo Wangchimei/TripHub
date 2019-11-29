@@ -5,6 +5,7 @@ class Schedule < ApplicationRecord
 
   after_save :update_fields
   after_save :update_travel_cost
+  after_destroy :update_travel_cost
   # after_create :set_duration_in_min
   # after_update :set_duration_in_min
 
@@ -18,7 +19,7 @@ class Schedule < ApplicationRecord
     # update admission fee
     self.update(admission_fee: self.spot.admission_fee) if self.admission_fee.nil?
     # double-check on other cost
-    self.update(other_cost: 0) if self.other_cost == nil
+    self.update(other_cost: 0) if self.other_cost.nil?
     # update duration
     min = (self.end - self.start)/60
     self.update(duration: min) if self.duration != min

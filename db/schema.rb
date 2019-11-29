@@ -51,8 +51,8 @@ ActiveRecord::Schema.define(version: 2019_11_29_064033) do
 
   create_table "schedules", force: :cascade do |t|
     t.string "name"
-    t.datetime "start"
-    t.datetime "end"
+    t.datetime "start", null: false
+    t.datetime "end", null: false
     t.integer "admission_fee"
     t.integer "other_cost", default: 0
     t.integer "duration", default: 0
@@ -124,7 +124,7 @@ ActiveRecord::Schema.define(version: 2019_11_29_064033) do
     t.date "end_day", null: false
     t.integer "status", default: 0
     t.boolean "privacy", default: false
-    t.integer "est_amount"
+    t.integer "est_amount", default: 0
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

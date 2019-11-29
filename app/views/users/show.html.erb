@@ -6,6 +6,7 @@
   <%= trip.description %>
   <%= trip.start_day %> to <%= trip.end_day %>
   <%= (trip.end_day-trip.start_day).to_i + 1 %> 日
+  ¥ <%= trip.est_amount%>
   <%= link_to 'Details', trip_path(trip)%>
   <%= link_to 'Edit Trip', edit_trip_path(trip)%>
   <%= link_to 'Edit Schedule', trip_schedules_path(trip)%>

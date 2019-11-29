@@ -2,8 +2,8 @@ class CreateSchedules < ActiveRecord::Migration[5.2]
   def change
     create_table :schedules do |t|
       t.string :name
-      t.datetime :start, null: true
-      t.datetime :end, null: true
+      t.datetime :start, null: false
+      t.datetime :end, null: false
       t.integer :admission_fee
       t.integer :other_cost
       t.integer :duration, default: 0
