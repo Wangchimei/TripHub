@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: %i[edit update show destroy]
+  before_action :set_trip, only: %i[edit update toggle_status show destroy]
   before_action :set_location, only: %i[new edit]
 
   def index
@@ -34,6 +34,15 @@ class TripsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def toggle_status
+    if @trip.planning?
+        @trip.finished!
+    elsif @trip.finished?
+        @trip.planning!
+    end
+    redirect_to user_path(current_user)
   end
 
   def show

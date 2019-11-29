@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :trips do
+    get :toggle_status, on: :member
     resources :schedules
   end
 

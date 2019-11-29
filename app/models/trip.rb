@@ -13,6 +13,8 @@ class Trip < ApplicationRecord
   accepts_nested_attributes_for :to_states, allow_destroy: true
   accepts_nested_attributes_for :to_cities, allow_destroy: true
 
+  enum status: { planning: 0, finished: 1}
+
   def self.to_country_build
     trip = self.new
     trip.to_countries.build
