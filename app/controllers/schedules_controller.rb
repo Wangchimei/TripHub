@@ -4,6 +4,7 @@ class SchedulesController < ApplicationController
 
   def index
     gon.trip_id = @trip.id
+    @schedules = @trip.schedules
   end
 
   def new
@@ -29,7 +30,7 @@ class SchedulesController < ApplicationController
   private
 
   def set_trip
-    @trip = Trip.find(params[:trip_id])
+    @trip = current_user.trips.find(params[:trip_id])
     gon.start_day = @trip.start_day
     gon.end_day = @trip.end_day
     gon.cal_end_day = @trip.end_day+1

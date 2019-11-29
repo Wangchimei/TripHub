@@ -13,6 +13,7 @@ initialize_calendar = function() {
     var end_day = new Date(formatDate(gon.end_day));
     var cal_end_day = new Date(formatDate(gon.cal_end_day));
     var create_link = '/trips/' + gon.trip_id + '/schedules/new';
+    var schedules = '/trips/' + gon.trip_id + '/schedules.json';
     function set_duration() {
       differenceInTime = end_day.getTime() - start_day.getTime();
       differenceInDays = differenceInTime / (1000 * 3600 * 24);
@@ -46,7 +47,7 @@ initialize_calendar = function() {
       selectHelper: true,
       editable: true,
       eventLimit: true,
-      // events: '/schedules.json',
+      events: schedules,
 
       select: function(start, end) {
         $.getScript(create_link, function() {
