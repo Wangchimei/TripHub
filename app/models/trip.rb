@@ -1,4 +1,5 @@
 class Trip < ApplicationRecord
+  include ImageResult
   belongs_to :user
 
   has_many :schedules, dependent: :destroy
@@ -14,6 +15,8 @@ class Trip < ApplicationRecord
   accepts_nested_attributes_for :to_cities, allow_destroy: true
 
   enum status: { planning: 0, finished: 1}
+
+  after_save :default_img
 
   def self.to_country_build
     trip = self.new
@@ -31,5 +34,13 @@ class Trip < ApplicationRecord
     trip = self.new
     trip.to_cities.build
     trip
+  end
+
+  def default_img
+    if self.trip_image.nil?
+      img = Unsplash::Photo.random(query: "#{self.destination_countries.first}, landscape", orientation: "landscape")
+      url = ImageResult.get_url(img)
+      self.update(trip_image: url)
+    end
   end
 end
