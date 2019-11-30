@@ -1,5 +1,5 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: %i[edit update show destroytoggle_status toggle_privacy]
+  before_action :set_trip, only: %i[edit update show destroy toggle_status toggle_privacy]
   before_action :set_location, only: %i[new edit]
 
   def index

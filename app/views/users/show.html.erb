@@ -5,7 +5,7 @@
   <p><%= trip.name %>
   <%= trip.description %>
   <%= trip.start_day %> to <%= trip.end_day %>
-  <%= (trip.end_day-trip.start_day).to_i + 1 %> 日
+  <%= trip_duration(trip) %>日
   ¥ <%= trip.est_amount%>
   <%= link_to trip.status, toggle_status_trip_path(trip.id) %>
   <%= link_to "#{trip.privacy}", toggle_privacy_trip_path(trip.id) %>
