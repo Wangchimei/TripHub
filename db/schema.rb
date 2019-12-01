@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_01_050940) do
+ActiveRecord::Schema.define(version: 2019_12_01_130233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2019_12_01_050940) do
     t.float "rating"
     t.string "website"
     t.string "place_id"
+    t.string "formatted_address"
   end
 
   create_table "states", force: :cascade do |t|

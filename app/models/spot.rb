@@ -1,9 +1,6 @@
 class Spot < ApplicationRecord
   include ImageResult
-  geocoded_by :formatted_name
-  after_validation :geocode, if: :formatted_name_changed?
-  after_save :set_default_img
-
+  after_validation :google_places
   has_many :user_spots, dependent: :destroy
   has_many :schedules, dependent: :destroy
 
@@ -14,12 +11,21 @@ class Spot < ApplicationRecord
     spot.user_spots.find_by(user_id: user.id)
   end
 
-  def set_default_img
-    if self.main_image.nil?
-    search_term = self.formatted_name
-    img = Unsplash::Photo.random(query: search_term, orientation: "landscape")
-    url = ImageResult.get_url(img)
-    self.update(main_image: url)
+  def google_places
+    if self.latitude.nil?
+      init = GooglePlaces::Client.new(ENV['GOOGLE_API_KEY'])
+      result = init.spot(self.place_id)
+      self.formatted_name = result.name if result.name
+      self.formatted_address = result.formatted_address if result.formatted_address
+      self.latitude = result.lat
+      self.longitude = result.lng
+      set_default_img if self.main_image.nil?
     end
+  end
+
+  def set_default_img
+    search_term = self.formatted_name
+    url = ImageResult.get_url(search_term)
+    self.main_image = url
   end
 end

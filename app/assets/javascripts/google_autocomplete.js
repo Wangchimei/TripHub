@@ -116,6 +116,7 @@ function initMap() {
   var map = new google.maps.Map(document.getElementById('searchMap'), {
     center: { lat: -33.8688, lng: 151.2195 },
     zoom: 12,
+    gestureHandling: 'cooperative',
     mapTypeControlOptions: {
       mapTypeIds: ['retro', 'roadmap', 'satellite', 'hybrid'],
       // style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
@@ -198,8 +199,10 @@ function initMap() {
     function resetAutocomplete(place) {
       document.querySelectorAll('.gmap-reset').value = '';
       document.getElementById('name').value = place.name;
-      document.getElementById('formatted_name').value = place.name;
+      // document.getElementById('formatted_name').value = place.name;
       document.getElementById('address').value = place.formatted_address;
+      // document.getElementById('lat').value = place.geometry.location.lat();
+      // document.getElementById('lng').value = place.geometry.location.lng();
       document.getElementById('place_id').value = place.place_id;
       if (place.international_phone_number) {
         document.getElementById('phone_num').value =

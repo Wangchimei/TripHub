@@ -20,23 +20,15 @@
       <%= f.text_field :admission_fee, id:"admin_fee", class:"gmap-reset form-control" %>
     </div>
     <div>
-      <%= f.label :formatted_name %>
-      <%= f.text_field :formatted_name, id:"formatted_name", class:"gmap-reset" %>
+      <%= f.label :address %>
+      <%= f.text_field :formatted_address, id:"formatted_address", class:"gmap-reset" %>
     </div>
     <div>
-      <%= f.label :phone_num %>
       <%= f.text_field :phone_num, id:"phone_num", class:"gmap-reset" %>
-    </div>
-    <div>
-      <%= f.label :rating %>
       <%= f.text_field :rating, id:"rating", class:"gmap-reset" %>
-    </div>
-    <div>
-      <%= f.label :website %>
       <%= f.text_field :website, id:"website", class:"gmap-reset" %>
-    </div>
-    <div>
-      <%= f.label :place_id %>
+      <%#= f.text_field :latitude, id:"lat", class:"gmap-reset" %>
+      <%#= f.text_field :longitude, id:"lng", class:"gmap-reset" %>
       <%= f.text_field :place_id, id:"place_id", class:"gmap-reset" %>
     </div>
     <div>
@@ -54,4 +46,4 @@
   <span id="place-phone_number"></span>
   <span id="place-website"></span>
 </div>
-<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_KEY']}&libraries=places&callback=initMap" %>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=#{ENV['GOOGLE_API_KEY']}&libraries=places&callback=initMap" %>

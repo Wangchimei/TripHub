@@ -42,8 +42,7 @@ class Trip < ApplicationRecord
       else
         search_term = "#{self.destination_countries.first.name}"
       end
-      img = Unsplash::Photo.random(query: search_term, orientation: "landscape")
-      url = ImageResult.get_url(img)
+      url = ImageResult.get_url(search_term)
       self.update(trip_image: url)
     end
   end
