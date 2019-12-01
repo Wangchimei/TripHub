@@ -19,7 +19,7 @@
   <div class="continent-area">
     <%= f.label :continent_id %>
     <%= f.collection_select :continent_id,
-        Continent.order(:name), :id, :name, include_blank: true
+        Continent.order(:name), :id, :name, include_blank: "please select a continent"
         %>
   </div>
 

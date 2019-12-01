@@ -33,6 +33,7 @@ gem 'jquery-turbolinks'
 gem 'devise'
 gem 'dotenv-rails'
 gem 'geocoder'
+gem 'google_places'
 gem 'unsplash'
 
 group :development, :test do
