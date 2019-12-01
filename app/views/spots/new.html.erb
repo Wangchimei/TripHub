@@ -20,16 +20,10 @@
       <%= f.text_field :admission_fee, id:"admin_fee", class:"gmap-reset form-control" %>
     </div>
     <div>
-      <%= f.label :address %>
-      <%= f.text_field :formatted_address, id:"formatted_address", class:"gmap-reset" %>
-    </div>
-    <div>
-      <%= f.text_field :phone_num, id:"phone_num", class:"gmap-reset" %>
-      <%= f.text_field :rating, id:"rating", class:"gmap-reset" %>
-      <%= f.text_field :website, id:"website", class:"gmap-reset" %>
-      <%#= f.text_field :latitude, id:"lat", class:"gmap-reset" %>
-      <%#= f.text_field :longitude, id:"lng", class:"gmap-reset" %>
-      <%= f.text_field :place_id, id:"place_id", class:"gmap-reset" %>
+      <%= f.hidden_field :phone_num, id:"phone_num", class:"gmap-reset" %>
+      <%= f.hidden_field :rating, id:"rating", class:"gmap-reset" %>
+      <%= f.hidden_field :website, id:"website", class:"gmap-reset" %>
+      <%= f.hidden_field :place_id, id:"place_id", class:"gmap-reset" %>
     </div>
     <div>
       <%= f.submit "保存", class:"btn btn-primary"%>

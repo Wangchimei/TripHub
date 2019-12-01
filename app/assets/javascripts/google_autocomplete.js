@@ -137,7 +137,6 @@ function initMap() {
   // so that the autocomplete requests use the current map bounds for the
   // bounds option in the request.
   autocomplete.bindTo('bounds', map);
-  // autocomplete.setTypes('all');
   // Set the data fields to return when the user selects a place.
   autocomplete.setFields([
     'address_components',
@@ -199,10 +198,7 @@ function initMap() {
     function resetAutocomplete(place) {
       document.querySelectorAll('.gmap-reset').value = '';
       document.getElementById('name').value = place.name;
-      // document.getElementById('formatted_name').value = place.name;
       document.getElementById('address').value = place.formatted_address;
-      // document.getElementById('lat').value = place.geometry.location.lat();
-      // document.getElementById('lng').value = place.geometry.location.lng();
       document.getElementById('place_id').value = place.place_id;
       if (place.international_phone_number) {
         document.getElementById('phone_num').value =
