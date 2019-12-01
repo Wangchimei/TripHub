@@ -1,8 +1,8 @@
 class Spot < ApplicationRecord
   include ImageResult
-  geocoded_by :address
-  after_validation :geocode, if: :address_changed?
-  after_save :set_default_img, if: :address_changed?
+  geocoded_by :formatted_name
+  after_validation :geocode, if: :formatted_name_changed?
+  after_save :set_default_img
 
   has_many :user_spots, dependent: :destroy
   has_many :schedules, dependent: :destroy
@@ -15,11 +15,11 @@ class Spot < ApplicationRecord
   end
 
   def set_default_img
-    reverse_geocode = Geocoder.search([self.latitude, self.longitude])
-    location_1 = result[0].address_components[-3]["long_name"]
-    location_2 = result[0].address_components[-5]["long_name"]
-    Unsplash::Photo.random(query: "#{location_1} #{location_2}", orientation: "landscape")
+    if self.main_image.nil?
+    search_term = self.formatted_name
+    img = Unsplash::Photo.random(query: search_term, orientation: "landscape")
     url = ImageResult.get_url(img)
     self.update(main_image: url)
+    end
   end
 end

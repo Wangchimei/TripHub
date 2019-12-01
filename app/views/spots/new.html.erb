@@ -1,19 +1,57 @@
-<h1>Spots#new</h1>
-<%= form_with(model:@spot) do |f| %>
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+<div class="spot-search-card" id="pac-card">
+  <div id="title">
+    Find a spot
   </div>
-  <div>
-    <%= f.label :address %>
-    <%= f.text_field :address %>
+  <div id="pac-container">
+    <input id="pac-input" class="form-control" type="text" placeholder="Enter a location">
   </div>
-  <div>
-    <%= f.label :admission_fee %>
-    <%= f.text_field :admission_fee %>
-  </div>
-  <div>
-    <%= f.submit %>
-    <%= link_to 'Back', spots_path %>
-  </div>
-<% end %>
+
+  <%= form_with(model:@spot) do |f| %>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name, id:"name", class:"gmap-reset form-control" %>
+    </div>
+    <div>
+      <%= f.label :address %>
+      <%= f.text_field :address, id:"address", class:"gmap-reset form-control" %>
+    </div>
+    <div>
+      <%= f.label :admission_fee %>
+      <%= f.text_field :admission_fee, id:"admin_fee", class:"gmap-reset form-control" %>
+    </div>
+    <div>
+      <%= f.label :formatted_name %>
+      <%= f.text_field :formatted_name, id:"formatted_name", class:"gmap-reset" %>
+    </div>
+    <div>
+      <%= f.label :phone_num %>
+      <%= f.text_field :phone_num, id:"phone_num", class:"gmap-reset" %>
+    </div>
+    <div>
+      <%= f.label :rating %>
+      <%= f.text_field :rating, id:"rating", class:"gmap-reset" %>
+    </div>
+    <div>
+      <%= f.label :website %>
+      <%= f.text_field :website, id:"website", class:"gmap-reset" %>
+    </div>
+    <div>
+      <%= f.label :place_id %>
+      <%= f.text_field :place_id, id:"place_id", class:"gmap-reset" %>
+    </div>
+    <div>
+      <%= f.submit "保存", class:"btn btn-primary"%>
+      <%= link_to '戻る', spots_path, class:"btn btn-light" %>
+    </div>
+  <% end %>
+</div>
+<div id="searchMap"></div>
+<div id="infowindow-content">
+  <img src="" width="16" height="16" id="place-icon">
+  <span id="place-name"  class="title"></span>
+  <span id="place-rating"></span><br>
+  <span id="place-address"></span>
+  <span id="place-phone_number"></span>
+  <span id="place-website"></span>
+</div>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_KEY']}&libraries=places&callback=initMap" %>
