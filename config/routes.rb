@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
     }
-
   resources :users, only: :show do
     get 'dashboard', on: :member #/users/:id/dashboard
   end

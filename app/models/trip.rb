@@ -14,7 +14,9 @@ class Trip < ApplicationRecord
   accepts_nested_attributes_for :to_states, allow_destroy: true
   accepts_nested_attributes_for :to_cities, allow_destroy: true
 
+  after_validation :check_schedule
   after_save :set_default_img
+
   enum status: { planning: 0, finished: 1}
 
   def self.to_country_build
@@ -44,6 +46,13 @@ class Trip < ApplicationRecord
       end
       url = ImageResult.get_url(search_term)
       self.update(trip_image: url)
+    end
+  end
+
+  def check_schedule
+    if self.start_day_changed? || self.end_day_changed?
+    old_schedule = self.schedules.where.not(start: (self.start_day.beginning_of_day..self.end_day.end_of_day))
+    old_schedule.destroy_all
     end
   end
 end

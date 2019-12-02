@@ -1,7 +1,10 @@
 <div class="card devise-box">
   <div class="card-body">
+    <div>
+      <%= image_tag "logos/brand_logo_blue.png", class:"form-brand-image"%>
+    </div>
     <%= link_to "ログイン", new_session_path(resource_name), class:"float-right btn btn-outline-primary" %>
-    <h4 class="card-title mb-4 mt-1 ml-5 pl-5">新規登録</h4>
+    <h5 class="card-title mb-4 mt-1 ml-5 pl-5">新規登録</h5>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
       <div class="form-group">

@@ -2,6 +2,15 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+// custom font size
+.h7 {
+  font-size: 0.9rem;
+}
+
+.h8 {
+  font-size: 0.8rem;
+}
+
 // btn override
 .btn-primary {
   background-color: #8ac5ff;
@@ -10,6 +19,17 @@
 }
 
 .btn-primary:hover {
+  background-color: #349aff;
+  border-color: #349aff;
+  color: #fff;
+}
+
+.btn-outline-primary {
+  border-color: #8ac5ff;
+  color: #8ac5ff;
+}
+
+.btn-outline-primary:hover {
   background-color: #349aff;
   border-color: #349aff;
   color: #fff;
@@ -39,21 +59,36 @@ body {
   height: 100%;
 }
 
-.brand-image {
-  max-width: 40%;
+.toppage-brand-image {
+  width: 70%;
+  max-width: 600px;
+  min-width: 400px;
 }
 
+.cover-link {
+  font-size: 1.3rem;
+  margin: 5rem 3rem;
+  padding: 0.5rem 2rem;
+}
+
+.brand-text {
+  color: #fff;
+  text-shadow: 1px 3px 2px #00000080;
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+// sing-in and log-in
 .devise-box {
-  width: 60%;
+  width: 100%;
+  max-width: 600px;
+  min-width: 400px;
   margin: auto;
   margin-top: 10rem;
   border-radius: 5px;
 }
 
-.h7 {
-  font-size: 0.9rem;
-}
-
-.h8 {
-  font-size: 0.8rem;
+.form-brand-image {
+  max-width: 70%;
+  margin-bottom: 2rem;
 }

@@ -1,6 +1,9 @@
 class Spot < ApplicationRecord
   include ImageResult
+
   after_validation :google_places
+  after_validation :set_default_img
+
   has_many :user_spots, dependent: :destroy
   has_many :schedules, dependent: :destroy
 
@@ -26,6 +29,8 @@ class Spot < ApplicationRecord
   def set_default_img
     search_term = self.formatted_name
     url = ImageResult.get_url(search_term)
+    binding.pry
     self.main_image = url
+    binding.pry
   end
 end
