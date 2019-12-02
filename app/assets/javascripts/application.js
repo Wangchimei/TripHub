@@ -11,6 +11,7 @@
 // User sign up
 // State dropdown
 $(document).on('change', '#user_country_id', function() {
+  $('.city-area').hide();
   return $.ajax({
     type: 'GET',
     url: '/locations/get_states',

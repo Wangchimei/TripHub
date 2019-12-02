@@ -1,6 +1,19 @@
-@import "bootstrap";
-@import "font-awesome-sprockets";
-@import "font-awesome";
+@import 'bootstrap';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+// btn override
+.btn-primary {
+  background-color: #8ac5ff;
+  border-color: #8ac5ff;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #349aff;
+  border-color: #349aff;
+  color: #fff;
+}
 
 //Coverpage background
 body {
@@ -9,18 +22,16 @@ body {
 }
 
 .bg-image {
-  background-image: url(cover1.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
+  background: url(bg_images/7.jpg) no-repeat center;
   background-size: cover;
-  min-width: 100vw;
+  min-width: 100%;
   height: 100vh;
   position: relative;
-  // box-shadow: inset 0 0 100rem #00000080;
+  box-shadow: inset 0 0 100rem #00000080;
 }
 
 .overlay {
-  background-color: rgba(37, 37, 37, 0.3);
+  background-color: rgba(8, 8, 8, 0.45);
   position: absolute;
   top: 0;
   left: 0;
@@ -28,11 +39,21 @@ body {
   height: 100%;
 }
 
-.brand-name{
-  font-size: 6rem;
-  color: #e4e4e4;
-  text-shadow: 0 1rem 1rem #14141480;
-  left: 10%;
-  top: 10%;
-  position: absolute;
+.brand-image {
+  max-width: 40%;
+}
+
+.devise-box {
+  width: 60%;
+  margin: auto;
+  margin-top: 10rem;
+  border-radius: 5px;
+}
+
+.h7 {
+  font-size: 0.9rem;
+}
+
+.h8 {
+  font-size: 0.8rem;
 }
