@@ -28,21 +28,20 @@
     </div>
   </div>
 </div>
+
 <script type="text/javascript">
-  let countries = [
-    {
-      "id": "TW",
-      "showAsSelected": true
-    },
-    {
-      "id": "US",
-      "showAsSelected": true
-    },
-    {
-      "id": "JP",
-      "showAsSelected": true
-    },
-  ];
+  var visited_countries = gon.visited_countries;
+  function countriesOutput() {
+    var countriesData = [];
+    for (i = 0; i < visited_countries.length; i++) {
+      country = visited_countries[i];
+      countriesData.push({
+        id: country,
+        showAsSelected: true,
+      });
+    }
+    return countriesData;
+  }
   var map = AmCharts.makeChart("mapdiv", {
     type: "map",
     theme: "dark",
@@ -56,7 +55,7 @@
     dataProvider: {
       map: "worldHigh",
       getAreasFromMap: true,
-      areas: countries
+      areas: countriesOutput()
     },
     areasSettings: {
       autoZoom: false,
