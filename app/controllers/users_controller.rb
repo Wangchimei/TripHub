@@ -7,23 +7,12 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
+    @trips = current_user.trips.where(status:0).order(created_at: :desc).limit(5)
   end
 
   def show
     @user = User.find(params[:id])
     @trips = current_user.trips.order(created_at: :desc)
   end
-
-  private
-
-  # def page_refresh
-  #   response.setIntHeader("Refresh", 1);
-  # end
-
-  # def page_refresh
-  #   response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-  #   response.headers["Pragma"] = "no-cache"
-  #   response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
-  # end
 end

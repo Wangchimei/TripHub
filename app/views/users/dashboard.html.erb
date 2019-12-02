@@ -1,22 +1,30 @@
 <%# amcharts %>
 <script src="https://www.amcharts.com/lib/3/ammap.js" type="text/javascript"></script>
 <script src="https://www.amcharts.com/lib/3/maps/js/worldHigh.js" type="text/javascript"></script>
+<script src="https://www.amcharts.com/lib/3/themes/dark.js" type="text/javascript"></script>
+
 <h2>My Dashboard</h2>
 <div id="mapdiv"></div>
 <div class="row">
-  <div class="card col mx-1 mt-2">
+  <div class="card col-4 px-1 mt-2">
     <div class="card-body">
-      <p>Countries traveled</p>
+      <p>Traveled <%= current_user.visited_countries.count %> countries</p>
+      <p>in the world of <%= Country.all.count %> countries</p>
     </div>
   </div>
-  <div class="card col mx-1 mt-2">
+  <div class="card col-8 px-1 mt-2">
     <div class="card-body">
-      <p>Cities traveled</p>
-    </div>
-  </div>
-  <div class="card col mx-1 mt-2">
-    <div class="card-body">
-      <p>Upcoming Trips</p>
+      <p>Upcoming Trips
+      <span><%=link_to 'see more', user_path(current_user)%></span></p>
+        <% if @trips.nil? %>
+          <p>No upcoming trips</p>
+        <% else %>
+          <% @trips.each do |trip| %>
+            <p><%= trip.name %>
+            <%= trip.start_day %>
+            <%= trip.end_day %></p>
+          <% end %>
+        <% end %>
     </div>
   </div>
 </div>
@@ -40,7 +48,7 @@
     theme: "dark",
     projection: "miller",
     panEventsEnabled: false,
-    backgroundColor: "#003462",
+    backgroundColor: "#00468C",
     backgroundAlpha: 1,
     zoomControl: {
       zoomControlEnabled: true
@@ -52,12 +60,12 @@
     },
     areasSettings: {
       autoZoom: false,
-      color: "#D8AA79",
-      colorSolid: "#76C8BD",
-      selectedColor: "#76C8BD",
-      outlineColor: "#003462",
+      color: "#BFBFBF",
+      colorSolid: "#D3B288",
+      selectedColor: "#D3A66C",
+      outlineColor: "#2F3841",
       rollOverColor: "#C0E0D1",
-      rollOverOutlineColor: "#003462"
+      rollOverOutlineColor: "#2F3841"
     }
   });
 </script>
