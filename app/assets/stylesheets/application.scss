@@ -9,6 +9,39 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+// custom font size
+.h7 {
+  font-size: 0.9rem;
+}
+
+.h8 {
+  font-size: 0.8rem;
+}
+
+// btn override
+.btn-primary {
+  background-color: #8ac5ff;
+  border-color: #8ac5ff;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #349aff;
+  border-color: #349aff;
+  color: #fff;
+}
+
+.btn-outline-primary {
+  border-color: #349aff;
+  color: #349aff;
+}
+
+.btn-outline-primary:hover {
+  background-color: #349aff;
+  border-color: #349aff;
+  color: #fff;
+}
+
 // dashboard map
 #mapdiv {
   width: 100%;
@@ -80,11 +113,30 @@ div#pac-card.spot-search-card {
   background-color: #fff;
 }
 
-// #infowindow-content {
-//   color: #D3AA75;
-//   colorSolid: #A6B077;
-//   selectedColor: #A6B077;
-//   outlineColor: #83B694;
-//   rollOverColor: #79D2E2;
-//   rollOverOutlineColor: #83B694
-// }
+// spot card
+.card-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.star-img {
+  color: #f8ce75;
+}
+
+.image-box {
+  background-color: #bbb;
+  height: 250px;
+}
+
+.save-link {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.rating-box {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+}

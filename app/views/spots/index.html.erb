@@ -1,12 +1,67 @@
 <%= link_to "CSV", spots_path(format: :csv) %>
 
-<% @spots.each.with_index(1) do |spot, index| %>
-  <p><%= index %> <%= spot.name %>
-  <%= render partial: 'user_spots/user_spots_form', locals: {spot: spot, user_spots: @user_spots} %>
+<div class="album py-5 bg-light">
+  <div class="container-fluid">
+    <div class="row">
+      <% @spots.each do |spot| %>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="image-box">
+            <% if spot.main_image %>
+              <%= image_tag spot.main_image, class:"card-image" %>
+            <% end %>
+            </div>
+            <div class="card-body spot-card-box">
+              <p class="card-title mb-0 text-center"><%= spot.name%></p>
+              <p class="card-text h7 mb-0 text-center text-muted"><%= spot.formatted_name%></p>
+              <div class="text-center h7 mb-3">
+                <% if spot.rating %>
+                  <% spot.rating.round(0).times do  %>
+                    <span class="fas fa-star star-img"></span>
+                  <% end %>
+                  <% (5 - spot.rating.round(0)).times do  %>
+                    <span class="far fa-star star-img"></span>
+                  <% end %>
+                <% else %>
+                <p class="text-muted"><評価情報なし></p>                  <% end %>
+                <small class="text-muted"><%=spot.rating%></small>
+              </div>
 
-  <p><%= spot.address %></p>
-  <p>Admission Fee: <%= spot.admission_fee %></p>
-  <p>Time spent: <%= spot.duration %></p>
-  <p><%= spot.latitude %>, <%= spot.longitude %></p>
-  <br>
-<% end %>
+              <div class="row mb-1">
+                <div class="col-1"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="card-text col"> <%= spot.address %></div>
+              </div>
+              <div class="row mb-1">
+                <div class="col-1"><i class=" fas fa-phone"></i></div>
+                <div class="card-text col"> <%= spot.phone_num ? spot.phone_num : '情報なし' %></div>
+              </div>
+              <div class="row mb-1">
+                <div class="col-1"><i class="fas fa-money-bill"></i></div>
+                <div class="card-text col">
+                  <%= spot.admission_fee==0 ? 'Free' : spot.admission_fee %>
+                </div>
+              </div>
+              <div class="row mb-1">
+                <div class="col-1"><i class="far fa-clock"></i></div>
+                <div class="card-text col">
+                  <%= spot.duration != 0 ? "平均#{spot.duration}分滞在" : '情報なし' %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-1"><i class="fas fa-globe"></i></div>
+                <% if spot.website %>
+                <%= link_to "公式サイド", spot.website, target: :blank, class:"col"%>
+                <% else %>
+                <p class="col">情報なし</p>
+                <% end %>
+              </div>
+              <div class="mt-5">
+                <%= render partial: 'user_spots/user_spots_form', locals: {spot: spot, user_spots: @user_spots} %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

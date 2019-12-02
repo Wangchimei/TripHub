@@ -27,10 +27,10 @@ class Spot < ApplicationRecord
   end
 
   def set_default_img
+    if self.main_image.nil?
     search_term = self.formatted_name
     url = ImageResult.get_url(search_term)
-    binding.pry
     self.main_image = url
-    binding.pry
+    end
   end
 end
