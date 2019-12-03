@@ -15,16 +15,16 @@ initialize_calendar = function() {
 
     var schedules = '/trips/' + gon.trip_id + '/schedules.json';
     var create_url = '/trips/' + gon.trip_id + '/schedules/new';
-    function set_duration() {
-      differenceInTime = format_end_day.getTime() - format_start_day.getTime();
-      differenceInDays = differenceInTime / (1000 * 3600 * 24);
-      tripDuration = differenceInDays + 1;
-      if (tripDuration > 2 || tripDuration % 2 === 0) {
-        return 2;
-      } else {
-        return 1;
-      }
-    }
+    // function set_duration() {
+    //   differenceInTime = format_end_day.getTime() - format_start_day.getTime();
+    //   differenceInDays = differenceInTime / (1000 * 3600 * 24);
+    //   tripDuration = differenceInDays + 1;
+    //   if (tripDuration > 2 || tripDuration % 2 === 0) {
+    //     return 2;
+    //   } else {
+    //     return 1;
+    //   }
+    // }
     calendar.fullCalendar({
       header: {
         left: '',
@@ -41,7 +41,7 @@ initialize_calendar = function() {
         start: start_day,
         end: end_day,
       },
-      duration: { days: set_duration() },
+      // duration: { days: set_duration() },
       selectable: true,
       selectHelper: true,
       editable: true,
@@ -95,7 +95,6 @@ initialize_calendar = function() {
           data: schedule_data,
           type: 'PATCH',
         });
-        //   // calendar.fullCalendar('unselect');
       },
 
       eventClick: function(schedule) {

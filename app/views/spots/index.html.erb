@@ -1,6 +1,14 @@
 <%= link_to "CSV", spots_path(format: :csv) %>
 
-<div class="album py-5">
+<div class="form-group has-search w-50 mx-auto mt-2">
+  <%= form_with(url: spots_path, local: true, method: :get) do |f| %>
+    <span class="fa fa-search form-control-feedback"></span>
+    <%= f.hidden_field :search, value: 'true' %>
+    <%= f.text_field :search, class:"form-control", placeholder: "Search" %>
+  <% end %>
+</div>
+
+<div class="py-3">
   <div class="container-fluid">
     <div class="row">
       <% @spots.each do |spot| %>
