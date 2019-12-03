@@ -126,7 +126,7 @@ function initMap() {
       },
     });
     var Calendarcard = document.getElementById('calendar-card');
-    map.panBy(-300, 0);
+    // map.panBy(-300, 0);
     map.controls[google.maps.ControlPosition.LEFT_TOP].push(Calendarcard);
     map.mapTypes.set('retro', styledMap);
     map.setMapTypeId('retro');
@@ -134,7 +134,7 @@ function initMap() {
     // generate spot map
     var searchMap = new google.maps.Map(document.getElementById('searchMap'), {
       center: center,
-      zoom: 12,
+      zoom: 9,
       gestureHandling: 'cooperative',
       mapTypeControlOptions: {
         mapTypeIds: ['retro', 'roadmap', 'satellite', 'hybrid'],

@@ -9,7 +9,7 @@ date_range_picker = function() {
           minDate: start_day,
           maxDate: cal_end_day,
           timePicker: true,
-          timePickerIncrement: 15,
+          timePickerIncrement: 30,
           locale: {
             format: 'YYYY-MM-DD HH:mm',
           },

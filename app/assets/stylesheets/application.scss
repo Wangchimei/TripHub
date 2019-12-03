@@ -147,37 +147,97 @@ div#pac-card.spot-search-card {
 
 // schedule
 #scheduleMap {
+  height: 100%;
+  // width: 100%;
+}
+
+// .schedule-card {
+//   width: 100%;
+//   // height: 100%;
+//   margin: 60% 0 10% 0;
+//   padding: 1rem;
+//   box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.3);
+//   background-color: #fff;
+//   box-sizing: border-box;
+//   -moz-box-sizing: border-box;
+// // }
+
+// div#calendar-card.schedule-card {
+//   z-index: 1;
+//   position: absolute;
+//   left: 105px;
+//   top: 30px;
+// // }
+
+// @media (min-width: 768px) {
+//   .schedule-card {
+//     width: 25%;
+//     min-width: 450px;
+//     margin: 0;
+//     padding: 1rem;
+//     box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.3);
+//     background-color: #fff;
+//     box-sizing: border-box;
+//     -moz-box-sizing: border-box;
+//   }
+// }
+
+.map-container {
   height: 100vh;
-  width: 100%;
 }
 
-.schedule-card {
-  width: 100%;
-  // height: 100%;
-  margin: 60% 0 10% 0;
-  padding: 1rem;
-  box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.3);
-  background-color: #fff;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
+.cal-container {
+  height: 100vh;
 }
 
-div#calendar-card.schedule-card {
-  z-index: 1;
+// new schedule spot image
+.radio-box {
+  position: relative;
+  width: 100%;
+  height: 250px;
+}
+
+.image-grid-cover {
   position: absolute;
-  left: 105px;
-  top: 30px;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-@media (min-width: 768px) {
-  .schedule-card {
-    width: 25%;
-    min-width: 450px;
-    margin: 0;
-    padding: 1rem;
-    box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.3);
-    background-color: #fff;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-  }
+.cover-wrapper {
+  font-size: 18px;
+  text-align: center;
+  display: block;
+  width: 100%;
+  color: #fff;
+  z-index: 1;
+  bottom: 0;
+  text-shadow: rgba(0, 0, 0, 0.8) 0 1px 0;
+  background: rgba(0, 0, 0, 0.5);
+  position: relative;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  position: absolute;
+}
+
+// hide radio
+.radio-btn {
+  position: absolute;
+  opacity: 0;
+}
+
+// radio img
+.radio-btn + .radio-img {
+  cursor: pointer;
+}
+
+.radio-img:hover {
+  opacity: 0.9;
+}
+// after selectd
+.radio-btn:checked + .radio-img {
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
 }
