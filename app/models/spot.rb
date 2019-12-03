@@ -2,7 +2,7 @@ class Spot < ApplicationRecord
   include ImageResult
 
   after_validation :google_places
-  after_validation :set_default_img
+  # after_ :set_default_img
 
   has_many :user_spots, dependent: :destroy
   has_many :schedules, dependent: :destroy
@@ -28,7 +28,11 @@ class Spot < ApplicationRecord
 
   def set_default_img
     if self.main_image.nil?
-    search_term = self.formatted_name
+      # if !self.formatted_name.nil?
+        search_term = self.formatted_name
+      # else
+      #   search_term = self.formatted_address.match(/([a-zA-Z]*) (City)/)[1]
+      # end
     url = ImageResult.get_url(search_term)
     self.main_image = url
     end

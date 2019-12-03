@@ -142,6 +142,12 @@ $(document).on('click', '#editInfo', function() {
     .slideToggle();
 });
 
+$(document).on('click', '#showInfo', function() {
+  $(this)
+    .next()
+    .slideToggle();
+});
+
 $(document).on('click', '.spot-select', function() {
   $('#schedule_admission_fee').val('');
   $('#schedule_other_cost').val('');

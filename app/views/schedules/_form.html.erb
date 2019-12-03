@@ -1,29 +1,85 @@
 <%= form_with(model:[trip, schedule]) do |f| %>
   <div class='form-inputs'>
+    <label class="h6">予定時間</label>
     <%= f.text_field :date_range, class: 'form-control input-sm date-range-picker'%>
     <br>
-    <p>Changing your spot will set your previous costs</p>
-    <% @saved_spots.each do |spot| %>
-      <div>
-        <%= f.radio_button :spot_id, spot.id, id: "spot_#{spot.id}", class:'spot-select' %>
-        <%= f.label spot.name, for:"spot_#{spot.id}", class:'' %>
-        Fee: <%= spot.admission_fee %>
+    <% if action_name == 'edit' %>
+      <p class="h6">スポット：<%= schedule.spot.name %></p>
+      <p class="text-right h7 mb-1">
+        <% if schedule.spot.rating %>
+          <% schedule.spot.rating.round(0).times do  %>
+            <span class="fas fa-star star-img"></span>
+          <% end %>
+          <% (5 - schedule.spot.rating.round(0)).times do  %>
+            <span class="far fa-star star-img"></span>
+          <% end %>
+        <% else %>
+          <p class="text-muted"><評価情報なし></p>
+        <% end %>
+        <small class="text-muted"><%=schedule.spot.rating%></small>
+      </p>
+      <div class="card mb-4 shadow-sm">
+        <div class="image-box">
+        <% if schedule.spot.main_image %>
+          <%= image_tag schedule.spot.main_image, class:"card-image" %>
+        <% end %>
+        </div>
+        <div class="card-body spot-card-box">
+          <label class="h7">スポット名</label>
+          <p><%= f.text_field :name, class:"form-control"%></p>
+          <label class="h7">入場料金</label>
+          <p><%= f.text_field :admission_fee, class:"form-control"%></p>
+          <label class="h7">他の予算</label>
+          <p><%= f.text_field :other_cost, class:"form-control"%></p>
+          <label class="h7">メモ</label>
+          <p><%= f.text_field :note, class:"form-control"%></p>
+          <div class="float-right btn btn-sm btn-outline-primary" id="showInfo">Show more</div>
+          <div id="Info" style="display:none;">
+            <div class="row mb-1">
+              <div class="col-1"><i class="fas fa-map-marker-alt"></i></div>
+              <div class="card-text col"> <%= schedule.spot.address %></div>
+            </div>
+            <div class="row mb-1">
+              <div class="col-1"><i class=" fas fa-phone"></i></div>
+              <div class="card-text col"> <%= schedule.spot.phone_num ? schedule.spot.phone_num : '情報なし' %></div>
+            </div>
+            <div class="row mb-1">
+              <div class="col-1"><i class="far fa-clock"></i></div>
+              <div class="card-text col">
+                <%= schedule.spot.duration != 0 ? "平均#{schedule.spot.duration}分滞在" : '情報なし' %>
+              </div>
+            </div>
+            <div class="row mb-1">
+              <div class="col-1"><i class="fas fa-globe"></i></div>
+              <% if schedule.spot.website %>
+              <%= link_to "公式サイド", schedule.spot.website, target: :blank, class:"col"%>
+              <% else %>
+              <p class="col">情報なし</p>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
-    <% end %>
-      <div class="btn btn-sm" id="editInfo">Click to edit</div>
+    <% else %>
+      <% @saved_spots.each do |spot| %>
+        <div>
+          <%= f.radio_button :spot_id, spot.id, id: "spot_#{spot.id}", class:'spot-select' %>
+          <%= f.label spot.name, for:"spot_#{spot.id}", class:'' %>
+          Fee: <%= spot.admission_fee %>
+        </div>
+      <% end %>
+      <div class="float-right btn btn-sm btn-outline-primary" id="editInfo">メモ入力</div>
       <div id='infoArea' style="display:none;">
         <p>Admission Fee: <%= f.text_field :admission_fee, class: 'form-control form-control-sm'%></p>
         <p>Other Cost: <%= f.text_field :other_cost, class: 'form-control form-control-sm' %></p>
         <p>Memo: <%= f.text_field :note, class: 'form-control form-control-sm' %></p>
       </div>
-
-      <%= f.hidden_field :start, class: 'form-control input-sm start_hidden' %>
-      <%= f.hidden_field :end, class: 'form-control input-sm end_hidden' %>
-      <br>
-  </div>
-
-  <div class='form-actions'>
-    <%= f.button :submit, class: 'btn btn-primary' %>
-    <%= link_to 'Delete', trip_schedule_path(schedule), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' }, remote: true unless @schedule.new_record? %>
+    <% end %>
+    <%= f.hidden_field :start, class: 'form-control input-sm start_hidden' %>
+    <%= f.hidden_field :end, class: 'form-control input-sm end_hidden' %>
+    <div class='form-actions text-center'>
+      <%= f.button :submit, class: 'btn btn-primary' %>
+      <%= link_to 'Delete', trip_schedule_path(schedule), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' }, remote: true unless @schedule.new_record? %>
+    </div>
   </div>
 <% end %>

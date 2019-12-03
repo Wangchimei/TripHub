@@ -112,11 +112,11 @@ function initMap() {
     ],
     { name: 'レトロ' },
   );
-  var center = 'dd';
+  var center = { lat: gon.lat, lng: gon.lng };
   if (document.getElementById('scheduleMap') !== null) {
     // generate schedule map
     var map = new google.maps.Map(document.getElementById('scheduleMap'), {
-      center: { lat: -33.8688, lng: 151.2195 },
+      center: center,
       zoom: 12,
       gestureHandling: 'cooperative',
       mapTypeControlOptions: {
@@ -126,13 +126,14 @@ function initMap() {
       },
     });
     var Calendarcard = document.getElementById('calendar-card');
+    map.panBy(-300, 0);
     map.controls[google.maps.ControlPosition.LEFT_TOP].push(Calendarcard);
     map.mapTypes.set('retro', styledMap);
     map.setMapTypeId('retro');
   } else {
     // generate spot map
     var searchMap = new google.maps.Map(document.getElementById('searchMap'), {
-      center: { lat: -33.8688, lng: 151.2195 },
+      center: center,
       zoom: 12,
       gestureHandling: 'cooperative',
       mapTypeControlOptions: {

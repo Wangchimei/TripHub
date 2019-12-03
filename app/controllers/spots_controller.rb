@@ -1,4 +1,6 @@
 class SpotsController < ApplicationController
+  before_action :set_map_center, only: %i[new]
+
   def index
     @spots = Spot.all
     respond_to do |format|
@@ -32,5 +34,10 @@ class SpotsController < ApplicationController
   private
   def spot_params
     params.require(:spot).permit(:name, :address, :admission_fee, :duration, :main_image, :latitude, :longtitude, :formatted_name, :formatted_address, :phone_num, :rating,:website, :place_id)
+  end
+
+  def set_map_center
+    gon.lat = current_user.country.latitude
+    gon.lng = current_user.country.longitude
   end
 end

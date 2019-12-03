@@ -49,5 +49,7 @@ class SchedulesController < ApplicationController
     gon.start_day = @trip.start_day
     gon.end_day = @trip.end_day
     gon.cal_end_day = @trip.end_day+1
+    gon.lat = current_user.country.latitude
+    gon.lng = current_user.country.longitude
   end
 end

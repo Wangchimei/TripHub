@@ -47,8 +47,9 @@ initialize_calendar = function() {
       selectHelper: true,
       editable: true,
       eventLimit: true,
-      height: 700,
+      // contentHeight: 600,
       events: schedules,
+      eventColor: '#89C4FF',
 
       select: function(start, end) {
         $.getScript(create_url, function() {
@@ -80,7 +81,8 @@ initialize_calendar = function() {
         });
       },
 
-      eventResize: function(schedule, delta, revertFunc) {
+      eventResize: function(schedule) {
+        debugger;
         schedule_data = {
           schedule: {
             id: schedule.id,
@@ -93,9 +95,11 @@ initialize_calendar = function() {
           data: schedule_data,
           type: 'PATCH',
         });
+        //   // calendar.fullCalendar('unselect');
       },
 
-      eventClick: function(schedule, jsEvent, view) {
+      eventClick: function(schedule) {
+        console.log(schedule);
         $.getScript(schedule.edit_url, function() {
           $('#schedule_date_range').val(
             moment(schedule.start).format('YYYY-MM-DD HH:mm') +
