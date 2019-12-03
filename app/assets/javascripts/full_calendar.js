@@ -47,6 +47,7 @@ initialize_calendar = function() {
       selectHelper: true,
       editable: true,
       eventLimit: true,
+      height: 700,
       events: schedules,
 
       select: function(start, end) {
@@ -65,6 +66,21 @@ initialize_calendar = function() {
       },
 
       eventDrop: function(schedule, delta, revertFunc) {
+        schedule_data = {
+          schedule: {
+            id: schedule.id,
+            start: schedule.start.format(),
+            end: schedule.end.format(),
+          },
+        };
+        $.ajax({
+          url: schedule.update_url,
+          data: schedule_data,
+          type: 'PATCH',
+        });
+      },
+
+      eventResize: function(schedule, delta, revertFunc) {
         schedule_data = {
           schedule: {
             id: schedule.id,
