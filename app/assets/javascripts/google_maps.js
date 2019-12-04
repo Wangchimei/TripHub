@@ -115,10 +115,10 @@ function initMap() {
   var center = { lat: gon.lat, lng: gon.lng };
   var schedules = '/trips/' + gon.trip_id + '/schedules.json';
   if (document.getElementById('scheduleMap') !== null) {
-    $.getJSON(schedules, function(data) {
-      console.log(data);
-      debugger;
-    });
+    // $.getJSON(schedules, function(data) {
+    //   console.log(data);
+    //   debugger;
+    // });
 
     $(function() {
       $.ajax({
@@ -133,7 +133,7 @@ function initMap() {
           // generate_map();
         },
         function() {
-          // console.log('取得に失敗しました。');
+          console.log('取得に失敗しました。');
         },
       );
     });
@@ -150,15 +150,33 @@ function initMap() {
         position: google.maps.ControlPosition.TOP_RIGHT,
       },
     });
+
+    //! TESTING AREA
+
+    // var trs = document.querySelectorAll('table > tbody > tr');
+    // trs.forEach(element => {
+    //   element.addEventListner('click', function() {
+    //     document.getElementById('submitBtn').onabort('click', function() {
+    //       alert('111');
+    //     });
+    //   });
+    // });
+    // google.maps.event.addDomListener(window, 'load', function() {
+    //   alert('window');
+    // });
+
+    // }
+    // google.maps.event.addListener(map, 'click', function(event) {
+    //   // Add marker
+    //   alert('click');
+    //   console.log(event);
+    //   // addMarker({ coords: event.latLng });
+    // });
+
+    //! TESTING AREA END
     // var Calendarcard = document.getElementById('calendar-card');
     // map.panBy(-300, 0);
     // map.controls[google.maps.ControlPosition.LEFT_TOP].push(Calendarcard);
-    google.maps.event.addListener(map, 'click', function(event) {
-      // Add marker
-      console.log(event);
-      // addMarker({ coords: event.latLng });
-    });
-
     map.mapTypes.set('retro', styledMap);
     map.setMapTypeId('retro');
   } else {
@@ -210,7 +228,6 @@ function initMap() {
       marker.setVisible(false);
       var place = autocomplete.getPlace();
       resetAutocomplete(place);
-      console.log(place);
 
       if (!place.geometry) {
         window.alert("Google マップで「'" + place.name + "'」が見つかりません");
@@ -227,16 +244,16 @@ function initMap() {
       marker.setVisible(true);
 
       // output to info window
-      infowindowContent.children['place-icon'].src = place.icon;
       infowindowContent.children['place-name'].textContent = place.name;
-      infowindowContent.children['place-rating'].textContent = place.rating;
       infowindowContent.children['place-address'].textContent =
         place.formatted_address;
       infowindowContent.children['place-phone_number'].textContent =
         place.international_phone_number;
       if (place.website) {
+        var hostnameRegexp = new RegExp('^https?://.+?/');
+        var website = hostnameRegexp.exec(place.website);
         var linkOutput = `
-        <a href="${place.website}" target="_blank">${place.website}</a>`;
+        <a href="${place.website}" target="_blank">${website}</a>`;
         document.getElementById('place-website').innerHTML = linkOutput;
       }
       infowindow.open(searchMap, marker);

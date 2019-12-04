@@ -23,8 +23,8 @@ class TripsController < ApplicationController
   end
 
   def edit
-    gon.set_start_day = @trip.start_day.beginning_of_day
-    gon.set_end_day = @trip.end_day.end_of_day
+    gon.start_day = @trip.start_day
+    gon.end_day = @trip.end_day
   end
 
   def update

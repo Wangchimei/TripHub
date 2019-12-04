@@ -1,14 +1,15 @@
 var date_range_picker;
 date_range_picker = function() {
+  var start_day = moment(gon.start_day)
+    .utc()
+    .format('YYYY-MM-DD HH:mm');
+  var end_day = moment(gon.end_day)
+    .utc()
+    .format('YYYY-MM-DD HH:mm');
+  var action_check = gon.trip_id;
+
   $('.date-range-picker').each(function() {
-    var start_day = moment(gon.start_day)
-      .utc()
-      .format('YYYY-MM-DD HH:mm');
-    var end_day = moment(gon.end_day)
-      .utc()
-      .format('YYYY-MM-DD HH:mm');
-    debugger;
-    if (start_day) {
+    if (!!action_check) {
       $(this).daterangepicker(
         {
           minDate: start_day,

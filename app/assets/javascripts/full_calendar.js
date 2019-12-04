@@ -26,18 +26,16 @@ initialize_calendar = function() {
           text: '　＋　',
           click: function() {
             $.getScript(create_url, function() {
-              $('#schedule_date_range').val(
-                moment(gon.start_day)
-                  .utc()
-                  .format('YYYY-MM-DD HH:mm') +
-                  ' - ' +
-                  moment(gon.end_day)
-                    .utc()
-                    .format('YYYY-MM-DD HH:mm'),
-              );
+              start = moment(gon.start_day)
+                .utc()
+                .format('YYYY-MM-DD HH:mm');
+              end = moment(gon.end_day)
+                .utc()
+                .format('YYYY-MM-DD HH:mm');
+              $('#schedule_date_range').val(start + ' - ' + end);
               date_range_picker();
-              $('.start_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'));
-              $('.end_hidden').val(moment(end).format('YYYY-MM-DD HH:mm'));
+              $('.start_hidden').val(start);
+              $('.end_hidden').val(end);
             });
           },
         },
@@ -98,7 +96,6 @@ initialize_calendar = function() {
       },
 
       eventResize: function(schedule) {
-        debugger;
         schedule_data = {
           schedule: {
             id: schedule.id,

@@ -5,23 +5,19 @@
     <%= Gon::Base.render_data %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= favicon_link_tag asset_path('favicon3.png') %>
+    <%= favicon_link_tag asset_path('favicon.png') %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class="site-wrapper">
-     <% if current_user %>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Register", new_user_registration_path %>
-      <%= link_to "Login", new_user_session_path %>
-    <% end %>
+
     <%= render 'shared/navbar'%>
-    <div>
-    <%= yield %>
+
+    <div class="main-content">
+      <%= yield %>
+      <div id='modal_container'></div>
     </div>
-    <div id='modal_container'></div>
 
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=#{ENV['GOOGLE_API_KEY']}&libraries=places&callback=initMap" %>
   </body>

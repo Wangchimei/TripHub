@@ -1,5 +1,5 @@
 <%= form_with(model:[trip, schedule]) do |f| %>
-  <div class='form-inputs'>
+  <div class='form-inputs' id="scheduleForm">
     <label class="h6">予定時間</label>
     <%= f.text_field :date_range, class: 'form-control input-sm date-range-picker'%>
     <br>
@@ -73,10 +73,10 @@
       <% end %>
     </div>
     <% end %>
-    <%= f.text_field :start, value: @trip.start_day.strftime("%Y-%m-%d %H:%M"), class: 'form-control input-sm start_hidden' %>
-    <%= f.text_field :end, value: @trip.end_day.strftime("%Y-%m-%d 23:59"), class:'form-control input-sm end_hidden' %>
+    <%= f.hidden_field :start, value: @trip.start_day.strftime("%Y-%m-%d %H:%M"), class: 'form-control input-sm start_hidden' %>
+    <%= f.hidden_field :end, value: @trip.end_day.strftime("%Y-%m-%d 23:59"), class:'form-control input-sm end_hidden' %>
     <div class='form-actions text-center'>
-      <%= f.submit '保存', class: 'btn btn-primary' %>
+      <%= f.submit '保存', class: 'btn btn-primary', id:"submitBtn" %>
       <%= link_to '削除', trip_schedule_path(schedule), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' }, remote: true unless @schedule.new_record? %>
     </div>
   </div>
