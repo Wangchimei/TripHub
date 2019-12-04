@@ -1,6 +1,6 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
-<%= image_tag current_user.avatar %>
+<%= image_tag current_user.avatar, size:"100x100"%>
 <% @trips.each do |trip| %>
   <p><%= trip.name %>
   <%= trip.description %>

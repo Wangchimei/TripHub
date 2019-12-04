@@ -113,12 +113,37 @@ function initMap() {
     { name: 'レトロ' },
   );
   var center = { lat: gon.lat, lng: gon.lng };
+  var schedules = '/trips/' + gon.trip_id + '/schedules.json';
   if (document.getElementById('scheduleMap') !== null) {
+    $.getJSON(schedules, function(data) {
+      console.log(data);
+      debugger;
+    });
+
+    $(function() {
+      $.ajax({
+        url: schedules,
+        cache: false,
+      }).then(
+        function(data) {
+          console.log(data);
+
+          // mapData = data['data'];
+          // ready['ajax'] = true;
+          // generate_map();
+        },
+        function() {
+          // console.log('取得に失敗しました。');
+        },
+      );
+    });
+
     // generate schedule map
     var map = new google.maps.Map(document.getElementById('scheduleMap'), {
       center: center,
       zoom: 12,
       gestureHandling: 'cooperative',
+      streetViewControl: false,
       mapTypeControlOptions: {
         mapTypeIds: ['retro', 'roadmap', 'satellite', 'hybrid'],
         style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
@@ -142,6 +167,7 @@ function initMap() {
       center: center,
       zoom: 9,
       gestureHandling: 'cooperative',
+      streetViewControl: false,
       mapTypeControlOptions: {
         mapTypeIds: ['retro', 'roadmap', 'satellite', 'hybrid'],
         // style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,

@@ -32,7 +32,7 @@ class Schedule < ApplicationRecord
 
   def update_duration
     # schedule duration
-    min = (self.end - self.start)/60
+    min = (self.end - self.start)/60.round(0)
     self.update(duration: min) if self.duration != min
     # avg duration
     scheduled_spots = Schedule.where(spot_id: self.spot_id)

@@ -8,7 +8,6 @@ initialize_calendar = function() {
       .utc()
       .format('MM/DD/YYYY');
     var cal_format_end = moment(gon.cal_end_day).format('MM/DD/YYYY');
-    debugger;
     var schedules = '/trips/' + gon.trip_id + '/schedules.json';
     var create_url = '/trips/' + gon.trip_id + '/schedules/new';
     // function set_duration() {
@@ -26,8 +25,7 @@ initialize_calendar = function() {
         add_event: {
           text: '　＋　',
           click: function() {
-            debugger;
-            $.getScript(create_url, function(start, end) {
+            $.getScript(create_url, function() {
               $('#schedule_date_range').val(
                 moment(gon.start_day)
                   .utc()
@@ -134,4 +132,4 @@ initialize_calendar = function() {
   });
 };
 $(document).on('turbolinks:load', initialize_calendar);
-$(document).on('turbolinks:before-cache', clearCalendar);
+// $(document).on('turbolinks:before-cache', clearCalendar);
