@@ -4,7 +4,7 @@
   <%= form_with(url: spots_path, local: true, method: :get) do |f| %>
     <span class="fa fa-search form-control-feedback"></span>
     <%= f.hidden_field :search, value: 'true' %>
-    <%= f.text_field :search, class:"form-control", placeholder: "Search" %>
+    <%= f.text_field :search, class:"form-control", placeholder: "都市で検索する" %>
   <% end %>
 </div>
 

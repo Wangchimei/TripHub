@@ -2,7 +2,11 @@ class SpotsController < ApplicationController
   before_action :set_map_center, only: %i[new]
 
   def index
-    @spots = Spot.all
+    if params[:search].present?
+      @spots = Spot.near(params[:search], 30, order: :distance)
+    else
+      @spots = Spot.all.order(created_at: :desc)
+    end
     respond_to do |format|
       format.html
       format.csv do

@@ -1,14 +1,13 @@
 class Spot < ApplicationRecord
   include ImageResult
+  geocoded_by :address
 
   after_validation :google_places
-  # after_ :set_default_img
 
   has_many :user_spots, dependent: :destroy
   has_many :schedules, dependent: :destroy
 
   validates :name, :address, presence: true
-
 
   def saved_spot?(spot, user)
     spot.user_spots.find_by(user_id: user.id)
