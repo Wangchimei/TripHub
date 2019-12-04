@@ -17,7 +17,7 @@
   </div>
   <div>
     <%= f.label :date_range %>
-    <%= f.text_field :date_range, value: date_default, class: "date-range-picker" %>
+    <%= f.text_field :date_range, value: date_default, id:"date-range-picker" %>
   </div>
   <div>
     <%= f.hidden_field :start_day, value: @trip.start_day.strftime("%Y-%m-%d"), class:"start_hidden" %>

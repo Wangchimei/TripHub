@@ -1,4 +1,10 @@
 <div class="flex-row">
+<% if current_user %>
+<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+<% else %>
+<%= link_to "Register", new_user_registration_path %>
+<%= link_to "Login", new_user_session_path %>
+<% end %>
 <%= link_to "Profile", user_path(current_user) %>
 <%= link_to "New Trip", new_trip_path %>
 <%= link_to "My Trip", user_path(current_user) %>

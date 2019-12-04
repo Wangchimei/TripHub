@@ -1,5 +1,4 @@
 <%= f.fields_for :to_cities do |f| %>
   <p>if you would like to be more specific, please select city below </p>
-  <%= f.label :city_id %>
-  <%= f.collection_select :city_id, cities, :id, :name, include_blank: "Optional" %>
+  <%= f.collection_select :city_id, cities, :id, :name, {prompt: 'オプションの選択'}, {class: "form-control"} %>
 <%end%>

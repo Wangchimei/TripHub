@@ -107,7 +107,7 @@ $(document).on('change', '#trip_to_states_attributes_0_state_id', function() {
       $('.city-area').html(data);
       $('#addCityBtn').show();
       $('#addCityBtn').on('click', function() {
-        $('.city-area').show();
+        $('.city-area').slideToggle();
       });
     } else {
       $('.city-area').hide();
@@ -136,12 +136,6 @@ $(document).on('change', '#trip_to_states_attributes_0_state_id', function() {
 });
 
 // Toggle for schedule form
-$(document).on('click', '#editInfo', function() {
-  $(this)
-    .next()
-    .slideToggle();
-});
-
 $(document).on('click', '#showInfo', function() {
   $(this)
     .next()

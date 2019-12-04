@@ -8,7 +8,7 @@ date_range_picker = function() {
     .format('YYYY-MM-DD HH:mm');
   var action_check = gon.trip_id;
 
-  $('.date-range-picker').each(function() {
+  $('#date-range-picker').each(function() {
     if (!!action_check) {
       $(this).daterangepicker(
         {

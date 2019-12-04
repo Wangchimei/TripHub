@@ -1,4 +1,4 @@
-<div class="card devise-box">
+<div class="card devise-box card-bg">
   <div class="card-body">
     <div>
       <%= image_tag "logos/brand_logo_blue.png", class:"form-brand-image"%>
@@ -25,7 +25,7 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "パスワード再入力" %>
       </div>
       <div class="form-group country-area text-left">
-        <%= f.collection_select :country_id, Country.order(:name), :id, :name, {prompt: "お住まいの国をお選びください"}, {class: "form-control col"} %>
+        <%= f.collection_select :country_id, Country.order(:name), :id, :name, {prompt: "お住まいの国をお選びください"}, {class: "form-control"} %>
       </div>
       <div class="form-group state-area" style="display:none;">
         <%= render partial: 'locations/select_state', locals: {country_id: 0} %>

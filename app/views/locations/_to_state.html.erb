@@ -1,7 +1,6 @@
 <%= f.fields_for :to_states do |f| %>
-  <%= f.label :state_id %>
-  <%= f.collection_select :state_id, states, :id, :name, include_blank: "Optional"%>
+  <%= f.collection_select :state_id, states, :id, :name, {prompt: '都市をお選びください'}, {class: "form-control"} %>
 <%end%>
-  <div class="btn btn-sm" id="addCityBtn" style="display:none;">
-    Show Cities
+  <div class="btn btn-sm btn-outline-primary mt-1 float-right" id="addCityBtn" style="display:none;">
+    区を表示
   </div>

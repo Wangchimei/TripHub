@@ -1,50 +1,53 @@
-<%= form_with(model: @trip) do |f| %>
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div>
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-  </div>
-  <div>
-    <%= f.label :date_range %>
-    <%= f.text_field :date_range, class:"date-range-picker" %>
-  </div>
-  <div>
-    <%= f.hidden_field :start_day, value: Date.today, class:"start_hidden" %>
-    <%= f.hidden_field :end_day, value: Date.today, class:"end_hidden" %>
-  </div>
+<div class="card devise-box">
+  <div class="card-body mx-2 my-4">
+    <%= form_with(model: @trip) do |f| %>
+      <div class="mb-3">
+        <%= f.label :name, "トリップ名", class:"mb-1"%>
+        <%= f.text_field :name, autofocus: true,  class:"form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :description, "詳細・メモ", class:"mb-1"%>
+        <%= f.text_field :description, class:"form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :date_range, "旅行の日数・期間", class:"mb-1" %>
+        <%= f.text_field :date_range, id:"date-range-picker", class:"form-control"%>
+      </div>
+      <div class="mb-3">
+        <%= f.hidden_field :start_day, value: Date.today, class:"start_hidden" %>
+        <%= f.hidden_field :end_day, value: Date.today, class:"end_hidden" %>
+      </div>
 
-  <div class="continent-area">
-    <%= f.label :continent_id %>
-    <%= f.collection_select :continent_id,
-        Continent.order(:name), :id, :name, include_blank: "please select a continent"
-        %>
-  </div>
+      <div class="continent-area mb-1">
+        <%= f.label :continent_id, "旅行先", class:"mb-1"%>
+        <%= f.collection_select :continent_id,
+            Continent.order(:name), :id, :name, {prompt: "方面を選択してください"}, {class: "form-control"} %>
+      </div>
 
-  <div class="country-area" style="display:none;">
-    <%= render partial: 'locations/to_country',
-        locals: { f: f, countries: @countries} %>
-  </div>
+      <div class="country-area mb-1" style="display:none;">
+        <%= render partial: 'locations/to_country',
+            locals: { f: f, countries: @countries} %>
+      </div>
 
-  <div class="state-area" style="display:none;">
-    <%= render partial: 'locations/to_state',
-        locals: { f: f, states: @states} %>
-  </div>
+      <div class="state-area mb-1" style="display:none;">
+        <%= render partial: 'locations/to_state',
+            locals: { f: f, states: @states} %>
+      </div>
 
-  <div class="city-area" style="display:none;">
-    <%= render partial: 'locations/to_city',
-        locals: { f: f, cities: @cities} %>
-  </div>
+      <div class="city-area mb-1" style="display:none;">
+        <%= render partial: 'locations/to_city',
+            locals: { f: f, cities: @cities} %>
+      </div>
 
-  <div class="field">
-    <%= f.label :privacy %>
-    <%= f.check_box :privacy, :as => :boolean%>
-  </div>
+      <div class="field">
+        <%= f.label :privacy %>
+        <%= f.check_box :privacy, :as => :boolean%>
+      </div>
 
-  <div>
-    <%= f.submit %>
-    <%= link_to 'Back', user_path(current_user) %>
+      <div>
+        <%= f.submit %>
+        <%= link_to 'Back', user_path(current_user) %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
