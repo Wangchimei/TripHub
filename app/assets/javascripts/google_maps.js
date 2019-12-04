@@ -125,9 +125,15 @@ function initMap() {
         position: google.maps.ControlPosition.TOP_RIGHT,
       },
     });
-    var Calendarcard = document.getElementById('calendar-card');
+    // var Calendarcard = document.getElementById('calendar-card');
     // map.panBy(-300, 0);
-    map.controls[google.maps.ControlPosition.LEFT_TOP].push(Calendarcard);
+    // map.controls[google.maps.ControlPosition.LEFT_TOP].push(Calendarcard);
+    google.maps.event.addListener(map, 'click', function(event) {
+      // Add marker
+      console.log(event);
+      // addMarker({ coords: event.latLng });
+    });
+
     map.mapTypes.set('retro', styledMap);
     map.setMapTypeId('retro');
   } else {

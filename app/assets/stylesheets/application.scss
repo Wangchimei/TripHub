@@ -220,6 +220,7 @@ div#pac-card.spot-search-card {
   background-size: cover;
   border-radius: 5px;
   cursor: pointer;
+  filter: brightness(60%);
 }
 
 .cover-wrapper {
@@ -250,10 +251,11 @@ div#pac-card.spot-search-card {
 }
 
 .radio-img:hover {
-  opacity: 0.9;
+  filter: brightness(70%);
 }
 // after selectd
 .radio-btn:checked + .radio-img {
   border: 2px solid rgba(0, 0, 0, 0.25);
   border-radius: 5px;
+  filter: brightness(100%);
 }
