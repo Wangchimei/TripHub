@@ -1,13 +1,18 @@
 var date_range_picker;
 date_range_picker = function() {
   $('.date-range-picker').each(function() {
-    var start_day = gon.start_day;
-    var cal_end_day = gon.cal_end_day;
+    var start_day = moment(gon.start_day)
+      .utc()
+      .format('YYYY-MM-DD HH:mm');
+    var end_day = moment(gon.end_day)
+      .utc()
+      .format('YYYY-MM-DD HH:mm');
+    debugger;
     if (start_day) {
       $(this).daterangepicker(
         {
           minDate: start_day,
-          maxDate: cal_end_day,
+          maxDate: end_day,
           timePicker: true,
           timePickerIncrement: 30,
           locale: {

@@ -1,7 +1,8 @@
 json.array! (@schedules) do |schedule|
-  date_format = schedule.all_day? ? '%Y-%m-%d' : '%Y-%m-%dT%H:%M:%S'
-  json.extract! schedule, :id, :name
-  json.address schedule.spot.address
+  date_format = schedule.all_day? ? '%Y-%m-%d' : '%Y-%m-%dT%H:%M'
+  json.id schedule.id
+  json.name schedule.name
+  # json.address schedule.spot.address
   json.start schedule.start.strftime(date_format)
   json.end schedule.end.strftime(date_format)
   json.allDay schedule.all_day? ? true : false

@@ -47,7 +47,8 @@ class SchedulesController < ApplicationController
   def set_js_variables
     gon.trip_id = @trip.id
     gon.start_day = @trip.start_day.beginning_of_day
-    gon.end_day = @trip.end_day.end_of_day
+    gon.end_day = @trip.end_day.end_of_day.end_of_day
+    gon.cal_end_day = @trip.end_day + 1
     gon.lat = current_user.country.latitude
     gon.lng = current_user.country.longitude
   end
