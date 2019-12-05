@@ -1,6 +1,7 @@
 $('.calendar').fullCalendar(
   'renderEvent',
-  $.parseJSON("<%=j render(@schedules, format: :json).html_safe %>"),
+  $.parseJSON("<%= j render(@schedules, format: :json).html_safe %>"),
   true
 );
 $('.modal').modal('hide');
+$("#scheduleMap").html("<%= escape_javascript(render partial: 'google_maps') %>")

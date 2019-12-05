@@ -4,3 +4,4 @@ $('.calendar').fullCalendar(
   true
 );
 $('.modal').modal('hide');
+$("#scheduleMap").html("<%= escape_javascript(render partial: 'google_maps') %>")
