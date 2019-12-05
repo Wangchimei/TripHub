@@ -151,16 +151,21 @@ function initMap() {
       },
     });
 
-    //! TESTING AREA
+    //! TESTING AREA : event listener (failed)
+    var fcs = document.querySelectorAll('.fc-widget-content');
+    fcs.forEach(function(widget) {
+      debugger;
+      widget.addEventListener('click', function() {
+        debugger;
+        var btn = document.getElementById('submitBtn');
+        btn.addEventListener('click', handler);
+        // btn.on('click', handler);
+      });
+    });
+    var handler = function() {
+      window.alert('クリックされました');
+    };
 
-    // var trs = document.querySelectorAll('table > tbody > tr');
-    // trs.forEach(element => {
-    //   element.addEventListner('click', function() {
-    //     document.getElementById('submitBtn').onabort('click', function() {
-    //       alert('111');
-    //     });
-    //   });
-    // });
     // google.maps.event.addDomListener(window, 'load', function() {
     //   alert('window');
     // });
@@ -169,11 +174,10 @@ function initMap() {
     // google.maps.event.addListener(map, 'click', function(event) {
     //   // Add marker
     //   alert('click');
-    //   console.log(event);
     //   // addMarker({ coords: event.latLng });
     // });
-
     //! TESTING AREA END
+
     // var Calendarcard = document.getElementById('calendar-card');
     // map.panBy(-300, 0);
     // map.controls[google.maps.ControlPosition.LEFT_TOP].push(Calendarcard);
@@ -201,7 +205,7 @@ function initMap() {
     // Bind the map's bounds (viewport) property to the autocomplete object,
     // so that the autocomplete requests use the current map bounds for the
     // bounds option in the request.
-    autocomplete.bindTo('bounds', searchMap);
+    // autocomplete.bindTo('bounds', searchMap);
     autocomplete.setFields([
       'address_components',
       'formatted_address',

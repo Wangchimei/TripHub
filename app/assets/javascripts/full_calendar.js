@@ -60,7 +60,8 @@ initialize_calendar = function() {
       selectHelper: true,
       editable: true,
       eventLimit: true,
-      contentHeight: 800,
+      // height responsive
+      height: window.innerHeight - 75,
       events: schedules,
       eventColor: '#89C4FF',
       titleFormat: 'YYYY 年 M 月 D 日',
@@ -124,6 +125,11 @@ initialize_calendar = function() {
           );
           $('.end_hidden').val(moment(schedule.end).format('YYYY-MM-DD HH:mm'));
         });
+      },
+
+      // height responsive
+      windowResize: function() {
+        calendar.fullCalendar('option', 'height', window.innerHeight - 75);
       },
     });
   });
