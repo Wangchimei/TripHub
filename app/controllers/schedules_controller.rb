@@ -1,7 +1,7 @@
 class SchedulesController < ApplicationController
   before_action :set_trip, except: %i[destroy]
-  before_action :set_js_variables, except: %i[destroy]
   before_action :set_schedule, only: %i[edit update show destroy]
+  before_action :set_js_variables, except: %i[destroy]
 
   def index
     @schedules = @trip.schedules
@@ -46,6 +46,8 @@ class SchedulesController < ApplicationController
 
   def set_js_variables
     gon.trip_id = @trip.id
+    gon.trip_lat = @trip.destination_countries.first.latitude
+    gon.trip_lng = @trip.destination_countries.first.longitude
     gon.start_day = @trip.start_day.beginning_of_day
     gon.end_day = @trip.end_day.end_of_day.end_of_day
     gon.cal_end_day = @trip.end_day + 1

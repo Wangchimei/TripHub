@@ -112,7 +112,6 @@ initialize_calendar = function() {
       },
 
       eventClick: function(schedule) {
-        console.log(schedule);
         $.getScript(schedule.edit_url, function() {
           $('#schedule_date_range').val(
             moment(schedule.start).format('YYYY-MM-DD HH:mm') +

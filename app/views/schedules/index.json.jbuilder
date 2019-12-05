@@ -1,5 +1,5 @@
 json.array! @schedules do |schedule|
-  date_format = schedule.all_day? ? '%Y-%m-%d' : '%Y-%m-%dT%H:%M'
+  date_format = schedule.all_day? ? '%Y-%m-%d' : '%Y-%m-%d %H:%M'
   json.id schedule.id
   json.name schedule.name
   json.start schedule.start.strftime(date_format)

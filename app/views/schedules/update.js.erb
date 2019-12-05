@@ -1,4 +1,3 @@
-$('.calendar').fullCalendar('removeEvents', [<%= @schedule.id %>]);
 $('.calendar').fullCalendar(
   'renderEvent',
   $.parseJSON("<%=j render(@schedules, format: :json).html_safe %>"),

@@ -112,36 +112,14 @@ function initMap() {
     ],
     { name: 'レトロ' },
   );
-  var center = { lat: gon.lat, lng: gon.lng };
-  var schedules = '/trips/' + gon.trip_id + '/schedules.json';
+
   if (document.getElementById('scheduleMap') !== null) {
-    // $.getJSON(schedules, function(data) {
-    //   console.log(data);
-    //   debugger;
-    // });
-
-    $(function() {
-      $.ajax({
-        url: schedules,
-        cache: false,
-      }).then(
-        function(data) {
-          console.log(data);
-
-          // mapData = data['data'];
-          // ready['ajax'] = true;
-          // generate_map();
-        },
-        function() {
-          console.log('取得に失敗しました。');
-        },
-      );
-    });
-
+    var center = { lat: gon.trip_lat, lng: gon.trip_lng };
     // generate schedule map
+    var schedules = '/trips/' + gon.trip_id + '/schedules.json';
     var map = new google.maps.Map(document.getElementById('scheduleMap'), {
       center: center,
-      zoom: 12,
+      zoom: 10,
       gestureHandling: 'cooperative',
       streetViewControl: false,
       mapTypeControlOptions: {
@@ -150,41 +128,81 @@ function initMap() {
         position: google.maps.ControlPosition.TOP_RIGHT,
       },
     });
+    map.mapTypes.set('retro', styledMap);
+    map.setMapTypeId('retro');
+
+    // read data
+    $.getJSON(schedules, function(data) {
+      var markers = generateMarkers(data);
+      for (var i = 0; i < markers.length; i++) {
+        addMarker(markers[i]);
+      }
+    });
+    // Loop through JSON data
+    function generateMarkers(data) {
+      var markersData = [];
+      for (i = 0; i < data.length; i++) {
+        marker = data[i];
+        markersData.push({
+          coords: { lat: data[i].spot.lat, lng: data[i].spot.lng },
+          content: `
+            <h4 class="h6">${data[i].start} - ${data[i].end}<h4>
+            <h4 class="lead">${data[i].name}</h4>
+            <p class="h7">${data[i].spot.address}</p>
+            `,
+        });
+      }
+      return markersData;
+    }
+
+    // var Calendarcard = document.getElementById('calendar-card');
+    // map.panBy(-300, 0);
+    // map.controls[google.maps.ControlPosition.LEFT_TOP].push(Calendarcard);
 
     //! TESTING AREA : event listener (failed)
-    var fcs = document.querySelectorAll('.fc-widget-content');
-    fcs.forEach(function(widget) {
-      debugger;
-      widget.addEventListener('click', function() {
-        debugger;
-        var btn = document.getElementById('submitBtn');
-        btn.addEventListener('click', handler);
-        // btn.on('click', handler);
-      });
-    });
-    var handler = function() {
-      window.alert('クリックされました');
-    };
+    // var fcs = document.querySelectorAll('.fc-widget-content');
+    // fcs.forEach(function(widget) {
+    //   debugger;
+    //   widget.addEventListener('click', function() {
+    //     debugger;
+    //     var btn = document.getElementById('submitBtn');
+    //     btn.addEventListener('click', handler);
+    //     // btn.on('click', handler);
+    //   });
+    // });
+    // var handler = function() {
+    //   window.alert('クリックされました');
+    // };
 
     // google.maps.event.addDomListener(window, 'load', function() {
     //   alert('window');
     // });
 
-    // }
     // google.maps.event.addListener(map, 'click', function(event) {
-    //   // Add marker
-    //   alert('click');
-    //   // addMarker({ coords: event.latLng });
+    //   addMarker({ coords: event.latLng });
     // });
     //! TESTING AREA END
 
-    // var Calendarcard = document.getElementById('calendar-card');
-    // map.panBy(-300, 0);
-    // map.controls[google.maps.ControlPosition.LEFT_TOP].push(Calendarcard);
-    map.mapTypes.set('retro', styledMap);
-    map.setMapTypeId('retro');
+    // define functions: add Marker
+    function addMarker(props) {
+      var marker = new google.maps.Marker({
+        position: props.coords,
+        map: map,
+      });
+      if (props.content) {
+        var infoWindow = new google.maps.InfoWindow({
+          content: props.content,
+        });
+
+        marker.addListener('click', function() {
+          infoWindow.open(map, marker);
+        });
+      }
+    }
   } else {
-    // generate spot map
+    //* generate spot map
+
+    var center = { lat: gon.lat, lng: gon.lng };
     var searchMap = new google.maps.Map(document.getElementById('searchMap'), {
       center: center,
       zoom: 9,
@@ -262,6 +280,7 @@ function initMap() {
       }
       infowindow.open(searchMap, marker);
 
+      // define functions: reset form inputs
       function resetAutocomplete(place) {
         document.querySelectorAll('.gmap-reset').value = '';
         document.getElementById('name').value = place.name;

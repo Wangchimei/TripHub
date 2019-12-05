@@ -952,6 +952,7 @@ NOTE: use percentage font sizes or else old IE chokes
 }
 
 .fc-toolbar .fc-center {
+  margin-top: 1rem;
   display: inline-block;
 }
 
