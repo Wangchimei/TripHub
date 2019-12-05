@@ -114,7 +114,12 @@ function initMap() {
   );
 
   if (document.getElementById('scheduleMap') !== null) {
-    var center = { lat: gon.trip_lat, lng: gon.trip_lng };
+    if (!!gon.trip_state_lat) {
+      var center = { lat: gon.trip_state_lat, lng: gon.trip_state_lng };
+    } else {
+      var center = { lat: gon.trip_country_lat, lng: gon.trip_country_lng };
+    }
+    debugger;
     // generate schedule map
     var schedules = '/trips/' + gon.trip_id + '/schedules.json';
     var map = new google.maps.Map(document.getElementById('scheduleMap'), {
