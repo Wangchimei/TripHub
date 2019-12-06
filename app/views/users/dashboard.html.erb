@@ -1,6 +1,6 @@
 <div id="mapdiv"></div>
   <div class="dash-contnet row">
-    <div class="col-lg-3 px-1 mt-2">
+    <div class="col-md-3 px-1 mt-2">
       <div class="card-body">
         <div class="ml-5 mt-4">
           <p class="h4">旅行</p>
@@ -17,7 +17,7 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-9 px-1 mt-2">
+    <div class="col-md-9 px-1 mt-2">
       <div class="card-body hei-100">
         <p class="h4">
           Upcoming Trips
@@ -25,8 +25,11 @@
             <%=link_to 'see more...', user_path(current_user)%>
           </span>
         </p>
-        <% if @trips.nil? %>
-          <p class="card-body h5">No upcoming trips</p>
+        <% if @trips.length == 0 %>
+          <p class="card-body h6">
+            次の旅行、どこに行きたいですか。
+            <%= link_to "探索する", trips_path, class:"btn btn-sm btn-outline-primary ml-2" %>
+          </p>
         <% else %>
           <div class="card-body row hei-100">
             <% @trips.each do |trip| %>

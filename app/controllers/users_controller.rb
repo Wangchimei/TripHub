@@ -16,6 +16,10 @@ class UsersController < ApplicationController
     @trips = current_user.trips.order(created_at: :desc)
   end
 
+  def trips
+    @trips = current_user.trips
+  end
+
   private
 
   def set_visited_countries

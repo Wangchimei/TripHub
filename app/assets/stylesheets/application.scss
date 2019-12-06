@@ -46,6 +46,31 @@
   color: #fff;
 }
 
+// Navbar
+.nav-bg {
+  background-color: #8ac5ff;
+}
+
+.nav-brand-image {
+  width: 130px;
+}
+
+.nav-avatar {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  padding: 2px;
+}
+
+.dropdown-active {
+  background-color: #8ac5ff;
+  color: #fff;
+}
+
+.dropdown-active:hover {
+  background-color: #cfe3f8;
+}
 // User: dashboard map
 #mapdiv {
   width: 100%;

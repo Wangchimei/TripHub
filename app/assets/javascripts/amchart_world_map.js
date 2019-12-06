@@ -16,11 +16,16 @@ initialize_world_map = function() {
     type: 'map',
     theme: 'light',
     projection: 'miller',
+    language: 'jp',
     panEventsEnabled: false,
+    dragMap: false,
     backgroundColor: '#B4DBEE',
     backgroundAlpha: 1,
+    zoomOnDoubleClick: false,
     zoomControl: {
-      zoomControlEnabled: true,
+      homeButtonEnabled: false,
+      zoomControlEnabled: false,
+      panControlEnabled: false,
     },
     dataProvider: {
       map: 'worldHigh',
@@ -37,4 +42,5 @@ initialize_world_map = function() {
       rollOverOutlineColor: '#2F3841',
     },
   });
+  // map.language = 'jp';
 };

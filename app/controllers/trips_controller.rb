@@ -4,17 +4,15 @@ class TripsController < ApplicationController
   before_action :set_chart_latlng, only: %i[edit]
 
   def index
-    @trips = Trip.where(privacy: true).order(created_at: :desc)
+    @trips = Trip.where(privacy: false).order(created_at: :desc)
   end
 
   def new
     @trip = Trip.new
-
   end
 
   def create
     @trip = current_user.trips.build(trip_params)
-
     if @trip.save
       redirect_to trip_schedules_path(@trip)
       flash[:notice] = "トリップを作成しました"
