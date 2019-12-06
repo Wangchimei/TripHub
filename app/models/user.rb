@@ -14,6 +14,11 @@ class User < ApplicationRecord
   has_many :visited_countries, dependent: :destroy
   has_many :countries_conquered, through: :visited_countries, source: :country
 
+  has_many :active_relationships, foreign_key: :follower_id, class_name: "Relationship", dependent: :destroy
+  has_many :passive_relationships, foreign_key: :followed_id, class_name: "Relationship", dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
+
   after_create :set_default_avatar
 
   def save_spot!(spot)
@@ -35,5 +40,17 @@ class User < ApplicationRecord
   def set_default_avatar
     num = rand(6)
     self.update(avatar: "avatar_#{num}.png")
+  end
+
+  def follow!(other_user)
+    active_relationships.create!(followed_id: other_user.id)
+  end
+
+  def following?(other_user)
+    active_relationships.find_by(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
   end
 end
