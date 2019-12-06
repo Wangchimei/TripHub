@@ -52,7 +52,7 @@
   height: 60%;
 }
 
-// trip pages: spinning globe
+// Trip: spinning globe
 .world-globe {
   margin: 0 auto;
   width: 150px;
@@ -71,6 +71,12 @@
   100% {
     background-position-x: 300px;
   }
+}
+
+// Trip: edit flight path chart
+#chartdiv {
+  width: 80%;
+  height: 400px;
 }
 
 // create spot map

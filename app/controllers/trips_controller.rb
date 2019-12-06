@@ -1,6 +1,7 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: %i[edit update show destroy toggle_status toggle_privacy]
   before_action :set_location, only: %i[new edit]
+  before_action :set_chart_latlng, only: %i[edit]
 
   def index
     @trips = Trip.where(privacy: true).order(created_at: :desc)
@@ -89,5 +90,36 @@ class TripsController < ApplicationController
       counts += trip.destination_countries.where(id: @trip.destination_countries.first.id).count
     end
     counts == 1
+  end
+
+  def set_chart_latlng
+    # home
+    if current_user.city
+      gon.home_name = current_user.city.name
+      gon.home_lat = current_user.city.latitude
+      gon.home_lng = current_user.city.longitude
+    elsif current_user.state
+      gon.home_name = current_user.state.name
+      gon.home_lat = current_user.state.latitude
+      gon.home_lng = current_user.state.longitude
+    else
+      gon.home_name = current_user.country.name
+      gon.home_lat = current_user.country.latitude
+      gon.home_lng = current_user.country.longitude
+    end
+    # destination
+    if @trip.destination_cities.first
+      gon.des_name = @trip.destination_cities.first.name
+      gon.des_lat = @trip.destination_cities.first.latitude
+      gon.des_lng = @trip.destination_cities.first.longitude
+    elsif @trip.destination_states.first
+      gon.des_name = @trip.destination_states.first.name
+      gon.des_lat = @trip.destination_states.first.latitude
+      gon.des_lng = @trip.destination_states.first.longitude
+    else
+      gon.des_name = @trip.destination_countries.first.name
+      gon.des_lat = @trip.destination_countries.first.latitude
+      gon.des_lng = @trip.destination_countries.first.longitude
+    end
   end
 end

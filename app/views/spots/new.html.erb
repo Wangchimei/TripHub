@@ -37,3 +37,5 @@
     <p id="place-website" class="mb-2"></p>
   </div>
 </div>
+
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=#{ENV['GOOGLE_API_KEY']}&libraries=places&callback=initMap"%>
