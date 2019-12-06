@@ -45,10 +45,9 @@ initialize_flight_map = function initFlight() {
     gon.home_name,
   );
   var destination = addCity(
-    { latitude: gon.des_lat, longitude: gon.des_lat },
+    { latitude: gon.des_lat, longitude: gon.des_lng },
     gon.des_name,
   );
-
   // Add lines
   // Curved Lines from A to B
   var lineSeries = chart.series.push(new am4maps.MapArcSeries());
