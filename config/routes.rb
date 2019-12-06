@@ -27,9 +27,9 @@ Rails.application.routes.draw do
   end
 
   resources :user_spots, only: %i[create destroy]
-  resources :spots
+  resources :spots, only: %i[index new create]
+  resources :relationships, only: %i[create destroy]
   resources :countries, only: %i[index]
   resources :states, only: %i[index]
   resources :cities, only: %i[index]
-  resources :relationships, only: %i[create destroy]
 end
