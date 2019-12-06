@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_01_130233) do
+ActiveRecord::Schema.define(version: 2019_12_06_012638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2019_12_01_130233) do
     t.string "website"
     t.string "place_id"
     t.string "formatted_address"
+    t.index ["place_id"], name: "index_spots_on_place_id", unique: true
   end
 
   create_table "states", force: :cascade do |t|
