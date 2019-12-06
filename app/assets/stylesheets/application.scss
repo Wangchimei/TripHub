@@ -46,13 +46,18 @@
   color: #fff;
 }
 
-// dashboard map
+// User: dashboard map
+#chartdiv {
+  width: 100%;
+  height: 250px;
+}
+
 #mapdiv {
   width: 100%;
   height: 60%;
 }
 
-// Trip: spinning globe
+// Trip
 .trip-form-box {
   width: 100%;
   max-width: 600px;
@@ -82,19 +87,13 @@
   }
 }
 
-// Trip: edit flight path chart
-#chartdiv {
-  width: 100%;
-  height: 250px;
-}
-
 .local-plate {
   background-color: #89c4ff;
   color: #fff;
   padding: 0.5rem 1.5rem;
-  // margin-left: -1rem;
 }
-// create spot map
+
+// Spot
 #searchMap {
   height: 100%;
   width: 100%;
@@ -112,28 +111,9 @@
   -moz-box-sizing: border-box;
 }
 
-// #pac-input {
-//   background-color: #fff;
-//   font-size: 15px;
-//   font-weight: 300;
-//   margin: 12px;
-//   padding: 5px 10px;
-//   text-overflow: ellipsis;
-//   width: 400px;
-//   border: #e0e0e0 1px solid;
-// }
-
 #pac-input:focus {
   outline: none;
 }
-
-// #label {
-//   color: #fff;
-//   background-color: #4d90fe;
-//   font-size: 25px;
-//   font-weight: 500;
-//   padding: 6px 12px;
-// }
 
 div#pac-card.spot-search-card {
   z-index: 0;
@@ -160,7 +140,6 @@ div#pac-card.spot-search-card {
   background-color: #fff;
 }
 
-// spot card
 .card-image {
   width: 100%;
   height: 250px;
@@ -204,42 +183,11 @@ div#pac-card.spot-search-card {
   color: #89c4ff;
 }
 
-// schedule
+// Schedule
 #scheduleMap {
   height: 100%;
   // width: 100%;
 }
-
-// .schedule-card {
-//   width: 100%;
-//   // height: 100%;
-//   margin: 60% 0 10% 0;
-//   padding: 1rem;
-//   box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.3);
-//   background-color: #fff;
-//   box-sizing: border-box;
-//   -moz-box-sizing: border-box;
-// // }
-
-// div#calendar-card.schedule-card {
-//   z-index: 1;
-//   position: absolute;
-//   left: 105px;
-//   top: 30px;
-// // }
-
-// @media (min-width: 768px) {
-//   .schedule-card {
-//     width: 25%;
-//     min-width: 450px;
-//     margin: 0;
-//     padding: 1rem;
-//     box-shadow: 0 0.1rem 0.4rem rgba(0, 0, 0, 0.3);
-//     background-color: #fff;
-//     box-sizing: border-box;
-//     -moz-box-sizing: border-box;
-//   }
-// }
 
 .map-container {
   height: 100vh;
@@ -249,7 +197,7 @@ div#pac-card.spot-search-card {
   height: 100vh;
 }
 
-// new schedule spot image
+// schedule select
 .radio-box {
   position: relative;
   width: 100%;
@@ -282,13 +230,11 @@ div#pac-card.spot-search-card {
   position: absolute;
 }
 
-// hide radio
 .radio-btn {
   position: absolute;
   opacity: 0;
 }
 
-// radio img
 .radio-btn + .radio-img {
   cursor: pointer;
 }
