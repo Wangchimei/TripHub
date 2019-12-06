@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'users#welcome'
+
   devise_for :users,
     path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' },
     controllers: {
@@ -30,4 +31,5 @@ Rails.application.routes.draw do
   resources :countries, only: %i[index]
   resources :states, only: %i[index]
   resources :cities, only: %i[index]
+  resources :relationships, only: %i[create destroy]
 end

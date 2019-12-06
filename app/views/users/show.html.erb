@@ -16,3 +16,8 @@
   <%= link_to 'Delete', trip_path(trip, trip_id: trip.id), method: :delete, data: {confirm: "削除しますか？"}%>
   </p>
 <%end%>
+<% if current_user == @user %>
+  <%= link_to " 編集", edit_user_registration_path, class: "btn btn-outline-primary fas fa-user-edit" %>
+<% else %>
+  <%= render 'relationships/follow_form', user: @user %>
+<% end %>
