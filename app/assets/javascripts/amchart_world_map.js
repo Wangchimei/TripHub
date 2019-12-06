@@ -2,6 +2,7 @@ var initialize_world_map;
 initialize_world_map = function() {
   var visited_countries = gon.visited_countries;
   function countriesOutput() {
+    debugger;
     var countriesData = [];
     for (i = 0; i < visited_countries.length; i++) {
       country = visited_countries[i];
@@ -14,12 +15,12 @@ initialize_world_map = function() {
   }
   var map = AmCharts.makeChart('mapdiv', {
     type: 'map',
-    theme: 'light',
+    theme: 'dark',
     projection: 'miller',
-    language: 'jp',
+    // language: 'JA',
     panEventsEnabled: false,
     dragMap: false,
-    backgroundColor: '#B4DBEE',
+    backgroundColor: '#F6F6F6',
     backgroundAlpha: 1,
     zoomOnDoubleClick: false,
     zoomControl: {
@@ -35,12 +36,12 @@ initialize_world_map = function() {
     areasSettings: {
       autoZoom: false,
       color: '#BFBFBF',
-      colorSolid: '#D3B288',
-      selectedColor: '#D3A66C',
-      outlineColor: '#2F3841',
-      rollOverColor: '#C0E0D1',
-      rollOverOutlineColor: '#2F3841',
+      colorSolid: '#DEC9A4',
+      selectedColor: '#DEC9A4',
+      outlineColor: '#555555',
+      rollOverColor: '#B9D3C2',
+      rollOverOutlineColor: '#555555',
     },
   });
-  // map.language = 'jp';
+  map.language = 'JA';
 };
