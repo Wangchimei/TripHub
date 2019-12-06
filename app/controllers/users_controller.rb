@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def dashboard
     # @user = User.find(params[:id])
-    @trips = current_user.trips.where(status:0).order(start_day: :asc).limit(5)
+    @trips = current_user.trips.where(status:0).order(start_day: :asc).limit(3)
   end
 
   def show

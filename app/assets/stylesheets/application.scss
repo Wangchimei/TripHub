@@ -47,17 +47,69 @@
 }
 
 // User: dashboard map
+#mapdiv {
+  width: 100%;
+  height: 60vh;
+}
+
+.dash-contnet {
+  height: 40%;
+}
+
+.hei-100 {
+  height: 100%;
+}
+
+.image-grid-box {
+  position: relative;
+  // width: 100%;
+  height: 100%;
+  max-height: 100%;
+  background-size: cover;
+  border-radius: 5%;
+  text-shadow: rgba(0, 0, 0, 0.8) 0 1px 0;
+}
+
+.image-grid-box:hover {
+  box-shadow: 2px 5px 10px #888;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 5%;
+}
+
+.image-grid-text {
+  top: 25%;
+  left: 0;
+  position: relative;
+  text-align: center;
+  display: block;
+  color: #fff;
+  text-shadow: rgba(0, 0, 0, 0.8) 0 1px 0;
+  z-index: 2;
+}
+
+a:hover {
+  text-decoration: none;
+  outline: 0;
+}
+
+// Trip
 #chartdiv {
   width: 100%;
   height: 250px;
 }
 
-#mapdiv {
-  width: 100%;
-  height: 60%;
-}
-
-// Trip
 .trip-form-box {
   width: 100%;
   max-width: 600px;

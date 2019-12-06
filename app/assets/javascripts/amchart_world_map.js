@@ -14,10 +14,10 @@ initialize_world_map = function() {
   }
   var map = AmCharts.makeChart('mapdiv', {
     type: 'map',
-    theme: 'dark',
+    theme: 'light',
     projection: 'miller',
     panEventsEnabled: false,
-    backgroundColor: '#00468C',
+    backgroundColor: '#B4DBEE',
     backgroundAlpha: 1,
     zoomControl: {
       zoomControlEnabled: true,
