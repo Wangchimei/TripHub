@@ -40,14 +40,14 @@
             locals: { f: f, cities: @cities} %>
       </div>
 
-      <div class="field">
-        <%= f.label :privacy %>
-        <%= f.check_box :privacy, :as => :boolean%>
+      <div class="custom-control custom-checkbox my-4">
+        <%= f.check_box :privacy, as: :boolean, class:"custom-control-input"%>
+        <%= f.label :privacy, "旅行のスケジュールをを公開しません", class:"custom-control-label" %>
       </div>
 
-      <div>
-        <%= f.submit %>
-        <%= link_to 'Back', user_path(current_user) %>
+      <div class="text-center">
+        <%= f.submit "作成する", class: "btn btn-primary"%>
+        <%= link_to 'Back', user_path(current_user), class: "ml-3 btn btn-outline-primary" %>
       </div>
     <% end %>
   </div>

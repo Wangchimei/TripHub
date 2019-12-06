@@ -133,6 +133,8 @@ function get_json() {
     if (data) {
       markersData = generateMarkers(data);
       generate_map();
+    } else {
+      generate_map();
     }
   });
 }
@@ -174,7 +176,10 @@ function generate_map() {
   var infoWindow = new google.maps.InfoWindow();
   map.mapTypes.set('retro', styledMap);
   map.setMapTypeId('retro');
-  addMarker(markersData);
+
+  if (markersData) {
+    addMarker(markersData);
+  }
 
   function addMarker(data) {
     for (var i = 0; i < data.length; i++) {
