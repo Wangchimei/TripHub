@@ -1,7 +1,8 @@
 <div class="card devise-box">
   <div class="card-body mx-2 my-4">
+    <div class="world-globe"></div>
     <%= form_with(model: @trip) do |f| %>
-      <div class="mb-3">
+      <div class="my-3">
         <%= f.label :name, "トリップ名", class:"mb-1"%>
         <%= f.text_field :name, autofocus: true,  class:"form-control" %>
       </div>
