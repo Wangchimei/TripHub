@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[welcome]
-  before_action :set_visited_countries, except: %i[welcome]
+  # before_action :set_visited_countries, except: %i[welcome trips]
   layout 'welcome', only: %i[welcome]
 
   def welcome
@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def dashboard
     # @user = User.find(params[:id])
+    Gon.global.visited_countries = visited_countries_array
     @trips = current_user.trips.where(status:0).order(start_day: :asc).limit(3)
   end
 
@@ -18,11 +19,5 @@ class UsersController < ApplicationController
 
   def trips
     @trips = current_user.trips
-  end
-
-  private
-
-  def set_visited_countries
-    gon.visited_countries = visited_countries_array
   end
 end

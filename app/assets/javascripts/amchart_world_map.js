@@ -1,8 +1,8 @@
 var initialize_world_map;
 initialize_world_map = function() {
-  var visited_countries = gon.visited_countries;
+  var visited_countries = gon.global.visited_countries;
+  debugger;
   function countriesOutput() {
-    debugger;
     var countriesData = [];
     for (i = 0; i < visited_countries.length; i++) {
       country = visited_countries[i];
@@ -43,5 +43,5 @@ initialize_world_map = function() {
       rollOverOutlineColor: '#555555',
     },
   });
-  map.language = 'JA';
+  // map.language = 'JA';
 };

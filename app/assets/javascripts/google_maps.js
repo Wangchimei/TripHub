@@ -3,7 +3,6 @@ var markersData;
 var styledMap;
 
 function initMap() {
-  debugger;
   // set up custom style
   styledMap = new google.maps.StyledMapType(
     [
