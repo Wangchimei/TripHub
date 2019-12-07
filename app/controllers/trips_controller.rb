@@ -55,6 +55,7 @@ class TripsController < ApplicationController
   end
 
   def show
+    @schedules = @trip.schedules
   end
 
   def destroy

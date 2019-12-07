@@ -10,6 +10,7 @@
   <%= link_to trip.status, toggle_status_trip_path(trip.id) %>
   <%= link_to "#{trip.privacy}", toggle_privacy_trip_path(trip.id) %>
 
+<% if false %>
   <%= link_to 'Details', trip_path(trip)%>
   <%= link_to 'Edit Trip', edit_trip_path(trip)%>
   <%= link_to 'Edit Schedule', trip_schedules_path(trip)%>
@@ -21,3 +22,4 @@
 <% else %>
   <%= render 'relationships/follow_form', user: @user %>
 <% end %>
+<%  %>

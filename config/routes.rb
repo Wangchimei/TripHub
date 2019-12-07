@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :trips do
     get :toggle_status, on: :member
     get :toggle_privacy, on: :member
-    resources :schedules do
+    resources :schedules, except: %i[show] do
       get :overall, on: :collection
     end
   end
