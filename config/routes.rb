@@ -24,7 +24,9 @@ Rails.application.routes.draw do
   resources :trips do
     get :toggle_status, on: :member
     get :toggle_privacy, on: :member
-    resources :schedules
+    resources :schedules do
+      get :overall, on: :collection
+    end
   end
 
   resources :user_spots, only: %i[create destroy]

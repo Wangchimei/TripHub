@@ -18,6 +18,9 @@ class Trip < ApplicationRecord
   after_save :set_default_img
 
   enum status: { planning: 0, finished: 1}
+  # scope :open, -> { where(privacy: false) }
+  # scope :completed, -> { where(status: "finished") }
+  # scope :other_user, -> (user){ where.not(user_id: user.id) }
 
   def self.to_country_build
     trip = self.new

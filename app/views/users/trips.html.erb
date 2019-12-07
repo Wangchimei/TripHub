@@ -1,0 +1,9 @@
+<h1>Explore</h1>
+<% @trips.each do |trip| %>
+  <p><%= trip.name %>
+  <%= trip.description %>
+  <%= trip.start_day %> to <%= trip.end_day %>
+  <%= trip_duration(trip) %>日
+  <%= link_to 'Details', trip_path(trip)%>
+  <%= link_to 'Delete', trip_path(trip), method: :delete, data: {confirm: "削除しますか？"}%>
+  </p>

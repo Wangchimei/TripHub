@@ -3,6 +3,10 @@ class SchedulesController < ApplicationController
   before_action :set_schedule, only: %i[edit update show destroy]
   before_action :set_js_variables, except: %i[destroy]
 
+  def overall
+    @schedules = @trip.schedules
+  end
+
   def index
     @schedules = @trip.schedules
   end
