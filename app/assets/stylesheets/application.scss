@@ -121,7 +121,7 @@
 }
 
 .local-plate {
-  background-color: #89c4ff;
+  background-color: #349aff;
   color: #fff;
   padding: 0.5rem 1.5rem;
 }
@@ -479,6 +479,7 @@ a:hover {
 .follow-nav-right {
   margin-left: 4rem;
 }
+
 // reset boostrap
 .nav-tabs {
   border: none;
@@ -486,12 +487,23 @@ a:hover {
   flex-direction: row;
 }
 
-.nav-tabs .nav-link.active,
-.nav-tabs .nav-link:hover {
-  border: none;
+.nav-tabs .nav-item {
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  padding-top: 1.1rem;
+  width: 110px;
+  color: #89c4ff;
 }
 
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-link:hover {
   border: none;
+  color: #349aff;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-link:hover {
+  border: none;
+  color: #349aff;
 }

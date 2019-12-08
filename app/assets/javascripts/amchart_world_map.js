@@ -1,7 +1,6 @@
 var initialize_world_map;
 initialize_world_map = function() {
   var visited_countries = gon.global.visited_countries;
-  debugger;
   function countriesOutput() {
     var countriesData = [];
     for (i = 0; i < visited_countries.length; i++) {

@@ -39,12 +39,12 @@
               </a>
               <a class="nav-item nav-link" id="relationship-tab" data-toggle="tab" href="#relationship" role="tab" aria-controls="relationship" aria-selected="false">
                 <i class="h4 fas fa-compass"></i>
-                <p class="h7">フォロー情報</p>
+                <p class="h7">フォロー</p>
               </a>
             </div>
           </nav>
           <div class="tab-content" id="nav-tab-content">
-            <div class="tab-pane fade text-left mx-1 my-1" id="upcoming-trip" role="tabpanel" aria-labelledby="upcoming-trip-tab">
+            <div class="tab-pane fade text-left mx-1 mt-4" id="upcoming-trip" role="tabpanel" aria-labelledby="upcoming-trip-tab">
               <% if @user_trips.length != 0 %>
                 <%= render 'self_trip_cards', trips: @user_trips%>
               <% else %>
@@ -56,12 +56,12 @@
                 </div>
               <% end %>
             </div>
-            <div class="tab-pane fade text-left mx-1 my-1" id="trip-photo" role="tabpanel" aria-labelledby="trip-photo-tab">
+            <div class="tab-pane fade text-left mx-1 mt-4" id="trip-photo" role="tabpanel" aria-labelledby="trip-photo-tab">
               <div class="image-box">
               </div>
               <%= content_tag(:div, "現在お気に入りに保存されたフィードはありません。", class: "mt-4 ml-4 text-muted h6-5")%>
             </div>
-            <div class="tab-pane fade text-left mx-1 my-1" id="saved-spot" role="tabpanel" aria-labelledby="saved-spot-tab">
+            <div class="tab-pane fade text-left mx-1 mt-4" id="saved-spot" role="tabpanel" aria-labelledby="saved-spot-tab">
               <% if @user.saved_spots.length != 0 %>
                 <%= render 'spots/spot_cards', spots: @user.saved_spots %>
               <% else %>
@@ -71,30 +71,30 @@
                 </div>
               <% end %>
             </div>
-            <div class="tab-pane fade text-left mx-1 my-1" id="relationship" role="tabpanel" aria-labelledby="relationship-tab">
+            <div class="tab-pane fade text-left mx-1 my-0" id="relationship" role="tabpanel" aria-labelledby="relationship-tab">
               <nav>
-                <div class="nav nav-tabs mx-2 text-center" id="follow-tab" role="tablist">
-                  <a class="nav-item follow-nav follow-nav-left" id="following-tab" data-toggle="tab" href="#following" role="tab" aria-controls="following" aria-selected="false">
+                <div class="nav nav-tabs mt-1 text-center" id="follow-tab" role="tablist">
+                  <a class="follow-nav follow-nav-left" id="following-tab" data-toggle="tab" href="#following" role="tab" aria-controls="following" aria-selected="false">
                     <i class="h4 fas fa-compass"></i>
-                    <span class="h7">フォロ中</span>
+                    <span class="h7">フォロー中</span>
                   </a>
-                  <a class="nav-item follow-nav follow-nav-right" id="follower-tab" data-toggle="tab" href="#follower" role="tab" aria-controls="follower" aria-selected="false">
+                  <a class="follow-nav follow-nav-right" id="follower-tab" data-toggle="tab" href="#follower" role="tab" aria-controls="follower" aria-selected="false">
                     <i class="h4 far fa-compass"></i>
                     <span class="h7">フォロワー</span>
                   </a>
                 </div>
               <nav>
-              <div class="tab-content mt-4" id="follow-tab-content">
-                <div class="tab-pane fade text-left mx-1 my-1" id="following" role="tabpanel" aria-labelledby="following-tab">
+              <div class="tab-content" id="follow-tab-content">
+                <div class="tab-pane fade text-left my-1" id="following" role="tabpanel" aria-labelledby="following-tab">
                   <% if @user.following.length != 0 %>
                     <%= render 'relationship_cards', relationships: @user.following %>
                   <% else %>
                     <div class="text-center">
-                      <p class="h6 my-5 text-muted"> 現在フォロ中のユーザはいません。</p>
+                      <p class="h6 my-5 text-muted"> 現在フォロー中のユーザはいません。</p>
                     </div>
                   <% end %>
                 </div>
-                <div class="tab-pane fade text-left mx-1 my-1" id="follower" role="tabpanel" aria-labelledby="follower-tab">
+                <div class="tab-pane fade text-left my-1" id="follower" role="tabpanel" aria-labelledby="follower-tab">
                 <% if @user.followers.length != 0 %>
                   <%= render 'relationship_cards', relationships: @user.followers %>
                 <% else %>

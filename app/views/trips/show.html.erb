@@ -1,11 +1,25 @@
 <div class="mt-5">
   <div id="chartdiv"></div>
+  <div class="mt-4 text-center">
+  <div class="d-flex justify-content-center">
+    <div class="local-plate">
+      <span><%= current_user.country.name %></span>
+      <span><%= current_user.state.name if current_user.state.name  %></span>
+      <span><%= current_user.city.name if current_user.city.name %></span>
+    </div>
+    <div class="mx-3 my-auto"><i class="fas fa-arrows-alt-h"></i></div>
+    <div class="local-plate">
+      <span><%= @trip.destination_countries.first.name %></span>
+      <span><%= @trip.destination_states.first.name if @trip.destination_states.first %></span>
+      <span><%= @trip.destination_cities.first.name if @trip.destination_cities.first %></span>
+    </div>
+  </div>
 </div>
 
-<div class="container">
+<div class="container mt-5">
   <div class="text-center">
-    <h2><%= @trip.name %></h2>
-    <p><%= @trip.start_day %> 〜 <%= @trip.end_day %> ( <%= trip_duration(@trip) %> 日間)</p>
+    <h2 class="h3"><%= @trip.name %></h2>
+    <p class="h5 text-muted"><%= @trip.start_day %> 〜 <%= @trip.end_day %> ( <%= trip_duration(@trip) %> 日間)</p>
     <div class="card px-4 py-1 text-left">
     <p><%= @trip.description %></p>
     </div>
