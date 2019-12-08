@@ -6,4 +6,8 @@ module TripsHelper
     start_day + " - " + end_day
     end
   end
+
+  def daily_schedule(schedules, day)
+    schedules.where('start BETWEEN ? AND ?', day.beginning_of_day, day.end_of_day)
+  end
 end

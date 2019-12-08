@@ -216,7 +216,7 @@ function autocomplete() {
     streetViewControl: false,
     mapTypeControlOptions: {
       mapTypeIds: ['retro', 'roadmap', 'satellite', 'hybrid'],
-      // style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+      style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
       position: google.maps.ControlPosition.TOP_RIGHT,
     },
   });
@@ -225,6 +225,7 @@ function autocomplete() {
   searchMap.controls[google.maps.ControlPosition.LEFT_TOP].push(card);
   searchMap.mapTypes.set('retro', styledMap);
   searchMap.setMapTypeId('retro');
+  // searchMap.panBy(250, -200);
   var autocomplete = new google.maps.places.Autocomplete(input);
   // Bind the map's bounds (viewport) property to the autocomplete object,
   // so that the autocomplete requests use the current map bounds for the

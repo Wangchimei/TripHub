@@ -87,7 +87,7 @@
 .map-box {
   height: 50vh;
   max-height: 500px;
-  margin: 1rem;
+  margin: 2rem;
 }
 
 #mapdiv {
@@ -262,6 +262,18 @@ a:hover {
   background-color: #fff;
 }
 
+.fa-street-view {
+  color: #349aff;
+}
+
+.note-card {
+  background-color: #fff;
+  border: #c6e2ff 1px solid;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
 // Spot
 #searchMap {
   height: 100%;
@@ -270,7 +282,9 @@ a:hover {
 
 .spot-search-card {
   border-radius: 3%;
-  width: 400px;
+  width: 30%;
+  min-width: 200px;
+  max-width: 400px;
   margin: 1rem 1rem 0 0;
   padding: 1rem;
   outline: none;

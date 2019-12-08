@@ -1,15 +1,22 @@
 class TripsController < ApplicationController
-  before_action :set_trip, only: %i[edit update show destroy toggle_status toggle_privacy]
-  before_action :set_location, only: %i[new edit]
-  before_action :set_chart_latlng, only: %i[edit]
+  before_action :set_user_trip, only: %i[edit update destroy toggle_status toggle_privacy]
+  before_action :set_trip, only: %i[show]
+  before_action :set_chart_latlng, only: %i[show]
 
   def index
     @trips = Trip.where(privacy:false).order(created_at: :desc)
     # @trips = Trip.open.completed.other_than(current_user).order(created_at: :desc)
   end
 
+  def show
+    @schedules = @trip.schedules.order(start: :asc)
+  end
+
   def new
     @trip = Trip.new
+    @countries = Country.limit(2)
+    @states = State.limit(2)
+    @cities = City.limit(2)
   end
 
   def create
@@ -54,10 +61,6 @@ class TripsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
-  def show
-    @schedules = @trip.schedules
-  end
-
   def destroy
     @trip.destroy
     redirect_to user_path(current_user)
@@ -67,13 +70,11 @@ class TripsController < ApplicationController
   private
 
   def set_trip
-    @trip = current_user.trips.find(params[:id])
+    @trip = Trip.find(params[:id])
   end
 
-  def set_location
-    @countries = Country.limit(2)
-    @states = State.limit(2)
-    @cities = City.limit(2)
+  def set_user_trip
+    @trip = current_user.trips.find(params[:id])
   end
 
   def trip_params

@@ -6,11 +6,11 @@
   <%= form_with(model:@spot) do |f| %>
     <div class="mt-4">
       <label class="mb-0">場所名</label>
-      <%= f.text_field :name, id:"name", class:"gmap-reset form-control" %>
+      <%= f.text_field :name, readonly: true, id:"name", class:"gmap-reset form-control" %>
     </div>
     <div>
       <label class="mb-0 mt-2">住所</label>
-      <%= f.text_field :address, id:"address", class:"gmap-reset form-control" %>
+      <%= f.text_field :address, readonly: true, id:"address", class:"gmap-reset form-control" %>
     </div>
     <div>
       <label class="mb-0 mt-2">入場料金</label>
