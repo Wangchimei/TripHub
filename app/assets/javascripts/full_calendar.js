@@ -41,9 +41,9 @@ initialize_calendar = function() {
         },
       },
       header: {
-        left: '',
+        left: 'back add_event',
         center: 'title',
-        right: 'add_event, prev, next',
+        right: 'prev, next',
       },
       defaultView: 'agenda',
       defaultDate: cal_format_start,
@@ -61,7 +61,7 @@ initialize_calendar = function() {
       editable: true,
       eventLimit: true,
       // height responsive
-      height: window.innerHeight - 75,
+      height: self.innerHeight - 120,
       events: schedules,
       eventColor: '#89C4FF',
       titleFormat: 'YYYY 年 M 月 D 日',
@@ -128,7 +128,7 @@ initialize_calendar = function() {
 
       // height responsive
       windowResize: function() {
-        calendar.fullCalendar('option', 'height', window.innerHeight - 75);
+        calendar.fullCalendar('option', 'height', self.innerHeight - 120);
       },
     });
   });

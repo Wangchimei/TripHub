@@ -9,7 +9,7 @@
             <span><%= current_user.state.name if current_user.state.name  %></span>
             <span><%= current_user.city.name if current_user.city.name %></span>
           </div>
-          <div class="mx-3">&rarr;</div>
+          <div class="mx-3 my-auto"><i class="fas fa-arrows-alt-h"></i></div>
           <div class="local-plate">
             <span><%= @trip.destination_countries.first.name %></span>
             <span><%= @trip.destination_states.first.name if @trip.destination_states.first %></span>
@@ -41,7 +41,7 @@
 
       <div class="text-center">
         <%= f.submit "更新する", class: "btn btn-primary"%>
-        <%= link_to 'Back', user_path(current_user), class: "ml-3 btn btn-outline-primary" %>
+        <%= link_to 'Back', trips_user_path(current_user), class: "ml-3 btn btn-outline-primary" %>
       </div>
     <% end %>
   </div>

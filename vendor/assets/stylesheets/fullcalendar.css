@@ -944,15 +944,19 @@ NOTE: use percentage font sizes or else old IE chokes
 }
 
 .fc-toolbar .fc-left {
+  margin-top: 0.1em;
+  margin-bottom: 0.4em;
   float: left;
 }
 
 .fc-toolbar .fc-right {
+  margin-top: 0.1em;
+  margin-bottom: 0.4em;
   float: right;
 }
 
 .fc-toolbar .fc-center {
-  margin-top: 1rem;
+  margin-top: 0.3rem;
   display: inline-block;
 }
 
@@ -971,6 +975,7 @@ NOTE: use percentage font sizes or else old IE chokes
 
 /* title text */
 .fc-toolbar h2 {
+  font-size: 1.5rem;
   margin: 0;
 }
 

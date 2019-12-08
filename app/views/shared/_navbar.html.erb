@@ -21,7 +21,7 @@
         <%= link_to "新規トリップ", new_trip_path, class:"nav-link #{"active" if current_page?(new_trip_path)}" %>
       </li>
       <li class="nav-item mr-2">
-          <%= link_to "マイトリップ", trips_user_path(current_user), class:"nav-link #{"dropdown-active" if current_page?(trips_user_path(current_user))}" %>
+          <%= link_to "マイトリップ", trips_user_path(current_user), class:"nav-link #{"active" if current_page?(trips_user_path(current_user))}" %>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle px-0 py-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
