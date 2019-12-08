@@ -3,9 +3,9 @@
   <div class="mt-4 text-center">
   <div class="d-flex justify-content-center">
     <div class="local-plate">
-      <span><%= current_user.country.name %></span>
-      <span><%= current_user.state.name if current_user.state.name  %></span>
-      <span><%= current_user.city.name if current_user.city.name %></span>
+      <span><%= @trip.user.country.name %></span>
+      <span><%= @trip.user.state.name if @trip.user.state.name  %></span>
+      <span><%= @trip.user.city.name if @trip.user.city.name %></span>
     </div>
     <div class="mx-3 my-auto"><i class="fas fa-arrows-alt-h"></i></div>
     <div class="local-plate">

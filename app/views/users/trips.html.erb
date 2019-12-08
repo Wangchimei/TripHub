@@ -1,3 +1,10 @@
 <div class="container mt-5">
-  <%= render 'self_trip_cards', trips: @trips%>
+  <% if @trips.length != 0 %>
+    <%= render 'self_trip_cards', trips: @trips%>
+  <% else %>
+    <div class="text-center mt-5 ">
+      <p class="h6 my-5 text-muted">次の旅行、どこに行きたいですか。</p>
+      <p><%= link_to "探索する", trips_path, class:"btn btn-sm btn-outline-primary ml-2" %></p>
+    </div>
+  <% end %>
 </div>

@@ -1,6 +1,7 @@
 <div class="row">
   <% trips.each do |trip| %>
-    <div class="col-12 col-md-6 col-lg-4">
+    <div class="col-12 col-md-6 col-lg-4" id="trips">
+    <div class="card">
       <div class="trip-card">
         <%= image_tag trip.trip_image, class:"trip-image" %>
         <div class="caption">
@@ -64,8 +65,32 @@
             </div>
           </div>
         </div>
-        <%= link_to '', trip_path(trip), class:"details-link"%>
+      <%= link_to '', trip_path(trip), class:"details-link"%>
       </div>
+
+      <div class="card-footer text-center">
+        <div class="row">
+          <div class="col-6 text-center">
+            <%= link_to toggle_privacy_trip_path(trip), class:"toggle-link" do %>
+                <% if trip.privacy == false %>
+                  <p><i class="fas fa-unlock"></i> 公開中</p>
+                <% else %>
+                  <p><i class="fas fa-lock"></i> 非公開</p>
+                <% end %>
+            <% end %>
+          </div>
+          <div class="col-6 text-center">
+            <%= link_to toggle_status_trip_path(trip), class:"toggle-link" do %>
+              <% if trip.status == "planning" %>
+                <p><i class="far fa-flag"></i> 計画中</p>
+              <% else %>
+                <p><i class="fas fa-flag-checkered"></i> 完成</p>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
   <%end%>
 </div>

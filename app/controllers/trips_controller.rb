@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   before_action :set_user_trip, only: %i[edit update destroy toggle_status toggle_privacy]
   before_action :set_trip, only: %i[show]
-  before_action :set_chart_latlng, only: %i[show]
+  before_action :set_chart_latlng, only: %i[edit show]
 
   def index
     @trips = Trip.where(privacy:false).order(created_at: :desc)
@@ -53,12 +53,12 @@ class TripsController < ApplicationController
       current_user.unvisited!(@countries) if only_one_record?(@finshed_trips)
       @trip.planning!
     end
-    redirect_to user_path(current_user)
+    redirect_to request.referer
   end
 
   def toggle_privacy
     @trip.toggle!(:privacy)
-    redirect_to user_path(current_user)
+    redirect_to request.referer
   end
 
   def destroy
@@ -94,9 +94,9 @@ class TripsController < ApplicationController
   end
 
   def set_chart_latlng
-    gon.home_name = current_user.country.name
-    gon.home_lat = current_user.country.latitude
-    gon.home_lng = current_user.country.longitude
+    gon.home_name = @trip.user.country.name
+    gon.home_lat = @trip.user.country.latitude
+    gon.home_lng = @trip.user.country.longitude
     gon.des_name = @trip.destination_countries.first.name
     gon.des_lat = @trip.destination_countries.first.latitude
     gon.des_lng = @trip.destination_countries.first.longitude

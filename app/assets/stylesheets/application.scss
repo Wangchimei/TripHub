@@ -137,7 +137,6 @@
   display: inline-block;
   overflow: hidden;
   min-width: 250px;
-  // max-width: 310px;
   height: 335px;
   width: 100%;
   background-color: #000000;
@@ -145,7 +144,6 @@
   text-align: left;
   font-size: 1rem;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
-  margin-bottom: 2rem;
 }
 
 .trip-card .trip-image {
@@ -197,6 +195,13 @@
   right: 0;
 }
 
+.trip-card .toggle-area {
+  position: absolute;
+  // top: 335px;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 999;
+}
+
 .trip-card:hover .caption,
 .trip-card.hover .caption {
   height: calc(90%);
@@ -240,6 +245,26 @@
   margin-top: 0.7rem;
 }
 
+#trips .card {
+  border: none;
+  border-radius: 0;
+  background-color: #fff;
+}
+
+#trips .card .card-footer {
+  height: 3rem;
+  background: transparent;
+}
+
+.toggle-link {
+  color: #a0a0a0;
+  font-size: 1.1rem;
+}
+
+.toggle-link:hover {
+  color: #6b6b6b;
+}
+
 .fa-street-view {
   color: #349aff;
 }
@@ -252,6 +277,7 @@
   box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.1);
   margin-bottom: 1rem;
 }
+
 // Spot
 #searchMap {
   height: 100%;
