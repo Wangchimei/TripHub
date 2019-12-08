@@ -8,8 +8,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
     }
   resources :users, only: :show do
-    get :dashboard, on: :member #?
-    get :trips, on: :member #?
+    get :trips, on: :member
   end
 
   resources :locations, only: :index do
