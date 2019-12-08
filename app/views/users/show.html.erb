@@ -1,24 +1,113 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<%= image_tag current_user.avatar, size:"100x100"%>
-<% @trips.each do |trip| %>
-  <p><%= trip.name %>
-  <%= trip.description %>
-  <%= trip.start_day %> to <%= trip.end_day %>
-  <%= trip_duration(trip) %>日
-  ¥ <%= trip.est_amount%>
-  <%= link_to trip.status, toggle_status_trip_path(trip.id) %>
-  <%= link_to "#{trip.privacy}", toggle_privacy_trip_path(trip.id) %>
+<div class="map-box page-header header-filter">
+  <div id="mapdiv"></div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <div class="container card mb-4">
+      <div class="card-body">
+        <div class="card-title mt-2">
+          <div class="d-flex flex-column text-center">
+            <div class="avatar-box"><%= image_tag current_user.avatar, class:"avatar-image"%></div>
+            <div>
+              <p class="h4 mb-0 mt-2 text-dark"><%= @user.name %></p>
+              <p class="h6-5 mb-2 text-muted"><%= @user.email %></P>
+              <% if current_user == @user %>
+                <%= link_to " 編集", edit_user_registration_path, class: "btn btn-outline-primary fas fa-user-edit" %>
+              <% else %>
+                <%= render 'relationships/follow_form', user: @user %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <% if current_user == @user %>
+          <nav>
+            <div class="nav nav-tabs mx-2 text-center" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link" id="upcoming-trip-tab" data-toggle="tab" href="#upcoming-trip" role="tab" aria-controls="upcoming-trip" aria-selected="false">
+                <i class="h4 fas fa-plane-departure"></i>
+                <p class="h7">近づく旅行</p>
+              </a>
+              <a class="nav-item nav-link" id="trip-photo-tab" data-toggle="tab" href="#trip-photo" role="tab" aria-controls="trip-photo" aria-selected="false">
+                <i class="h4 fas fa-camera-retro"></i>
+                <p class="h7">旅行写真</p>
+              </a>
+              <a class="nav-item nav-link" id="saved-spot-tab" data-toggle="tab" href="#saved-spot" role="tab" aria-controls="saved-spot" aria-selected="false">
+                <i class="h4 fas fa-map-pin"></i>
+                <p class="h7">保存スポット</p>
+              </a>
+              <a class="nav-item nav-link" id="follower-tab" data-toggle="tab" href="#follower" role="tab" aria-controls="follower" aria-selected="false">
+                <i class="h4 fas fa-compass"></i>
+                <p class="h7">フォロー情報</p>
+              </a>
+            </div>
+          </nav>
+          <div class="tab-content" id="nav-tab-content">
+            <div class="tab-pane fade text-left mx-1 my-1" id="upcoming-trip" role="tabpanel" aria-labelledby="upcoming-trip-tab">
+              <% if @user_trips != 0 %>
+                <%= render 'self_trip_cards', trips: @user_trips%>
+              <% else %>
+                <div class="text-center">
+                  <p class="h6 my-5 text-muted">
+                    次の旅行、どこに行きたいですか。
+                    <%= link_to "探索する", trips_path, class:"btn btn-sm btn-outline-primary ml-2" %>
+                  </p>
+                </div>
+              <% end %>
+            </div>
+            <div class="tab-pane fade text-left mx-1 my-1" id="trip-photo" role="tabpanel" aria-labelledby="trip-photo-tab">
+              <div class="image-box">
+              </div>
+              <%= content_tag(:div, "現在お気に入りに保存されたフィードはありません。", class: "mt-4 ml-4 text-muted h6-5")%>
+            </div>
+            <div class="tab-pane fade text-left mx-1 my-1" id="saved-spot" role="tabpanel" aria-labelledby="saved-spot-tab">
+              <% if current_user.saved_spots.length != 0 %>
+                <%= render 'spots/spot_cards', spots: current_user.saved_spots %>
+              <% else %>
+                <div class="text-center">
+                  <p class="h6 my-5 text-muted"> 保存済みのスッポトがありません。</p>
+                  <%= link_to "スポット一覧へ", spots_path, class:"btn btn-sm btn-outline-primary ml-2"%>
+                </div>
+              <% end %>
+            </div>
+            <div class="tab-pane fade text-left mx-1 my-1" id="follower" role="tabpanel" aria-labelledby="follower-tab">
+              <div class="image-box">
+              </div>
+              <%= content_tag(:div, "現在お気に入りに保存されたフィードはありません。", class: "mt-4 ml-4 text-muted h6-5")%>
+            </div>
+          <% else %>
+            <nav>
+              <div class="nav nav-tabs mx-2 text-center" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="past-trip-tab" data-toggle="tab" href="#past-trip" role="tab" aria-controls="past-trip" aria-selected="true">
+                  <i class="h4 fas fa-passport"></i>
+                  <p class="h7">公開している旅行記録</p>
+                </a>
+                <a class="nav-item nav-link" id="follower-tab" data-toggle="tab" href="#follower" role="tab" aria-controls="follower" aria-selected="false">
+                  <i class="h4 fas fa-compass"></i>
+                  <p class="h7">フォロワー</p>
+                </a>
+              </div>
+            </nav>
+            <div class="tab-content ml-2 mr-1" id="nav-tabContent">
+              <div class="tab-pane fade show active text-left mx-1 my-1" id="past-trip" role="tabpanel" aria-labelledby="past-trip-tab">
+                <div class="image-box">
+                </div>
+                <%= content_tag(:div, "写真をシェアしよう！", class: "mt-4 ml-4 text-muted h6-5")%>
+              </div>
+              <div class="tab-pane fade text-left mx-1 my-1" id="follower" role="tabpanel" aria-labelledby="follower-tab">
+                <div class="image-box">
+                </div>
+                <%= content_tag(:div, "現在お気に入りに保存されたフィードはありません。", class: "mt-4 ml-4 text-muted h6-5")%>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
 
-<% if false %>
-  <%= link_to 'Details', trip_path(trip)%>
-  <%= link_to 'Edit Trip', edit_trip_path(trip)%>
-  <%= link_to 'Edit Schedule', trip_schedules_path(trip)%>
-  <%= link_to 'Delete', trip_path(trip, trip_id: trip.id), method: :delete, data: {confirm: "削除しますか？"}%>
-  </p>
-<%end%>
-<% if current_user == @user %>
-  <%= link_to " 編集", edit_user_registration_path, class: "btn btn-outline-primary fas fa-user-edit" %>
-<% else %>
-  <%= render 'relationships/follow_form', user: @user %>
-<% end %>
+
+<script>
+  $(document).ready(initialize_world_map)
+</script>

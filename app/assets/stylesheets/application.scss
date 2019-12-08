@@ -86,9 +86,10 @@
 }
 // User: dashboard map
 .map-box {
-  height: 50vh;
+  height: 40vh;
+  min-height: 400px;
   max-height: 500px;
-  margin: 2rem;
+  margin-top: 1.4rem;
 }
 
 #mapdiv {
@@ -463,4 +464,38 @@ div#pac-card.spot-search-card {
   border: 2px solid rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   filter: brightness(100%);
+}
+
+// User
+.avatar-box {
+  width: 150px;
+  height: 150px;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 1rem;
+  box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 auto;
+}
+
+.avatar-box .avatar-image {
+  width: 100%;
+  object-fit: cover;
+}
+
+// reset boostrap
+.nav-tabs {
+  border: none;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-link:hover {
+  border: none;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-link:hover {
+  border: none;
 }

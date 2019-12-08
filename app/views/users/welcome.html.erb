@@ -4,12 +4,7 @@
     <p class="brand-text">Make planning easy and fun</p>
   </div>
   <div class="text-center">
-    <% if !current_user %>
-      <%= link_to "新規登録", new_user_registration_path, class:"btn btn-lg btn-primary cover-link" %>
-      <%= link_to "ログイン", new_user_session_path, class:"btn btn-lg btn-primary cover-link" %>
-    <% else %>
-      <%= link_to "ダッシュボード", dashboard_user_path(current_user), class:"btn btn-lg btn-primary cover-link" %>
-      <%= link_to "探索する", trips_path, class:"btn btn-lg btn-primary cover-link" %>
-    <% end %>
+    <%= link_to "新規登録", new_user_registration_path, class:"btn btn-lg btn-primary cover-link" %>
+    <%= link_to "ログイン", new_user_session_path, class:"btn btn-lg btn-primary cover-link" %>
   </div>
 </div>
