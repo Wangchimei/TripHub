@@ -1,9 +1,72 @@
-<h1>Explore</h1>
-<% @trips.each do |trip| %>
-  <p><%= trip.name %>
-  <%= trip.description %>
-  <%= trip.start_day %> to <%= trip.end_day %>
-  <%= trip_duration(trip) %>日
-  <%= link_to 'Details', trip_path(trip)%>
-  <%= link_to 'Delete', trip_path(trip), method: :delete, data: {confirm: "削除しますか？"}%>
-  </p>
+<h1>マイトリップ</h1>
+<div class="container mt-5">
+  <div class="row">
+  <% @trips.each do |trip| %>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="trip-card">
+        <%= image_tag trip.trip_image, class:"trip-image" %>
+        <div class="caption">
+          <h5><%=trip.destination_countries.first.name%></h5>
+          <h3 class="float-right"><%= trip.start_day %></h3>
+          <h3><%=trip.destination_states.first.name%></h3>
+          <div class="trip-details mt-3">
+            <table class="table text-nowrap mb-0">
+              <tbody>
+                <tr>
+                  <th class="text-light align-middle text-center">旅行期間
+                  </th>
+                  <td class="text-light text-center">
+                    <%= trip_duration(trip) %> 日間
+                  </td>
+                </tr>
+                <tr>
+                  <th class="text-light align-middle text-center">旅行スポット
+                  </th>
+                  <td class="text-light text-center">
+                    <%= trip.schedules.count%> か所
+                  </td>
+                </tr>
+                <tr>
+                  <th class="text-light align-middle text-center">概算旅行費用
+                  </th>
+                  <td class="text-light text-center">
+                    <%= trip.est_amount%> yen
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="row">
+              <div class="col-4 control-panel">
+                <%= link_to trip_path(trip) do %>
+                  <div class="icon-box">
+                    <i class="fas fa-globe-americas"></i>
+                    <p class="mb-0 h7">トリップ</p>
+                    <p class="mb-0 h7">情報編集</p>
+                  </div>
+                <%end%>
+              </div>
+              <div class="col-4 control-panel">
+                <%= link_to trip_path(trip) do %>
+                  <div class="icon-box">
+                    <i class="far fa-calendar-alt"></i>
+                    <p class="mb-0 h7">スケジュール</p>
+                    <p class="mb-0 h7">編集</p>
+                  </div>
+                <%end%>
+              </div>
+              <div class="col-4 control-panel">
+                <%= link_to trip_path(trip), method: :delete, data: {confirm: "削除しますか？"} do %>
+                  <div class="icon-box">
+                    <i class="far fa-trash-alt"></i>
+                    <p class="mb-0 h7">トリップ</p>
+                    <p class="mb-0 h7">削除</p>
+                  </div>
+                <%end%>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>
