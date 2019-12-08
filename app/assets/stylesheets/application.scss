@@ -483,6 +483,41 @@ div#pac-card.spot-search-card {
   object-fit: cover;
 }
 
+.avatar-box-sm {
+  width: 120px;
+  height: 120px;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 1rem;
+  box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 auto;
+}
+
+.avatar-box-sm .avatar-image-sm {
+  width: 100%;
+  object-fit: cover;
+}
+
+.follow-card {
+  border: 1px solid #89c4ff;
+}
+
+.follow-nav {
+  color: #89c4ff;
+  margin-bottom: 2rem;
+}
+
+.follow-nav:active,
+.follow-nav.active,
+.follow-nav:hover {
+  color: #349aff;
+  border-bottom: 2px solid #349aff;
+}
+
+.follow-nav-right {
+  margin-left: 4rem;
+}
 // reset boostrap
 .nav-tabs {
   border: none;

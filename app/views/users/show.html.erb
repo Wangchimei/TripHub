@@ -7,10 +7,11 @@
       <div class="card-body">
         <div class="card-title mt-2">
           <div class="d-flex flex-column text-center">
-            <div class="avatar-box"><%= image_tag current_user.avatar, class:"avatar-image"%></div>
+            <div class="avatar-box"><%= image_tag @user.avatar, class:"avatar-image"%></div>
             <div>
-              <p class="h4 mb-0 mt-2 text-dark"><%= @user.name %></p>
-              <p class="h6-5 mb-2 text-muted"><%= @user.email %></P>
+              <p class="h4 my-2 text-dark"><%= @user.name %></p>
+              <p class="h6 mb-0 text-muted">フォロワー <%= @user.followers.count %> 人</P>
+              <p class="h6 mb-3 mt-2 text-muted">旅行<%= @user.visited_countries.count %>ヶ国</p>
               <% if current_user == @user %>
                 <%= link_to " 編集", edit_user_registration_path, class: "btn btn-outline-primary fas fa-user-edit" %>
               <% else %>
@@ -36,7 +37,7 @@
                 <i class="h4 fas fa-map-pin"></i>
                 <p class="h7">保存スポット</p>
               </a>
-              <a class="nav-item nav-link" id="follower-tab" data-toggle="tab" href="#follower" role="tab" aria-controls="follower" aria-selected="false">
+              <a class="nav-item nav-link" id="relationship-tab" data-toggle="tab" href="#relationship" role="tab" aria-controls="relationship" aria-selected="false">
                 <i class="h4 fas fa-compass"></i>
                 <p class="h7">フォロー情報</p>
               </a>
@@ -44,7 +45,7 @@
           </nav>
           <div class="tab-content" id="nav-tab-content">
             <div class="tab-pane fade text-left mx-1 my-1" id="upcoming-trip" role="tabpanel" aria-labelledby="upcoming-trip-tab">
-              <% if @user_trips != 0 %>
+              <% if @user_trips.length != 0 %>
                 <%= render 'self_trip_cards', trips: @user_trips%>
               <% else %>
                 <div class="text-center">
@@ -61,8 +62,8 @@
               <%= content_tag(:div, "現在お気に入りに保存されたフィードはありません。", class: "mt-4 ml-4 text-muted h6-5")%>
             </div>
             <div class="tab-pane fade text-left mx-1 my-1" id="saved-spot" role="tabpanel" aria-labelledby="saved-spot-tab">
-              <% if current_user.saved_spots.length != 0 %>
-                <%= render 'spots/spot_cards', spots: current_user.saved_spots %>
+              <% if @user.saved_spots.length != 0 %>
+                <%= render 'spots/spot_cards', spots: @user.saved_spots %>
               <% else %>
                 <div class="text-center">
                   <p class="h6 my-5 text-muted"> 保存済みのスッポトがありません。</p>
@@ -70,35 +71,74 @@
                 </div>
               <% end %>
             </div>
-            <div class="tab-pane fade text-left mx-1 my-1" id="follower" role="tabpanel" aria-labelledby="follower-tab">
-              <div class="image-box">
+            <div class="tab-pane fade text-left mx-1 my-1" id="relationship" role="tabpanel" aria-labelledby="relationship-tab">
+              <nav>
+                <div class="nav nav-tabs mx-2 text-center" id="follow-tab" role="tablist">
+                  <a class="nav-item follow-nav follow-nav-left" id="following-tab" data-toggle="tab" href="#following" role="tab" aria-controls="following" aria-selected="false">
+                    <i class="h4 fas fa-compass"></i>
+                    <span class="h7">フォロ中</span>
+                  </a>
+                  <a class="nav-item follow-nav follow-nav-right" id="follower-tab" data-toggle="tab" href="#follower" role="tab" aria-controls="follower" aria-selected="false">
+                    <i class="h4 far fa-compass"></i>
+                    <span class="h7">フォロワー</span>
+                  </a>
+                </div>
+              <nav>
+              <div class="tab-content mt-4" id="follow-tab-content">
+                <div class="tab-pane fade text-left mx-1 my-1" id="following" role="tabpanel" aria-labelledby="following-tab">
+                  <% if @user.following.length != 0 %>
+                    <%= render 'relationship_cards', relationships: @user.following %>
+                  <% else %>
+                    <div class="text-center">
+                      <p class="h6 my-5 text-muted"> 現在フォロ中のユーザはいません。</p>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="tab-pane fade text-left mx-1 my-1" id="follower" role="tabpanel" aria-labelledby="follower-tab">
+                <% if @user.followers.length != 0 %>
+                  <%= render 'relationship_cards', relationships: @user.followers %>
+                <% else %>
+                  <div class="text-center">
+                    <p class="h6 my-5 text-muted"> 現在フォロワーはいません。</p>
+                  </div>
+                <% end %>
               </div>
-              <%= content_tag(:div, "現在お気に入りに保存されたフィードはありません。", class: "mt-4 ml-4 text-muted h6-5")%>
             </div>
-          <% else %>
-            <nav>
-              <div class="nav nav-tabs mx-2 text-center" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active" id="past-trip-tab" data-toggle="tab" href="#past-trip" role="tab" aria-controls="past-trip" aria-selected="true">
-                  <i class="h4 fas fa-passport"></i>
-                  <p class="h7">公開している旅行記録</p>
-                </a>
-                <a class="nav-item nav-link" id="follower-tab" data-toggle="tab" href="#follower" role="tab" aria-controls="follower" aria-selected="false">
-                  <i class="h4 fas fa-compass"></i>
-                  <p class="h7">フォロワー</p>
-                </a>
-              </div>
-            </nav>
-            <div class="tab-content ml-2 mr-1" id="nav-tabContent">
-              <div class="tab-pane fade show active text-left mx-1 my-1" id="past-trip" role="tabpanel" aria-labelledby="past-trip-tab">
-                <div class="image-box">
+          </div>
+        <% else %>
+          <nav>
+            <div class="nav nav-tabs mx-2 text-center" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link" id="past-trip-tab" data-toggle="tab" href="#past-trip" role="tab" aria-controls="past-trip" aria-selected="false">
+                <i class="h4 fas fa-passport"></i>
+                <p class="h7">公開している旅行記録</p>
+              </a>
+              <a class="nav-item nav-link" id="follower-tab" data-toggle="tab" href="#follower" role="tab" aria-controls="follower" aria-selected="false">
+                <i class="h4 fas fa-compass"></i>
+                <p class="h7">フォロワー</p>
+              </a>
+            </div>
+          </nav>
+          <div class="tab-content" id="nav-tab-content">
+            <div class="tab-pane fade text-left mx-1 my-1" id="past-trip" role="tabpanel" aria-labelledby="past-trip-tab">
+              <% if @public_trips.length != 0 %>
+                <%= render 'trips/other_users_trip_cards', trips: @public_trips %>
+              <% else %>
+                <div class="text-center">
+                  <p class="h6 my-5 text-muted">
+                    公開している旅行記録がありません。
+                  </p>
                 </div>
-                <%= content_tag(:div, "写真をシェアしよう！", class: "mt-4 ml-4 text-muted h6-5")%>
-              </div>
-              <div class="tab-pane fade text-left mx-1 my-1" id="follower" role="tabpanel" aria-labelledby="follower-tab">
-                <div class="image-box">
+              <% end %>
+            </div>
+            <div class="tab-pane fade text-left mx-1 my-1" id="follower" role="tabpanel" aria-labelledby="follower-tab">
+              <% if @user.followers.length != 0 %>
+                <%= render 'relationship_cards', relationships: @user.followers %>
+              <% else %>
+                <div class="text-center">
+                  <p class="h6 my-5 text-muted">
+                  現在フォロワーはいません。</p>
                 </div>
-                <%= content_tag(:div, "現在お気に入りに保存されたフィードはありません。", class: "mt-4 ml-4 text-muted h6-5")%>
-              </div>
+              <% end %>
             </div>
           </div>
         <%end%>
@@ -106,7 +146,6 @@
     </div>
   </div>
 </div>
-
 
 <script>
   $(document).ready(initialize_world_map)

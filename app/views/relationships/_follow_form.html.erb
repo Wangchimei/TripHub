@@ -1,16 +1,16 @@
 <div id="follow_<%= user.id %>">
- <% unless current_user.following?(user) %>
-   <%= form_with(model: current_user.active_relationships.build(followed_id: user.id))  do |f| %>
-     <%= f.hidden_field :followed_id %>
-     <%= button_tag type: 'submit', class: "btn btn-outline-info", id: "register-button" do %>
-       <i class="far fa-compass" aria-hidden="true"> フォロー</i>
-     <% end %>
-   <% end %>
- <% else %>
+  <% unless current_user.following?(user) %>
+    <%= form_with(model: current_user.active_relationships.build(followed_id: user.id))  do |f| %>
+      <%= f.hidden_field :followed_id %>
+      <%= button_tag type: 'submit', class: "btn btn-outline-primary btn-sm", id: "register-button" do %>
+        <i class="far fa-compass" aria-hidden="true"> フォロー</i>
+      <% end %>
+    <% end %>
+  <% else %>
    <%= form_with(model: current_user.active_relationships.find_by(followed_id: user.id), method: :delete ) do |f| %>
-     <%= button_tag type: 'submit', class: "btn btn-outline-info", id: "register-button" do %>
-       <i class="fas fa-compass" aria-hidden="true"> アンフォロー</i>
-     <% end %>
-   <% end %>
-   <% end %>
+      <%= button_tag type: 'submit', class: "btn btn-outline-primary btn-sm", id: "register-button" do %>
+        <i class="fas fa-compass" aria-hidden="true"> アンフォロー</i>
+      <% end %>
+    <% end %>
+  <% end %>
 </div>
