@@ -25,7 +25,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', :git => 'git://github.com/rails/jbuilder.git'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
+gem 'dropzonejs-rails'
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'mini_magick'
