@@ -53,11 +53,13 @@ class TripsController < ApplicationController
       @trip.planning!
     end
     redirect_to request.referer
+    flash[:notice] = "ステータスを変更しました"
   end
 
   def toggle_privacy
     @trip.toggle!(:privacy)
     redirect_to request.referer
+    flash[:notice] = "プライバシーを変更しました"
   end
 
   def destroy

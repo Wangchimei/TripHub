@@ -1,7 +1,8 @@
 <div class="card trip-form-box">
   <div class="card-body mx-2 my-4">
+    <%= render 'shared/trip_error_msg'%>
     <div class="world-globe"></div>
-    <%= form_with(model: @trip) do |f| %>
+    <%= form_with(model: @trip, local:true) do |f| %>
       <div class="my-3">
         <%= f.label :name, "トリップ名", class:"mb-1"%>
         <%= f.text_field :name, autofocus: true,  class:"form-control" %>

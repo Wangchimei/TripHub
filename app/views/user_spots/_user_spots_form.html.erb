@@ -1,6 +1,6 @@
 <div id="user_spots_<%=spot.id%>">
  <% if spot.saved_spot?(spot, current_user) %>
-   <%= link_to ' 保存済み', user_spot_path(id: spot.id), method: :delete, remote: true, class:"fas fa-bookmark btn btn-sm btn-outline-primary py-2 save-link"%>
+   <%= link_to ' 保存済み', user_spot_path(id: spot.id), method: :delete, remote: true, class:"fas fa-bookmark btn btn-sm btn-primary py-2 save-link"%>
  <% else %>
    <%= link_to ' 保存する', user_spots_path(spot_id: spot.id), method: :post, remote: true, class:"far fa-bookmark btn btn-sm btn-outline-primary py-2 save-link"%>
  <% end %>

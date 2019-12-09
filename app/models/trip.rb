@@ -1,5 +1,10 @@
 class Trip < ApplicationRecord
   include ImageResult
+
+  validates :name, :start_day, :end_day, presence: true
+  validates :name, length: { maximum: 50 }
+  validates_presence_of :to_countries
+
   belongs_to :user
 
   has_many :schedules, dependent: :destroy
@@ -10,9 +15,9 @@ class Trip < ApplicationRecord
   has_many :destination_states, through: :to_states, source: :state
   has_many :destination_cities, through: :to_cities, source: :city
 
-  accepts_nested_attributes_for :to_countries, allow_destroy: true
-  accepts_nested_attributes_for :to_states, allow_destroy: true
-  accepts_nested_attributes_for :to_cities, allow_destroy: true
+  accepts_nested_attributes_for :to_countries, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :to_states, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :to_cities, allow_destroy: true, reject_if: :all_blank
 
   after_validation :check_schedule
   after_save :set_default_img
