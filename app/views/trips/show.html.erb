@@ -16,8 +16,16 @@
   </div>
 </div>
 
-<div class="container mt-5">
-  <div class="text-center">
+<div class="container text-center mt-5">
+  <div class="mb-4">
+    <%= link_to user_path(@trip.user), class:"" do %>
+      <div class="avatar-box-xs d-flex flex-column align-items-center">
+        <%= image_tag @trip.user.avatar, class:"avatar-image-xs" %>
+        <p class="text-dark h6 mb-0 ml-2"><%= @trip.user.name %></p>
+      </div>
+    <% end %>
+  </div>
+  <div>
     <h2 class="h3"><%= @trip.name %></h2>
     <p class="h5 text-muted"><%= @trip.start_day %> 〜 <%= @trip.end_day %> ( <%= trip_duration(@trip) %> 日間)</p>
     <div class="card px-4 py-1 text-left">
@@ -25,111 +33,97 @@
     </div>
   </div>
   <div>
-    <table class="table table-borderless text-nowrap mt-3">
-      <tbody>
-          <% trip_duration(@trip).times do |i| %>
+  <table class="table table-borderless text-nowrap mt-3">
+    <tbody>
+        <% trip_duration(@trip).times do |i| %>
+          <tr>
+            <th scope="row">
+              <%= (@trip.start_day + i).strftime("%Y-%m-%d") %>
+            </th>
+          </tr>
+          <% trip_day = @trip.start_day + i %>
+          <% daily_schedule(@schedules, trip_day).each do |schedule| %>
             <tr>
               <th scope="row">
-                <%= (@trip.start_day + i).strftime("%Y-%m-%d") %>
+                <div><%= schedule.start.strftime("%H:%M")%></div>
+              </th>
+              <td class="row">
+                <div class="col-12 col-lg-6">
+                  <p><i class="fas fa-street-view"></i> <%= schedule.name%></p>
+                  <div class="note-card">
+                  <p>入場費：<%= schedule.admission_fee%></p>
+                  <%if schedule.other_cost != 0%>
+                  <p>他の費用：<%= schedule.other_cost%></p>
+                  <%end%>
+                  <p><%= schedule.note if schedule.note%></p>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                  <div class="card shadow-sm">
+                    <div class="image-box">
+                    <% if schedule.spot.main_image %>
+                      <%= image_tag schedule.spot.main_image, class:"card-image" %>
+                    <% end %>
+                    </div>
+                    <div class="card-body spot-card-box">
+                      <p class="card-title mb-0 text-center"><%= schedule.spot.name%></p>
+                      <p class="card-text h7 mb-0 text-center text-muted"><%= schedule.spot.formatted_name%></p>
+                      <div class="text-center h7 mb-3">
+                        <% if schedule.spot.rating %>
+                          <% schedule.spot.rating.round(0).times do  %>
+                            <span class="fas fa-star star-img"></span>
+                          <% end %>
+                          <% (5 - schedule.spot.rating.round(0)).times do  %>
+                            <span class="far fa-star star-img"></span>
+                          <% end %>
+                        <% else %>
+                          <p class="text-muted"><評価情報なし></p>
+                        <% end %>
+                        <small class="text-muted"><%=schedule.spot.rating%></small>
+                      </div>
+
+                      <div class="row mb-1 text-wrap">
+                        <div class="col-1"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="card-text col"> <%= schedule.spot.address %></div>
+                      </div>
+                      <div class="row mb-1">
+                        <div class="col-1"><i class="fas fa-money-bill"></i></div>
+                        <div class="card-text col">
+                          <%= schedule.spot.admission_fee==0 ? 'Free' : schedule.spot.admission_fee %>
+                        </div>
+                      </div>
+                      <div class="row mb-1">
+                        <div class="col-1"><i class="far fa-clock"></i></div>
+                        <div class="card-text col">
+                          <%= schedule.spot.duration != 0 ? "平均#{schedule.spot.duration}分滞在" : '情報なし' %>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-1"><i class="fas fa-globe"></i></div>
+                        <% if schedule.spot.website %>
+                        <%= link_to "公式サイド", schedule.spot.website, target: :blank, class:"col"%>
+                        <% else %>
+                        <p class="col">情報なし</p>
+                        <% end %>
+                      </div>
+                      <div class="mt-5">
+                        <%= render partial: 'user_spots/user_spots_form', locals: {spot: schedule.spot, user_spots: @user_spots} %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" class="mt-0 pt-0">
+                <div><%= schedule.end.strftime("%H:%M")%></div>
               </th>
             </tr>
-            <% trip_day = @trip.start_day + i %>
-            <% daily_schedule(@schedules, trip_day).each do |schedule| %>
-              <tr>
-                <th scope="row">
-                  <div><%= schedule.start.strftime("%H:%M")%></div>
-                </th>
-                <td class="row">
-                  <div class="col-12 col-lg-6">
-                    <p><i class="fas fa-street-view"></i> <%= schedule.name%></p>
-                    <div class="note-card">
-                    <p>入場費：<%= schedule.admission_fee%></p>
-                    <%if schedule.other_cost != 0%>
-                    <p>他の費用：<%= schedule.other_cost%></p>
-                    <%end%>
-                    <p><%= schedule.note if schedule.note%></p>
-                    </div>
-                  </div>
-                  <div class="col-12 col-lg-6">
-                    <div class="card shadow-sm">
-                      <div class="image-box">
-                      <% if schedule.spot.main_image %>
-                        <%= image_tag schedule.spot.main_image, class:"card-image" %>
-                      <% end %>
-                      </div>
-                      <div class="card-body spot-card-box">
-                        <p class="card-title mb-0 text-center"><%= schedule.spot.name%></p>
-                        <p class="card-text h7 mb-0 text-center text-muted"><%= schedule.spot.formatted_name%></p>
-                        <div class="text-center h7 mb-3">
-                          <% if schedule.spot.rating %>
-                            <% schedule.spot.rating.round(0).times do  %>
-                              <span class="fas fa-star star-img"></span>
-                            <% end %>
-                            <% (5 - schedule.spot.rating.round(0)).times do  %>
-                              <span class="far fa-star star-img"></span>
-                            <% end %>
-                          <% else %>
-                            <p class="text-muted"><評価情報なし></p>
-                          <% end %>
-                          <small class="text-muted"><%=schedule.spot.rating%></small>
-                        </div>
-
-                        <div class="row mb-1 text-wrap">
-                          <div class="col-1"><i class="fas fa-map-marker-alt"></i></div>
-                          <div class="card-text col"> <%= schedule.spot.address %></div>
-                        </div>
-                        <div class="row mb-1">
-                          <div class="col-1"><i class="fas fa-money-bill"></i></div>
-                          <div class="card-text col">
-                            <%= schedule.spot.admission_fee==0 ? 'Free' : schedule.spot.admission_fee %>
-                          </div>
-                        </div>
-                        <div class="row mb-1">
-                          <div class="col-1"><i class="far fa-clock"></i></div>
-                          <div class="card-text col">
-                            <%= schedule.spot.duration != 0 ? "平均#{schedule.spot.duration}分滞在" : '情報なし' %>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-1"><i class="fas fa-globe"></i></div>
-                          <% if schedule.spot.website %>
-                          <%= link_to "公式サイド", schedule.spot.website, target: :blank, class:"col"%>
-                          <% else %>
-                          <p class="col">情報なし</p>
-                          <% end %>
-                        </div>
-                        <div class="mt-5">
-                          <%= render partial: 'user_spots/user_spots_form', locals: {spot: schedule.spot, user_spots: @user_spots} %>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row" class="mt-0 pt-0">
-                  <div><%= schedule.end.strftime("%H:%M")%></div>
-                </th>
-              </tr>
-            <% end %>
           <% end %>
-      </tbody>
-    </table>
-  </div>
-<div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <% end %>
+    </tbody>
+  </table>
+</div>
 
 <script>
   $(document).ready(initialize_flight_map)

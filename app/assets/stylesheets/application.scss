@@ -491,6 +491,22 @@ a:hover {
   object-fit: cover;
 }
 
+.avatar-box-xs {
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 0.2rem;
+  box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 auto;
+}
+
+.avatar-box-xs .avatar-image-xs {
+  width: 100%;
+  object-fit: cover;
+}
+
 .follow-card {
   border: 1px solid #89c4ff;
 }

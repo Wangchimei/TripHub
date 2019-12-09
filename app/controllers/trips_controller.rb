@@ -4,8 +4,7 @@ class TripsController < ApplicationController
   before_action :set_chart_latlng, only: %i[edit show]
 
   def index
-    @trips = Trip.where(privacy:false).order(created_at: :desc)
-    # @trips = Trip.open.completed.other_than(current_user).order(created_at: :desc)
+    @trips = Trip.open.completed.other_users(current_user).order(created_at: :desc)
   end
 
   def show
