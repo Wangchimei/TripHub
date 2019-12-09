@@ -7,10 +7,13 @@
           <div class="card-title mt-2">
             <div class="d-flex flex-column text-center">
               <div class="avatar-box" id="avatar_field" onClick="$('#profile').click()" >
-                <%= avatar(trip.user, "avatar-image","imgProfile")%>
+                <%= avatar(@user, "avatar-image", "imgProfile")%>
+              </div>
+              <div class="text-center">
+                <%= f.submit "写真のみ変更する", class: "mt-2 btn btn-sm btn-primary d-none", id:"btnChangePicture"%>
               </div>
               <div>
-                <%=f.file_field :avatar, class:"file-field", id: "profile"%>
+                <%=f.file_field :avatar, class:"file-field", style: "display:none;", id: "profile"%>
                 <%=f.hidden_field :avatar_cache, class:"avatar-image"%>
               </div>
             </div>
@@ -53,11 +56,11 @@
                     </p>
                     <%= f.collection_select :country_id, Country.order(:name), :id, :name, {prompt: "お住まいの国をお選びください"}, {class: "form-control"} %>
                   </div>
-                  <div class="form-group state-area" style="display:none;">
-                    <%= render partial: 'locations/select_state', locals: {country_id: 0} %>
+                  <div class="form-group state-area">
+                    <%= f.collection_select :state_id, State.where(country_id: current_user.country.id).order(:name), :id, :name, {prompt: "お住まいの国をお選びください"}, {class: "form-control"} %>
                   </div>
-                  <div class="form-group city-area" style="display:none;">
-                    <%= render partial: 'locations/select_city', locals: {state_id: 0} %>
+                  <div class="form-group city-area">
+                    <%= f.collection_select :city_id, City.where(state_id: current_user.state.id).order(:name), :id, :name, {prompt: "区をお選びください（オプションの）"}, {class: "form-control"} %>
                   </div>
                   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

@@ -148,3 +148,27 @@ $(document).on('click', '.spot-select', function() {
   $('#schedule_other_cost').val('');
   $('#schedule_note').val('');
 });
+
+// user profile uploader preview
+$(function() {
+  $('#profile').on('change', function(e) {
+    var file = e.target.files[0];
+    var $preview = $('#avatar_field');
+
+    var fileReader = new FileReader();
+    fileReader.onload = function() {
+      // Data URIを取得
+      var dataUri = this.result;
+      $('#imgProfile').empty();
+      $preview.empty();
+      $preview.append(
+        $('<img>').attr({
+          src: dataUri,
+          class: 'avatar-image',
+        }),
+      );
+    };
+    $('#btnChangePicture').removeClass('d-none');
+    fileReader.readAsDataURL(file);
+  });
+});

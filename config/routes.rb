@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'users#welcome'
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   devise_for :users,
     path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' },
