@@ -6,6 +6,7 @@
 //= require moment
 //= require fullcalendar
 //= require daterangepicker
+//= require dropzone
 //= require_tree .
 
 // User sign up
