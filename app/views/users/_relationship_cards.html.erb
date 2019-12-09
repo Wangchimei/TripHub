@@ -6,7 +6,7 @@
         <%= render 'relationships/follow_form', user: user %>
         </div>
         <div class="avatar-box-sm mt-3">
-          <%= image_tag user.avatar, class:"avatar-image-sm"%>
+          <%= avatar(user, "avatar-image-sm")%>
         </div>
         <p class="h5 mb-0 mt-2 text-dark"><%= user.name %></p>
         <p class="h6 mb-0 mt-2 text-muted">旅行<%= user.visited_countries.count %>ヶ国</p>

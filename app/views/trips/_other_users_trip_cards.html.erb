@@ -12,7 +12,7 @@
           <%end%>
           <div class="trip-details mt-3">
             <div class="text-center mb-2 mr-3">
-              <%=image_tag trip.user.avatar, class:"trip-card-avatar mr-2"%>
+              <%= avatar(trip.user, "trip-card-avatar mr-2")%>
               <%=trip.user.name%>
             </div>
             <table class="table text-nowrap mb-0">

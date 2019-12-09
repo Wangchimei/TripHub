@@ -7,11 +7,11 @@
           <div class="card-title mt-2">
             <div class="d-flex flex-column text-center">
               <div class="avatar-box" id="avatar_field" onClick="$('#profile').click()" >
-                <%= image_tag current_user.avatar, class:"avatar-image" %>
+                <%= avatar(trip.user, "avatar-image","imgProfile")%>
               </div>
               <div>
-                <%#=f.file_field :avatar, class:"file-field", style: "display:none;", id: "profile"%>
-                <%#=f.hidden_field :avatar_cache, class:"avatar-image"%>
+                <%=f.file_field :avatar, class:"file-field", id: "profile"%>
+                <%=f.hidden_field :avatar_cache, class:"avatar-image"%>
               </div>
             </div>
           </div>

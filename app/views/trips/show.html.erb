@@ -20,7 +20,7 @@
   <div class="mb-4">
     <%= link_to user_path(@trip.user), class:"" do %>
       <div class="avatar-box-xs d-flex flex-column align-items-center">
-        <%= image_tag @trip.user.avatar, class:"avatar-image-xs" %>
+        <%= avatar(@trip.user, "avatar-image-xs")%>
         <p class="text-dark h6 mb-0 ml-2"><%= @trip.user.name %></p>
       </div>
     <% end %>

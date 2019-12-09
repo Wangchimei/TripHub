@@ -21,8 +21,6 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
-  after_create :set_default_avatar
-
   def save_spot!(spot)
     user_spots.create!(spot_id: spot.id)
   end
@@ -37,11 +35,6 @@ class User < ApplicationRecord
 
   def unvisited!(countries)
     visited_countries.find_by(country_id: countries.first.id).destroy
-  end
-
-  def set_default_avatar
-    num = rand(6)
-    self.update(avatar: "avatar_#{num}.png")
   end
 
   def follow!(other_user)

@@ -7,7 +7,7 @@
       <div class="card-body">
         <div class="card-title mt-2">
           <div class="d-flex flex-column text-center">
-            <div class="avatar-box"><%= image_tag @user.avatar, class:"avatar-image"%></div>
+            <div class="avatar-box"><%= avatar(@user, "avatar-image")%></div>
             <div>
               <p class="h4 my-2 text-dark"><%= @user.name %></p>
               <p class="h6 mb-0 text-muted">フォロワー <%= @user.followers.count %> 人</P>
