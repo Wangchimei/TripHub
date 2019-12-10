@@ -150,7 +150,7 @@ $(document).on('click', '.spot-select', function() {
 });
 
 // user profile uploader preview
-$(function() {
+$(document).on('click', '#imgProfile', function() {
   $('#profile').on('change', function(e) {
     var file = e.target.files[0];
     var $preview = $('#avatar_field');

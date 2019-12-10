@@ -1,6 +1,6 @@
 <div class="card trip-form-box">
   <div class="card-body mx-2 my-4">
-    <%= render 'shared/trip_error_msg'%>
+    <%= render 'shared/error_msg', model: @trip%>
     <div class="world-globe"></div>
     <%= form_with(model: @trip, local:true) do |f| %>
       <div class="my-3">

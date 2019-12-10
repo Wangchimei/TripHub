@@ -15,19 +15,19 @@ class LocationsController < ApplicationController
 
   def to_countries
     @trip = Trip.to_country_build
-    @countries = Continent.find(params[:continent_id]).countries
+    @countries = Continent.find(params[:continent_id]).countries.order(name: :asc)
     render partial: "to_countries", layout: false, locals: {countries: @countries}
   end
 
   def to_states
     @trip = Trip.to_state_build
-    @states = Country.find(params[:country_id]).states
+    @states = Country.find(params[:country_id]).states.order(name: :asc)
     render partial: "to_states", layout: false, locals: {states: @states}
   end
 
   def to_cities
     @trip = Trip.to_city_build
-    @cities = State.find(params[:state_id]).cities
+    @cities = State.find(params[:state_id]).cities.order(name: :asc)
     render partial: "to_cities", layout: false, locals: {cities: @cities}
   end
 
