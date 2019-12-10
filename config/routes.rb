@@ -27,12 +27,14 @@ Rails.application.routes.draw do
     get :toggle_privacy, on: :member
     resources :schedules, except: %i[show] do
       get :overall, on: :collection
+      resource :pictures, only: %i[create destroy]
     end
   end
 
   resources :user_spots, only: %i[create destroy]
-  resources :spots, only: %i[index new create]
   resources :relationships, only: %i[create destroy]
+
+  resources :spots, only: %i[index new create]
   resources :countries, only: %i[index]
   resources :states, only: %i[index]
   resources :cities, only: %i[index]
