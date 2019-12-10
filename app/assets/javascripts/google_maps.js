@@ -179,6 +179,9 @@ function generate_map() {
 
   if (markersData) {
     addMarker(markersData);
+  } else {
+    alert(`読み込みエラーが発生しました。
+            リフレッシュしてください。`);
   }
 
   function addMarker(data) {
@@ -256,6 +259,7 @@ function autocomplete() {
     infowindow.close();
     marker.setVisible(false);
     var place = autocomplete.getPlace();
+    // console.log(place);
     resetAutocomplete(place);
 
     if (!place.geometry) {
@@ -266,8 +270,8 @@ function autocomplete() {
     if (place.geometry.viewport) {
       searchMap.fitBounds(place.geometry.viewport);
     } else {
-      searchMap.setCenter(place.geometry.location);
-      searchMap.setZoom(17);
+      searchMap.setCenter(center);
+      searchMap.setZoom(10);
     }
     marker.setPosition(place.geometry.location);
     marker.setVisible(true);

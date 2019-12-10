@@ -7,7 +7,7 @@
           <div class="card-title mt-2">
             <div class="d-flex flex-column text-center">
               <div class="avatar-box" id="avatar_field" onClick="$('#profile').click()" >
-                <%= avatar(@user, "avatar-image")%>
+                <%= avatar(current_user, "avatar-image")%>
               </div>
               <div class="text-center">
                 <%= f.submit "写真のみ変更する", class: "mt-2 btn btn-sm btn-primary d-none", id:"btnChangePicture"%>

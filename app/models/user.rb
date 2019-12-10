@@ -1,10 +1,9 @@
 class User < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  validates :name, :country, presence: true
 
   belongs_to :country
   belongs_to :state, optional: true
@@ -21,7 +20,8 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
-  mount_uploader :avatar, AvatarUploader
+  validates :name, :country, presence: true
+  before_save :set_default_avatar
 
   def save_spot!(spot)
     user_spots.create!(spot_id: spot.id)
@@ -51,14 +51,27 @@ class User < ApplicationRecord
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
 
-  def update_without_current_password(params, *options)
-    params.delete(:current_password)
+  def set_default_avatar
+    if self.avatar.url.nil?
+      path = File.join(Rails.root, 'app/assets/images/avatars', "avatar_#{rand(6).to_s}.png")
+      binding.pry
+      File.open(path) do |file|
+        self.avatar = file
+        binding.pry
+      end
+      self.save!
+    end
+  end
 
+  def update_without_current_password(params, *options)
+    # params.delete(:current_password)
+    binding.irb
     if params[:password].blank? && params[:password_confirmation].blank?
       params.delete(:password)
       params.delete(:password_confirmation)
     end
-    result = update_attributes(params, *options)
+    binding.irb
+    result = update(params, *options)
     clean_up_passwords
     result
   end

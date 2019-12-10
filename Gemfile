@@ -26,15 +26,15 @@ gem 'jbuilder', :git => 'git://github.com/rails/jbuilder.git'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'dropzonejs-rails'
-gem 'carrierwave'
 gem 'fog-aws'
-gem 'mini_magick'
 gem 'jquery-turbolinks'
 gem 'devise'
 gem 'dotenv-rails'
 gem 'geocoder'
 gem 'google_places'
 gem 'unsplash'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

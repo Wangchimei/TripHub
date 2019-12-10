@@ -1,5 +1,5 @@
 class SpotsController < ApplicationController
-  before_action :set_map_center, only: %i[new]
+  before_action :set_map_center, only: %i[new create]
 
   def index
     if params[:search].present?
