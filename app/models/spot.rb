@@ -1,13 +1,14 @@
 class Spot < ApplicationRecord
   include ImageResult
   geocoded_by :address
+  validates :name, :address, :place_id, presence: true
+  validates :place_id, uniqueness: true
 
-  after_validation :google_places
+  before_create :google_places
 
   has_many :user_spots, dependent: :destroy
   has_many :schedules, dependent: :destroy
 
-  validates :name, :address, presence: true
 
   def saved_spot?(spot, user)
     spot.user_spots.find_by(user_id: user.id)
@@ -32,8 +33,8 @@ class Spot < ApplicationRecord
       # else
       #   search_term = self.formatted_address.match(/([a-zA-Z]*) (City)/)[1]
       # end
-    url = ImageResult.get_url(search_term)
-    self.main_image = url
+      url = ImageResult.get_url(search_term)
+      self.main_image = url
     end
   end
 end

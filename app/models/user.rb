@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :name, :country, presence: true
+
   belongs_to :country
   belongs_to :state, optional: true
   belongs_to :city, optional: true

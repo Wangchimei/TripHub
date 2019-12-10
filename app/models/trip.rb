@@ -1,9 +1,8 @@
 class Trip < ApplicationRecord
   include ImageResult
 
-  validates :name, :start_day, :end_day, presence: true
+  validates :name, :start_day, :end_day, :to_countries, presence: true
   validates :name, length: { maximum: 50 }
-  validates_presence_of :to_countries
 
   belongs_to :user
 

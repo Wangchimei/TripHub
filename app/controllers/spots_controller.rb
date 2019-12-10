@@ -22,7 +22,7 @@ class SpotsController < ApplicationController
   def create
     @spot = Spot.new(spot_params)
     if @spot.save
-      redirect_to new_spot_path
+      redirect_to spots_path
       flash[:notice] = "スポットを作成しました"
     else
       render :new

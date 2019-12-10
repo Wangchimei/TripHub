@@ -24,7 +24,7 @@ initialize_calendar = function() {
       customButtons: {
         add_event: {
           text: '　＋　',
-          click: function() {
+          click: function(start, end) {
             $.getScript(create_url, function() {
               start = moment(gon.start_day)
                 .utc()
@@ -69,9 +69,13 @@ initialize_calendar = function() {
       select: function(start, end) {
         $.getScript(create_url, function() {
           $('#schedule_date_range').val(
-            moment(start).format('YYYY-MM-DD HH:mm') +
+            moment(start)
+              .utc()
+              .format('YYYY-MM-DD HH:mm') +
               ' - ' +
-              moment(end).format('YYYY-MM-DD HH:mm'),
+              moment(end)
+                .utc()
+                .format('YYYY-MM-DD HH:mm'),
           );
           date_range_picker();
           $('.start_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'));
