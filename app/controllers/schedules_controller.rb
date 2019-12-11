@@ -30,16 +30,25 @@ class SchedulesController < ApplicationController
   end
 
   def update_details
-    if @schedule.update(schedule_params)
-      redirect_to trip_path(@trip)
-      flash[:notice] = "写真を追加しました"
-    else
-      render :edit
+    binding.pry
+    if params[:schedule][:images]
+      params[:schedule][:images].each do |image|
+         @schedule.images << image
+         binding.pry
+      end
+      @schedule.update(schedule_params)
     end
+    redirect_to trip_path(@trip)
+    flash[:notice] = "写真を追加しました"
   end
 
   def destroy
     @schedule.destroy
+  end
+
+  def delete_image
+    remove_image_at_index(params[:format].to_i)
+    redirect_to edit_details_trip_schedule_path(@trip, @schedule)
   end
 
   private
@@ -54,6 +63,29 @@ class SchedulesController < ApplicationController
 
   def schedule_params
     params.require(:schedule).permit(:name, :date_range, :start, :end, :admission_fee, :other_cost, :duration, :note, :trip_id, :spot_id, {images: []})
+  end
+
+  def add_images(new_images)
+    binding.pry
+
+    images = @schedule.images
+    binding.pry
+
+    images += new_images
+    binding.pry
+
+    @schedule.images = images
+    @schedule.save!
+  end
+
+  def remove_image_at_index(index)
+    remain_images = @schedule.images
+    if index == 0 && @schedule.images.size == 1
+      @schedule.remove_images!
+    else
+      remain_images.delete_at(index)
+    end
+      @schedule.save!
   end
 
   def set_js_variables

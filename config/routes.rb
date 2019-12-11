@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       get :overall, on: :collection
       get :edit_details, on: :member
       patch :update_details, on: :member
+      get :delete_image, on: :member
     end
   end
 

@@ -179,16 +179,4 @@ $(document).on('turbolinks:load', function() {
     axis: 'y',
     items: '.image',
   });
-
-  $('.add-image').click(function() {
-    $('.image-sortable').append(
-      '<div class="image"><input multiple="multiple" type="file" name="album[images][]"></div>',
-    );
-  });
-
-  $('.remove-image').click(function() {
-    $(this)
-      .parent('.image')
-      .remove();
-  });
 });

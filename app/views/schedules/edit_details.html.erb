@@ -7,22 +7,20 @@
   <div class="field">
     <%= form.label :images %>
     <div class="image-sortable">
-      <% @schedule.images.each do |image| %>
+      <% @schedule.images.each_with_index do |image, index| %>
         <div class="image">
           <%= hidden_field :schedule, :images, multiple: true, value:  image.cache_name || image.identifier %>
           <%= image_tag(image.url, height: 50) %>
-          <button type="button" class="remove-image">Remove</button>
+          <%= link_to '画像を削除', delete_image_trip_schedule_path(@trip, @schedule, index),data: { confirm: "写真を削除しますか" }%>
         </div>
       <% end %>
       <div class="image">
         <%= form.file_field :images, multiple: true %>
       </div>
     </div>
-    <button type="button" class="add-image">Add more images</button>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
-

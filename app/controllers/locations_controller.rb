@@ -1,9 +1,5 @@
 class LocationsController < ApplicationController
-  skip_before_action :authenticate_user!
-
-  def get_countries
-    render partial: 'select_country', locals: {continent_id: params[:continent_id]}
-  end
+  skip_before_action :authenticate_user!, only: %i[get_states get_cities]
 
   def get_states
     render partial: 'select_state', locals: {country_id: params[:country_id]}
