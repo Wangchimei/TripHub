@@ -1,3 +1,45 @@
-<div class="container mt-5">
+<div>
+  <div class="h-40 w-100 mx-0 my-0">
+    <div id="carouselCaptions" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselCaptions" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselCaptions" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <%= image_tag 'bg_images/top-1.jpg', class:"d-block w-100 top-image"%>
+          <div class="carousel-caption d-none d-md-block">
+            <p class="caption-text h2 mb-3">Explore the world</p>
+            <p class="caption-text h3 mb-2">with TripHubers</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <%= image_tag 'bg_images/top-2.jpg', class:"d-block w-100 top-image"%>
+          <div class="carousel-caption d-none d-md-block">
+            <h5 class="caption-text h2 mb-3">Create your own spot lists</h5>
+            <%= link_to "スポット登録", new_spot_path, class:"btn btn-sm btn-primary mb-2" %>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <%= image_tag 'bg_images/top-3.jpg', class:"d-block w-100 top-image"%>
+          <div class="carousel-caption d-none d-md-block">
+            <h5 class="caption-text h2 mb-3">Plan your trip with ease</h5>
+            <%= link_to "新規トリップ", new_trip_path, class:"btn btn-sm btn-primary mb-2" %>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselCaptions" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselCaptions" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+  <div class="container mt-5">
   <%= render 'other_users_trip_cards', trips: @trips%>
+  </div>
 </div>

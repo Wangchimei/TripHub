@@ -56,11 +56,13 @@
                 </div>
               <% end %>
             </div>
+
             <div class="tab-pane fade text-left mx-1 mt-4" id="trip-photo" role="tabpanel" aria-labelledby="trip-photo-tab">
+
               <div class="image-box">
               </div>
-              <%= content_tag(:div, "現在お気に入りに保存されたフィードはありません。", class: "mt-4 ml-4 text-muted h6-5")%>
             </div>
+
             <div class="tab-pane fade text-left mx-1 mt-4" id="saved-spot" role="tabpanel" aria-labelledby="saved-spot-tab">
               <% if @user.saved_spots.length != 0 %>
                 <%= render 'spots/spot_cards', spots: @user.saved_spots %>

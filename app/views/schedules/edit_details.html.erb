@@ -1,0 +1,28 @@
+<%= form_with(model:[@trip, @schedule], url:update_details_trip_schedule_path(@trip.id, @schedule.id), local: true, html: { multipart: true }) do |form| %>
+  <div class="field">
+    <%= form.label :note %>
+    <%= form.text_field :note %>
+  </div>
+
+  <div class="field">
+    <%= form.label :images %>
+    <div class="image-sortable">
+      <% @schedule.images.each do |image| %>
+        <div class="image">
+          <%= hidden_field :schedule, :images, multiple: true, value:  image.cache_name || image.identifier %>
+          <%= image_tag(image.url, height: 50) %>
+          <button type="button" class="remove-image">Remove</button>
+        </div>
+      <% end %>
+      <div class="image">
+        <%= form.file_field :images, multiple: true %>
+      </div>
+    </div>
+    <button type="button" class="add-image">Add more images</button>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+

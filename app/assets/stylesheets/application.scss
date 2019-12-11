@@ -96,6 +96,12 @@
 }
 
 // Trip
+.top-image {
+  height: 450px;
+  object-fit: cover;
+  box-shadow: inset 0 10rem 10rem rgba(0, 0, 0, 0.5);
+}
+
 #chartdiv {
   width: 100%;
   height: 250px;

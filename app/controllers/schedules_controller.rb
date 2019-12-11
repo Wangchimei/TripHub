@@ -1,11 +1,7 @@
 class SchedulesController < ApplicationController
   before_action :set_trip, except: %i[destroy]
-  before_action :set_schedule, only: %i[edit update show destroy]
+  before_action :set_schedule, except: %i[index new create]
   before_action :set_js_variables, except: %i[destroy]
-
-  def overview
-    @schedules = @trip.schedules
-  end
 
   def index
     @schedules = @trip.schedules
@@ -30,6 +26,18 @@ class SchedulesController < ApplicationController
     @schedule.update(schedule_params)
   end
 
+  def edit_details
+  end
+
+  def update_details
+    if @schedule.update(schedule_params)
+      redirect_to trip_path(@trip)
+      flash[:notice] = "写真を追加しました"
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @schedule.destroy
   end
@@ -41,11 +49,11 @@ class SchedulesController < ApplicationController
   end
 
   def set_schedule
-    @schedule = Schedule.find(params[:id])
+    @schedule = @trip.schedules.find(params[:id])
   end
 
   def schedule_params
-    params.require(:schedule).permit(:name, :start, :end, :admission_fee, :other_cost, :duration, :note, :trip_id, :spot_id)
+    params.require(:schedule).permit(:name, :date_range, :start, :end, :admission_fee, :other_cost, :duration, :note, :trip_id, :spot_id, {images: []})
   end
 
   def set_js_variables

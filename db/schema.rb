@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_11_025451) do
+ActiveRecord::Schema.define(version: 2019_12_11_041629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,14 +49,6 @@ ActiveRecord::Schema.define(version: 2019_12_11_025451) do
     t.index ["continent_id"], name: "index_countries_on_continent_id"
   end
 
-  create_table "pictures", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "schedule_id"
-    t.string "images", default: [], array: true
-    t.index ["schedule_id"], name: "index_pictures_on_schedule_id"
-  end
-
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -79,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_12_11_025451) do
     t.bigint "spot_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "images", default: [], array: true
     t.index ["spot_id"], name: "index_schedules_on_spot_id"
     t.index ["trip_id"], name: "index_schedules_on_trip_id"
   end
@@ -199,7 +192,6 @@ ActiveRecord::Schema.define(version: 2019_12_11_025451) do
   add_foreign_key "cities", "countries"
   add_foreign_key "cities", "states"
   add_foreign_key "countries", "continents"
-  add_foreign_key "pictures", "schedules"
   add_foreign_key "schedules", "spots"
   add_foreign_key "schedules", "trips"
   add_foreign_key "states", "countries"

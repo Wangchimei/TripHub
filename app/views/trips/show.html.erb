@@ -21,16 +21,18 @@
     <%= link_to user_path(@trip.user), class:"" do %>
       <div class="avatar-box-xs d-flex flex-column align-items-center">
         <%= avatar(@trip.user, "avatar-image-xs")%>
-        <p class="text-dark h6 mb-0 ml-2"><%= @trip.user.name %></p>
+        <p class="text-dark h6 mt-1 mb-2"><%= @trip.user.name %></p>
       </div>
     <% end %>
   </div>
   <div>
-    <h2 class="h3"><%= @trip.name %></h2>
+    <h2 class="h3 mt-5"><%= @trip.name %></h2>
     <p class="h5 text-muted"><%= @trip.start_day %> 〜 <%= @trip.end_day %> ( <%= trip_duration(@trip) %> 日間)</p>
-    <div class="card px-4 py-1 text-left">
-    <p><%= @trip.description %></p>
-    </div>
+    <% if @trip.description.nil? %>
+      <div class="card px-4 py-1 text-left">
+      <p><%= @trip.description %></p>
+      </div>
+    <% end %>
   </div>
   <div>
   <table class="table table-borderless text-nowrap mt-3">
@@ -38,7 +40,7 @@
         <% trip_duration(@trip).times do |i| %>
           <tr>
             <th scope="row">
-              <%= (@trip.start_day + i).strftime("%Y-%m-%d") %>
+              <p class="lead mt-3"><%= (@trip.start_day + i).strftime("%Y-%m-%d") %></p>
             </th>
           </tr>
           <% trip_day = @trip.start_day + i %>
@@ -49,21 +51,24 @@
               </th>
               <td class="row">
                 <div class="col-12 col-lg-6">
-                  <p>
+                  <div>
                     <i class="fas fa-street-view"></i> <%= schedule.name%>
                     <% if current_user == @trip.user %>
-                      <%=link_to '写真を追加', new_trip_schedule_picture_path(@trip.id, schedule.id), class:"btn btn-sm btn-primary ml-2"%>
+                      <%=link_to '写真を追加・編集', edit_details_trip_schedule_path(@trip.id, schedule.id), class:"btn btn-sm btn-primary ml-2 mb-2"%>
                     <% end %>
-                  </p>
+                  </div>
                   <div class="note-card">
-                  <p>入場費：<%= schedule.admission_fee%></p>
-                  <%if schedule.other_cost != 0%>
-                  <p>他の費用：<%= schedule.other_cost%></p>
-                  <%end%>
-                  <p><%= schedule.note if schedule.note%></p>
+                    <p>入場費：<%= schedule.admission_fee%></p>
+                    <%if schedule.other_cost != 0%>
+                    <p>他の費用：<%= schedule.other_cost%></p>
+                    <%end%>
+                    <p><%= schedule.note if schedule.note%></p>
+                  </div>
+                  <div>
+                    <% if schedule.images %>
+                    <% end %>
                   </div>
                 </div>
-
                 <div class="col-12 col-lg-6">
                   <div class="card shadow-sm">
                     <div class="image-box">

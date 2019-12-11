@@ -1,12 +1,13 @@
-//= require jquery3
-//= require jquery_ujs
-//= require turbolinks
+//= require jquery
+//= require rails-ujs
+//= require jquery-ui/widgets/sortable
 //= require popper
 //= require bootstrap-sprockets
 //= require moment
 //= require fullcalendar
 //= require daterangepicker
 //= require dropzone
+//= require turbolinks
 //= require_tree .
 
 // User sign up
@@ -170,5 +171,24 @@ $(document).on('click', '#imgProfile', function() {
     };
     $('#btnChangePicture').removeClass('d-none');
     fileReader.readAsDataURL(file);
+  });
+});
+
+$(document).on('turbolinks:load', function() {
+  $('.image-sortable').sortable({
+    axis: 'y',
+    items: '.image',
+  });
+
+  $('.add-image').click(function() {
+    $('.image-sortable').append(
+      '<div class="image"><input multiple="multiple" type="file" name="album[images][]"></div>',
+    );
+  });
+
+  $('.remove-image').click(function() {
+    $(this)
+      .parent('.image')
+      .remove();
   });
 });

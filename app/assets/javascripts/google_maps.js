@@ -164,7 +164,7 @@ function generate_map() {
   // generate schedule map
   var map = new google.maps.Map(document.getElementById('scheduleMap'), {
     center: center,
-    zoom: 10,
+    zoom: 9,
     gestureHandling: 'cooperative',
     streetViewControl: false,
     mapTypeControlOptions: {
