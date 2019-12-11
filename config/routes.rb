@@ -26,8 +26,8 @@ Rails.application.routes.draw do
     get :toggle_status, on: :member
     get :toggle_privacy, on: :member
     resources :schedules, except: %i[show] do
+      resources :pictures
       get :overall, on: :collection
-      resource :pictures, only: %i[create destroy]
     end
   end
 

@@ -1,0 +1,17 @@
+<div class="card-body">
+   <%= form_with(model: @picture, url: trip_schedule_pictures_path(@trip.id, @schedule.id), html: {multipart: true, class: "dropzone"}) do |f| %>
+    <%#= form_for @post, :html => {:multipart => true, :class => "dropzone upload-images p-0 border-0"} do |f| %>
+      <div class="fallback">
+        <%#= f.file_field :images, multiple: true %>
+        <%= file_field_tag "images[]", type: :file, multiple: true %>
+      </div>
+      <div class="dz-message m-0"></div>
+      <div class="dropzone-previews mb-3">
+        <div class="upload-photos-icon">
+          <i class="fa fa-plus fa-2x" aria-hidden="true" style="color:#dddfe2"></i>
+        </div>
+      </div>
+      <%= f.submit "確定", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

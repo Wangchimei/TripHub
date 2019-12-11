@@ -4,8 +4,8 @@
   <div class="d-flex justify-content-center">
     <div class="local-plate">
       <span><%= @trip.user.country.name %></span>
-      <span><%= @trip.user.state.name if @trip.user.state.name  %></span>
-      <span><%= @trip.user.city.name if @trip.user.city.name %></span>
+      <span><%= @trip.user.state.name if @trip.user.state %></span>
+      <span><%= @trip.user.city.name if @trip.user.city %></span>
     </div>
     <div class="mx-3 my-auto"><i class="fas fa-arrows-alt-h"></i></div>
     <div class="local-plate">
@@ -49,7 +49,12 @@
               </th>
               <td class="row">
                 <div class="col-12 col-lg-6">
-                  <p><i class="fas fa-street-view"></i> <%= schedule.name%></p>
+                  <p>
+                    <i class="fas fa-street-view"></i> <%= schedule.name%>
+                    <% if current_user == @trip.user %>
+                      <%=link_to '写真を追加', new_trip_schedule_picture_path(@trip.id, schedule.id), class:"btn btn-sm btn-primary ml-2"%>
+                    <% end %>
+                  </p>
                   <div class="note-card">
                   <p>入場費：<%= schedule.admission_fee%></p>
                   <%if schedule.other_cost != 0%>
@@ -58,6 +63,7 @@
                   <p><%= schedule.note if schedule.note%></p>
                   </div>
                 </div>
+
                 <div class="col-12 col-lg-6">
                   <div class="card shadow-sm">
                     <div class="image-box">
@@ -128,4 +134,3 @@
 <script>
   $(document).ready(initialize_flight_map)
 </script>
-<%# @schedules.first.start.strftime("%Y-%m-%d") == (@trip.start_day + i).strftime("%Y-%m-%d")%>

@@ -1,6 +1,7 @@
 /*
  *= require fullcalendar
  *= require daterangepicker
+ *= require dropzone/dropzone
  *= require_tree .
  *= require_self
  */
@@ -8,7 +9,6 @@
 @import 'bootstrap';
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
-@import 'dropzone/dropzone';
 
 // custom font size
 .site-wrapper {
@@ -506,7 +506,9 @@ a:hover {
 
 .avatar-box-sm .avatar-image-sm {
   width: 100%;
+  height: 100%;
   object-fit: cover;
+  border-radius: 50%;
 }
 
 .avatar-box-xs {
@@ -522,7 +524,9 @@ a:hover {
 
 .avatar-box-xs .avatar-image-xs {
   width: 100%;
+  height: 100%;
   object-fit: cover;
+  border-radius: 50%;
 }
 
 .follow-card {

@@ -2,6 +2,7 @@ class Schedule < ApplicationRecord
   attr_accessor :date_range
   belongs_to :trip
   belongs_to :spot
+  has_many :pictures, dependent: :destroy
 
   after_save :update_default_fields
   after_save :update_travel_cost
