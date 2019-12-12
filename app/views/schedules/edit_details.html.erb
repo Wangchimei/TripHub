@@ -1,32 +1,67 @@
+<div class="container">
+  <div class="card mt-3 mb-2 shadow-sm">
+    <div class="image-box">
+    <% if @schedule.spot.main_image %>
+      <%= image_tag @schedule.spot.main_image, class:"card-image" %>
+    <% end %>
+    </div>
+    <div class="card-body spot-card-box">
+      <p class="card-title mb-0 text-center"><%= @schedule.spot.name%></p>
+      <p class="card-text h7 mb-0 text-center text-muted"><%= @schedule.spot.formatted_name%></p>
+      <div class="text-center h7 mb-3">
+        <% if @schedule.spot.rating %>
+          <% @schedule.spot.rating.round(0).times do  %>
+            <span class="fas fa-star star-img"></span>
+          <% end %>
+          <% (5 - @schedule.spot.rating.round(0)).times do  %>
+            <span class="far fa-star star-img"></span>
+          <% end %>
+        <% else %>
+          <p class="text-muted"><評価情報なし></p>
+        <% end %>
+        <small class="text-muted"><%=@schedule.spot.rating%></small>
+    </div>
 <%= form_with(model:[@trip, @schedule], url:update_details_trip_schedule_path(@trip.id, @schedule.id), local: true, html: { multipart: true }) do |f| %>
   <div class="field">
-    <p>写真や感想をシェアーしましょう</p>
-    <%= f.label :feedback %>
-    <%= f.text_field :feedback %>
+    <p class="mb-0 mt-5">感想をシェア・旅の思い出を記録しましょう</p>
+    <%= f.text_area :feedback, class:"form-control mb-5" %>
   </div>
 
-  <div class="field">
-    <%= f.label :images %>
+  <div>
+    <div class="mb-3">
+      写真をシェアしましょう
+      <span class="float-right btn btn-light reset-image">リセット</span>
+      <%= f.submit "保存", class:"float-right btn btn-primary mr-3" %>
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-3 col-md-2 col-lg-2">
+        <div class="upload-zone text-center" onClick="$('#uploader').click()">
+          <i id="fa-icon" class=" h2 text-muted mt-5 fas fa-cloud-upload-alt"></i>
+          <p class="h6 mt-1 text-muted">クリック</p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-9 col-md-10 col-lg-10">
+        <div class="preview-box d-flex flex-wrap"></div>
+      </div>
+    </div>
+    <%= f.file_field :images, multiple: true, id:"uploader", style: "display:none;" %>
+  </div>
+
+  <p class="mt-4 mb-0">アップロードした写真</p>
+  <div class="row mx-auto mt-1">
     <div class="image-sortable">
       <% @schedule.images.each_with_index do |image, index| %>
-        <div class="image">
+        <div class="gallery-box image">
           <%= hidden_field :schedule, :images, multiple: true, value:  image.cache_name || image.identifier %>
-          <%= image_tag image.url, class: "" %>
-          <%= link_to '画像を削除', delete_image_trip_schedule_path(@trip, @schedule, index),data: { confirm: "写真を削除しますか" }%>
+          <%= image_tag image.url, class: "gallery-image" %>
+          <p><%= link_to '画像を削除', delete_image_trip_schedule_path(@trip, @schedule, index),data: { confirm: "写真を削除しますか" }, class:"btn btn-block btn-sm btn-light"%></p>
         </div>
       <% end %>
-      <div class="image">
     </div>
-    <div class="upload-zone d-flex" onClick="$('#uploader').click()">
-      <i id="fa-icon" class="h1 text-muted fas fa-cloud-upload-alt"></i>
-      <div class="gallery-box d-flex"></div>
-    </div>
-      <%= f.file_field :images, multiple: true, id:"uploader", style: "display:none;" %>
-    </div>
-    <div class="btn btn-second reset-image">リセット</div>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions text-center">
+    <%= f.submit "保存", class:"px-5 btn btn-primary" %>
   </div>
 <% end %>
+</div>

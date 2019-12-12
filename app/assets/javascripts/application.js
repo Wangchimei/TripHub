@@ -202,13 +202,11 @@ $(function() {
   };
 
   $('#uploader').on('change', function() {
-    imagesPreview(this, 'div.gallery-box');
-    $('#fa-icon').removeClass('fas fa-cloud-upload-alt');
+    imagesPreview(this, 'div.preview-box');
   });
 });
 
 $(document).on('click', '.reset-image', function() {
-  $('div.gallery-box').html('');
+  $('div.preview-box').html('');
   $('#uploader').val('');
-  $('#fa-icon').addClass('fas fa-cloud-upload-alt');
 });

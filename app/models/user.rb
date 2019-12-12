@@ -54,10 +54,8 @@ class User < ApplicationRecord
   def set_default_avatar
     if self.avatar.url.nil?
       path = File.join(Rails.root, 'app/assets/images/avatars', "avatar_#{rand(6).to_s}.png")
-      binding.pry
       File.open(path) do |file|
         self.avatar = file
-        binding.pry
       end
       self.save!
     end

@@ -30,11 +30,9 @@ class SchedulesController < ApplicationController
   end
 
   def update_details
-    binding.pry
     if params[:schedule][:images]
       params[:schedule][:images].each do |image|
          @schedule.images << image
-         binding.pry
       end
       @schedule.update(schedule_params)
     end
@@ -66,14 +64,8 @@ class SchedulesController < ApplicationController
   end
 
   def add_images(new_images)
-    binding.pry
-
     images = @schedule.images
-    binding.pry
-
     images += new_images
-    binding.pry
-
     @schedule.images = images
     @schedule.save!
   end
