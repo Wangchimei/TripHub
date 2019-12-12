@@ -62,7 +62,8 @@
                     <%if schedule.other_cost != 0%>
                     <p>他の費用：<%= schedule.other_cost%></p>
                     <%end%>
-                    <p><%= schedule.note if schedule.note%></p>
+                    <p><%= schedule.note if schedule.note && current_user == @user %></p>
+                    <p><%= schedule.feedback if schedule.feedback%></p>
                   </div>
                   <div>
                     <% if schedule.images %>

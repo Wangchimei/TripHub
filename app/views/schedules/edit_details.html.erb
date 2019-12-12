@@ -1,26 +1,32 @@
-<%= form_with(model:[@trip, @schedule], url:update_details_trip_schedule_path(@trip.id, @schedule.id), local: true, html: { multipart: true }) do |form| %>
+<%= form_with(model:[@trip, @schedule], url:update_details_trip_schedule_path(@trip.id, @schedule.id), local: true, html: { multipart: true }) do |f| %>
   <div class="field">
-    <%= form.label :note %>
-    <%= form.text_field :note %>
+    <p>写真や感想をシェアーしましょう</p>
+    <%= f.label :feedback %>
+    <%= f.text_field :feedback %>
   </div>
 
   <div class="field">
-    <%= form.label :images %>
+    <%= f.label :images %>
     <div class="image-sortable">
       <% @schedule.images.each_with_index do |image, index| %>
         <div class="image">
           <%= hidden_field :schedule, :images, multiple: true, value:  image.cache_name || image.identifier %>
-          <%= image_tag(image.url, height: 50) %>
+          <%= image_tag image.url, class: "" %>
           <%= link_to '画像を削除', delete_image_trip_schedule_path(@trip, @schedule, index),data: { confirm: "写真を削除しますか" }%>
         </div>
       <% end %>
       <div class="image">
-        <%= form.file_field :images, multiple: true %>
-      </div>
     </div>
+    <div class="upload-zone d-flex" onClick="$('#uploader').click()">
+      <i id="fa-icon" class="h1 text-muted fas fa-cloud-upload-alt"></i>
+      <div class="gallery-box d-flex"></div>
+    </div>
+      <%= f.file_field :images, multiple: true, id:"uploader", style: "display:none;" %>
+    </div>
+    <div class="btn btn-second reset-image">リセット</div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
 <% end %>

@@ -582,3 +582,34 @@ a:hover {
   border: none;
   color: #349aff;
 }
+
+// image uploader
+.upload-zone {
+  width: 80%;
+  max-width: 800px;
+  min-width: 100px;
+  height: 200px;
+  background-color: #fff;
+  border: #555 2px dashed;
+  border-radius: 10px;
+}
+
+.preview-zone {
+  width: 80%;
+  max-width: 800px;
+  min-width: 100px;
+  height: 200px;
+  background-color: #fff;
+  border: #555 2px dashed;
+  border-radius: 10px;
+}
+
+.gallery-box {
+  flex: 0 0 32%;
+  max-width: 32%;
+  display: inline-block;
+}
+
+.gallery-box img {
+  width: 100%;
+}

@@ -155,7 +155,6 @@ $(document).on('click', '#imgProfile', function() {
   $('#profile').on('change', function(e) {
     var file = e.target.files[0];
     var $preview = $('#avatar_field');
-
     var fileReader = new FileReader();
     fileReader.onload = function() {
       // Data URIを取得
@@ -174,9 +173,42 @@ $(document).on('click', '#imgProfile', function() {
   });
 });
 
+// sortable
 $(document).on('turbolinks:load', function() {
   $('.image-sortable').sortable({
     axis: 'y',
     items: '.image',
   });
+});
+
+$(function() {
+  // Multiple images preview in browser
+  var imagesPreview = function(input, placeToInsertImagePreview) {
+    if (input.files) {
+      var filesAmount = input.files.length;
+
+      for (i = 0; i < filesAmount; i++) {
+        var reader = new FileReader();
+
+        reader.onload = function(event) {
+          $($.parseHTML('<img>'))
+            .attr('src', event.target.result)
+            .appendTo(placeToInsertImagePreview);
+        };
+
+        reader.readAsDataURL(input.files[i]);
+      }
+    }
+  };
+
+  $('#uploader').on('change', function() {
+    imagesPreview(this, 'div.gallery-box');
+    $('#fa-icon').removeClass('fas fa-cloud-upload-alt');
+  });
+});
+
+$(document).on('click', '.reset-image', function() {
+  $('div.gallery-box').html('');
+  $('#uploader').val('');
+  $('#fa-icon').addClass('fas fa-cloud-upload-alt');
 });
