@@ -25,7 +25,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', :git => 'git://github.com/rails/jbuilder.git'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'dropzonejs-rails'
 gem 'fog-aws'
 gem 'jquery-turbolinks'
 gem 'devise'
@@ -35,7 +34,6 @@ gem 'google_places'
 gem 'unsplash'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'jquery-ui-rails'
 
 
 group :development, :test do
