@@ -194,6 +194,7 @@ $(document).on('turbolinks:load', function() {
 
   $('#uploader').on('change', function() {
     imagesPreview(this, 'div.preview-box');
+    $('#fa-icon').hide();
   });
 });
 
@@ -201,4 +202,5 @@ $(document).on('turbolinks:load', function() {
 $(document).on('click', '.reset-image', function() {
   $('div.preview-box').html('');
   $('#uploader').val('');
+  $('#fa-icon').show();
 });

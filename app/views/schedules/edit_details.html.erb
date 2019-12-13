@@ -34,13 +34,11 @@
       <%= f.submit "保存", class:"float-right btn btn-primary mr-3" %>
     </div>
     <div class="row">
-      <div class="col-12 col-md-2 col-lg-2">
-        <div class="upload-zone text-center" onClick="$('#uploader').click()">
-          <i id="fa-icon" class=" h2 text-muted mt-5 fas fa-cloud-upload-alt"></i>
-          <p class="h6 mt-1 text-muted">クリック</p>
+      <div class="upload-zone text-center" onClick="$('#uploader').click()">
+        <div id="fa-icon">
+        <i id="fa-icon" class="h2 text-muted mt-4 fas fa-cloud-upload-alt"></i>
+        <p class="h6 mt-1 text-muted">クリック</p>
         </div>
-      </div>
-      <div class="col-12 col-md-10 col-lg-10">
         <div class="preview-box d-flex flex-wrap"></div>
       </div>
     </div>
@@ -61,7 +59,8 @@
   </div>
 
   <div class="actions text-center">
-    <%= f.submit "保存", class:"px-4 btn btn-primary" %>
+    <%= f.submit "保存", class:"btn btn-primary" %>
+    <%= link_to "戻る", :back, class: "ml-3 btn btn-outline-primary"%>
   </div>
 <% end %>
 </div>

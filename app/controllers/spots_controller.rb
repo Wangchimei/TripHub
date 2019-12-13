@@ -3,7 +3,7 @@ class SpotsController < ApplicationController
 
   def index
     if params[:search].present?
-      @spots = Spot.near(params[:search], 30, order: :distance)
+      @spots = Spot.near(params[:search], 50, order: :distance)
     else
       @spots = Spot.all.order(created_at: :desc)
     end

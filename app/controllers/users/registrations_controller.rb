@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :logged_in_user, only: [:new, :create]
   layout 'welcome', only: [:new, :create]
 
   # GET /resource/sign_up

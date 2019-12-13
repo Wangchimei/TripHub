@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-4 control-panel">
+    <%= link_to edit_trip_path(trip) do %>
+      <div class="icon-box">
+        <i class="fas fa-globe-americas"></i>
+        <p class="mb-0 h8">トリップ</p>
+        <p class="mb-0 h8">情報編集</p>
+      </div>
+    <%end%>
+  </div>
+  <div class="col-4 control-panel">
+    <%= link_to trip_schedules_path(trip) do %>
+      <div class="icon-box">
+        <i class="far fa-calendar-alt"></i>
+        <p class="mb-0 h8">スケジュール</p>
+        <p class="mb-0 h8">編集</p>
+      </div>
+    <%end%>
+  </div>
+  <div class="col-4 control-panel">
+    <%= link_to trip_path(trip), method: :delete, data: {confirm: "削除しますか？"} do %>
+      <div class="icon-box">
+        <i class="far fa-trash-alt"></i>
+        <p class="mb-0 h8">トリップ</p>
+        <p class="mb-0 h8">削除</p>
+      </div>
+    <%end%>
+  </div>
+</div>
