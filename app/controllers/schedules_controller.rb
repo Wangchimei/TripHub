@@ -62,7 +62,7 @@ class SchedulesController < ApplicationController
   end
 
   def schedule_params
-    params.require(:schedule).permit(:name, :date_range, :start, :end, :admission_fee, :other_cost, :duration, :note, :trip_id, :spot_id, {images: []})
+    params.require(:schedule).permit(:name, :date_range, :start, :end, :admission_fee, :other_cost, :duration, :note, :feedback, :trip_id, :spot_id, {images: []})
   end
 
   def add_images(new_images)
