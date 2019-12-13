@@ -13,15 +13,15 @@ Rails 5.2.3
 
 ## 機能一覧
 
-- [ ] ログイン機能
-- [ ] ユーザー登録機能
-- [ ] パスワードリセット機能
-- [ ] トリップを作成、編集、削除、一覧表示機能機能
-- [ ] 観光スポットを作成、編集機能
-- [ ] 他のユーザのスケジュールから観光スポットを保存機能
-- [ ] スケジュールに入れましたスポットを Google Map にて表示機能
-- [ ] スポットで使う費用の概算機能
-- [ ] ユーザフォーロー機能
+- ログイン機能
+- ユーザー登録機能
+- パスワードリセット機能
+- トリップを作成、編集、削除、一覧表示機能機能
+- 観光スポットを作成、編集機能
+- 他のユーザのスケジュールから観光スポットを保存機能
+- スケジュールに入れましたスポットを Google Map にて表示機能
+- スポットで使う費用の概算機能
+- ユーザフォーロー機能
 
 ## カタログ設計
 
@@ -46,13 +46,70 @@ https://drive.google.com/file/d/1bNA77QGm-KfLzEcWGno4YDJeRnY234Q2/view?usp=shari
 ## 使用予定 Gem
 
 - devise
+- devise-i18n
+- devise-i18n-views
 - geocoder
+- google_places
+- unsplash
 - carrierwave
 - mini_magick
+- fog-aws
+- faker
 - bootstrap
 - jquery-rails
 - font-awesome-sass
 - dotenv-rails
 - letter_opener_web
-- brakeman
-- kaminari
+
+## How to set up
+
+1. Clone this repo
+
+   ```
+   git clone https://github.com/Wangchimei/TripHub.git
+   ```
+
+2. Install necessary gem
+
+   ```
+   bundle install
+   ```
+
+3. Create database and run migration
+
+   ```
+   rails db:create db:migrate
+   ```
+
+4. Import countries, states and cities database
+
+   ```
+   rake import:continents
+   rake import:countries
+   rake import:states
+   rake import:cities
+   ```
+
+5. Import sightseeing spots sample data
+
+   ```
+   rake import:spots
+   ```
+
+6. Create seed data
+
+   ```
+   rails db:seed
+   ```
+
+7. Run test
+
+   ```
+   bundle exec rspec
+   ```
+
+8. Start server
+
+   ```
+   rails s
+   ```
