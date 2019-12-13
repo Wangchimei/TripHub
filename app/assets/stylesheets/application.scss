@@ -583,6 +583,17 @@ a:hover {
   color: #349aff;
 }
 
+.user-gallery {
+  max-width: 100%;
+  display: inline-block;
+}
+
+.user-gallery img {
+  flex: 0 0 32%;
+  width: 32%;
+  margin: 0.2rem 0.2rem;
+}
+
 // image uploader
 .upload-zone {
   width: 100%;

@@ -6,7 +6,7 @@
     <%= link_to "新規登録", new_registration_path(resource_name), class:"float-right btn btn-outline-primary" %>
     <h5 class="card-title mb-4 mt-1 ml-5 pl-5">ログイン</h5>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+      <%= render 'shared/flash_msg'%>
       <div class="form-group">
         <%= f.email_field :email, autofocus: true, autocomplete: "email",  class:"form-control", placeholder:"メールアドレス" %>
       </div>
@@ -16,7 +16,7 @@
       <% if devise_mapping.rememberable? %>
         <div class="custom-control custom-checkbox mt-1">
           <%= f.check_box :remember_me,class:"custom-control-input", id:"checkbox-small"%>
-          <%= f.label :remember_me, "ログイン情報を保存する", class:"custom-control-label h7", for:"checkbox-small" %>
+          <%= f.label :remember_me, class:"custom-control-label h7", for:"checkbox-small" %>
         </div>
       <% end %>
       <div class="actions">

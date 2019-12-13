@@ -10,4 +10,16 @@ module UsersHelper
     end
     visited_countries
   end
+
+  def uploaded_photos(user)
+    uploaded_photos = []
+    if user.user_schedules.length != 0
+      user.user_schedules.each do |schedule|
+        schedule.images.each do |image|
+          uploaded_photos << image
+        end
+      end
+    end
+    uploaded_photos
+  end
 end

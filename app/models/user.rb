@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :saved_spots, through: :user_spots, source: :spot
   has_many :visited_countries, dependent: :destroy
   has_many :countries_conquered, through: :visited_countries, source: :country
+  has_many :user_schedules, through: :trips, source: :schedules
 
   has_many :active_relationships, foreign_key: :follower_id, class_name: "Relationship", dependent: :destroy
   has_many :passive_relationships, foreign_key: :followed_id, class_name: "Relationship", dependent: :destroy

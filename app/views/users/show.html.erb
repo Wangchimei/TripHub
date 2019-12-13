@@ -56,13 +56,19 @@
                 </div>
               <% end %>
             </div>
-
             <div class="tab-pane fade text-left mx-1 mt-4" id="trip-photo" role="tabpanel" aria-labelledby="trip-photo-tab">
-
-              <div class="image-box">
+              <div class="user-gallery">
+                <% if uploaded_photos(@user).length != 0 %>
+                  <% uploaded_photos(@user).each do |image| %>
+                    <%= image_tag image.url :thumb %>
+                  <% end %>
+                <% else %>
+                  <div class="text-center">
+                    <p class="h6 my-5 text-muted"> 現在アップロードした写真がありません。</p>
+                </div>
+                <% end %>
               </div>
             </div>
-
             <div class="tab-pane fade text-left mx-1 mt-4" id="saved-spot" role="tabpanel" aria-labelledby="saved-spot-tab">
               <% if @user.saved_spots.length != 0 %>
                 <%= render 'spots/spot_cards', spots: @user.saved_spots %>

@@ -1,1 +1,1 @@
-<%= collection_select :user, :state_id, State.where(country_id: country_id).order(:name), :id, :name, {prompt: "都市をお選びください"}, {class: "form-control"} %>
+<%= collection_select :user, :state_id, State.where(country_id: country_id).order(:name), :id, :name, {prompt: "都市をお選びください（オプションの）"}, {class: "form-control"} %>
