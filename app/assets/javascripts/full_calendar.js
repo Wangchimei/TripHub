@@ -60,27 +60,11 @@ initialize_calendar = function() {
       // height responsive
       height: self.innerHeight - 120,
       events: schedules,
-      eventColor: '#89C4FF',
+      eventColor: '#9FD7FF',
       titleFormat: 'YYYY 年 M 月 D 日',
 
-      eventRender: function(schedule, element) {
-        element
-          .find('.fc-time')
-          .append('<p class="h6 mt-1">' + schedule.name + '</p>');
-        element
-          .find('.fc-time')
-          .after('<img class="cal-image" src="' + schedule.spot.image + '">');
-        element
-          .find('.fc-time')
-          .append('<p class="h7 text-wrap">' + schedule.spot.address + '</p>');
-      },
-
       select: function(start, end) {
-        debugger;
-
         $.getScript(create_url, function() {
-          debugger;
-
           $('#schedule_date_range').val(
             moment(start)
               .utc()
@@ -130,8 +114,6 @@ initialize_calendar = function() {
 
       eventClick: function(schedule) {
         $.getScript(schedule.edit_url, function() {
-          debugger;
-
           $('#schedule_date_range').val(
             moment(schedule.start).format('YYYY-MM-DD HH:mm') +
               ' - ' +
@@ -143,6 +125,18 @@ initialize_calendar = function() {
           );
           $('.end_hidden').val(moment(schedule.end).format('YYYY-MM-DD HH:mm'));
         });
+      },
+
+      eventRender: function(schedule, element) {
+        element.find('.fc-time').addClass('text-center');
+        element
+          .find('.fc-time')
+          .append('<p class="h6 mt-1">' + schedule.name + '</p>');
+        element
+          .find('.fc-time')
+          .after(
+            '<p class="h7 mt-1 text-wrap">' + schedule.spot.address + '</p>',
+          );
       },
 
       // height responsive

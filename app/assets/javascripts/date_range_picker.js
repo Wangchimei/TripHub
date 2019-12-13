@@ -7,11 +7,9 @@ date_range_picker = function(start, end) {
   var end = moment(end)
     .utc()
     .format('YYYY-MM-DD HH:mm');
-  debugger;
 
   $('#date-range-picker').each(function() {
     if (!!action_check) {
-      debugger;
       var start_day = moment(gon.start_day)
         .utc()
         .format('YYYY-MM-DD HH:mm');
@@ -33,7 +31,6 @@ date_range_picker = function(start, end) {
             },
           },
           function(start, end, label) {
-            debugger;
             $('.start_hidden').val(start.format('YYYY-MM-DD HH:mm'));
             $('.end_hidden').val(end.format('YYYY-MM-DD HH:mm'));
           },
@@ -52,15 +49,12 @@ date_range_picker = function(start, end) {
             },
           },
           function(start, end, label) {
-            debugger;
             $('.start_hidden').val(start.format('YYYY-MM-DD HH:mm'));
             $('.end_hidden').val(end.format('YYYY-MM-DD HH:mm'));
           },
         );
       }
     } else {
-      debugger;
-
       $(this).daterangepicker(
         {
           timePicker: false,
