@@ -20,11 +20,15 @@ initialize_calendar = function() {
     //     return 1;
     //   }
     // }
+    debugger;
+
     calendar.fullCalendar({
       customButtons: {
         add_event: {
           text: '　＋　',
-          click: function(start, end) {
+          click: function(e) {
+            debugger;
+
             $.getScript(create_url, function() {
               start = moment(gon.start_day)
                 .utc()
@@ -67,7 +71,11 @@ initialize_calendar = function() {
       titleFormat: 'YYYY 年 M 月 D 日',
 
       select: function(start, end) {
+        debugger;
+
         $.getScript(create_url, function() {
+          debugger;
+
           $('#schedule_date_range').val(
             moment(start)
               .utc()
@@ -77,7 +85,7 @@ initialize_calendar = function() {
                 .utc()
                 .format('YYYY-MM-DD HH:mm'),
           );
-          date_range_picker();
+          date_range_picker(start, end);
           $('.start_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'));
           $('.end_hidden').val(moment(end).format('YYYY-MM-DD HH:mm'));
         });
@@ -117,12 +125,14 @@ initialize_calendar = function() {
 
       eventClick: function(schedule) {
         $.getScript(schedule.edit_url, function() {
+          debugger;
+
           $('#schedule_date_range').val(
             moment(schedule.start).format('YYYY-MM-DD HH:mm') +
               ' - ' +
               moment(schedule.end).format('YYYY-MM-DD HH:mm'),
           );
-          date_range_picker();
+          date_range_picker(schedule.start, schedule.end);
           $('.start_hidden').val(
             moment(schedule.start).format('YYYY-MM-DD HH:mm'),
           );

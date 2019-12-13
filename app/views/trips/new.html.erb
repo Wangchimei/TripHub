@@ -1,7 +1,7 @@
 <div class="card trip-form-box">
   <div class="card-body mx-2 my-4">
     <%= render 'shared/error_msg', model: @trip%>
-    <div class="world-globe"></div>
+    <div class="world-globe mt-2"></div>
     <%= form_with(model: @trip, local:true) do |f| %>
       <div class="my-3">
         <%= f.label :name, "トリップ名", class:"mb-1"%>
@@ -48,7 +48,7 @@
 
       <div class="text-center">
         <%= f.submit "作成する", class: "btn btn-primary"%>
-        <%= link_to '戻る', user_path(current_user), class: "ml-3 btn btn-outline-primary" %>
+        <%= link_to '戻る', request.referer, class: "ml-3 btn btn-outline-primary" %>
       </div>
     <% end %>
   </div>

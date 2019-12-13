@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-  before_action :set_trip, except: %i[destroy]
+  before_action :set_trip
   before_action :set_schedule, except: %i[index new create]
   before_action :set_js_variables, except: %i[destroy]
   before_action :status_planning, only: :index
@@ -16,7 +16,11 @@ class SchedulesController < ApplicationController
 
   def create
     @schedule = @trip.schedules.build(schedule_params)
-    @schedule.save
+    if @schedule.save
+      format.js { render :create }
+    else
+      render :error
+    end
   end
 
   def edit
@@ -63,13 +67,6 @@ class SchedulesController < ApplicationController
 
   def schedule_params
     params.require(:schedule).permit(:name, :date_range, :start, :end, :admission_fee, :other_cost, :duration, :note, :feedback, :trip_id, :spot_id, {images: []})
-  end
-
-  def add_images(new_images)
-    images = @schedule.images
-    images += new_images
-    @schedule.images = images
-    @schedule.save!
   end
 
   def remove_image_at_index(index)

@@ -1,0 +1,47 @@
+ja:
+  activerecord:
+    models:
+      continent: エリア
+      country: 国
+      state: 県・州
+      city: 都市
+      trip: 旅行
+      schedule: スケジュール
+      spot: スポット
+    attributes:
+      continent:
+        name: エリア名
+      country:
+        name: 國名
+      state:
+        name: 州名
+      city:
+        name: 都市名
+      trip:
+        name: タイトル
+        description: 詳細
+        start_day: 出発日
+        end_day: 帰国日
+        status: ステータス
+        privacy: プライバシー
+        est_amount: 目安費用
+        to_countries: 旅行先
+      schedule:
+        name: 名前
+        start: 開始時間
+        end: 終了時間
+        admission_fee: 入場料金
+        other_cost: 他の費用
+        duration: 滞在時間
+        note: 旅行メモ
+        images: 写真
+        feedback: 記録
+      spot:
+        name: スポット名
+        admission_fee: 入場料金
+        duration: 平均滞在時間
+        phone_num: 電話番号
+        rating: 評価
+        website: 公式サイド
+        formatted_name: 英語スポット名
+        formatted_address: 英語住所
