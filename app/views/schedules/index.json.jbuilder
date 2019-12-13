@@ -10,6 +10,7 @@ json.array! @schedules do |schedule|
 
   json.spot do
     json.address schedule.spot.address
+    json.image schedule.spot.main_image
     json.lat schedule.spot.latitude
     json.lng schedule.spot.longitude
   end

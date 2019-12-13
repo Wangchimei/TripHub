@@ -20,15 +20,12 @@ initialize_calendar = function() {
     //     return 1;
     //   }
     // }
-    debugger;
 
     calendar.fullCalendar({
       customButtons: {
         add_event: {
           text: '　＋　',
           click: function(e) {
-            debugger;
-
             $.getScript(create_url, function() {
               start = moment(gon.start_day)
                 .utc()
@@ -51,10 +48,6 @@ initialize_calendar = function() {
       },
       defaultView: 'agenda',
       defaultDate: cal_format_start,
-      // visibleRange: {
-      //   start: start_day,
-      //   end: end_day
-      // },
       validRange: {
         start: cal_format_start,
         end: cal_format_end,
@@ -69,6 +62,18 @@ initialize_calendar = function() {
       events: schedules,
       eventColor: '#89C4FF',
       titleFormat: 'YYYY 年 M 月 D 日',
+
+      eventRender: function(schedule, element) {
+        element
+          .find('.fc-time')
+          .append('<p class="h6 mt-1">' + schedule.name + '</p>');
+        element
+          .find('.fc-time')
+          .after('<img class="cal-image" src="' + schedule.spot.image + '">');
+        element
+          .find('.fc-time')
+          .append('<p class="h7 text-wrap">' + schedule.spot.address + '</p>');
+      },
 
       select: function(start, end) {
         debugger;
