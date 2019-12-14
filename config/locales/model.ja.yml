@@ -37,7 +37,8 @@ ja:
         images: 写真
         feedback: 記録
       spot:
-        name: スポット名
+        name: 場所名
+        address: 住所
         admission_fee: 入場料金
         duration: 平均滞在時間
         phone_num: 電話番号

@@ -1,7 +1,7 @@
 class Spot < ApplicationRecord
   include ImageResult
   geocoded_by :address
-  validates :name, :address, :place_id, presence: true
+  validates :name, :address, presence: true
   validates :place_id, uniqueness: true
 
   before_create :google_places

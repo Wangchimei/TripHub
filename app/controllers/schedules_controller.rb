@@ -16,11 +16,7 @@ class SchedulesController < ApplicationController
 
   def create
     @schedule = @trip.schedules.build(schedule_params)
-    if @schedule.save
-      format.js { render :create }
-    else
-      render :error
-    end
+    @schedule.save
   end
 
   def edit

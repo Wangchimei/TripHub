@@ -2,25 +2,12 @@ var initialize_calendar;
 initialize_calendar = function() {
   $('.calendar').each(function() {
     var calendar = $(this);
-    // var start_day = new Date(gon.start_day);
-    // var end_day = new Date(gon.end_day);
     var cal_format_start = moment(gon.start_day)
       .utc()
       .format('MM/DD/YYYY');
     var cal_format_end = moment(gon.cal_end_day).format('MM/DD/YYYY');
     var schedules = '/trips/' + gon.trip_id + '/schedules.json';
     var create_url = '/trips/' + gon.trip_id + '/schedules/new';
-    // function set_duration() {
-    //   differenceInTime = end_day.getTime() - start_day.getTime();
-    //   differenceInDays = differenceInTime / (1000 * 3600 * 24);
-    //   tripDuration = differenceInDays + 1;
-    //   if (tripDuration > 2 || tripDuration % 2 === 0) {
-    //     return 2;
-    //   } else {
-    //     return 1;
-    //   }
-    // }
-
     calendar.fullCalendar({
       customButtons: {
         add_event: {
@@ -42,7 +29,7 @@ initialize_calendar = function() {
         },
       },
       header: {
-        left: 'back add_event',
+        left: 'add_event',
         center: 'title',
         right: 'prev, next',
       },
@@ -52,12 +39,10 @@ initialize_calendar = function() {
         start: cal_format_start,
         end: cal_format_end,
       },
-      // duration: { days: set_duration() },
       selectable: true,
       selectHelper: true,
       editable: true,
       eventLimit: true,
-      // height responsive
       height: self.innerHeight - 120,
       events: schedules,
       eventColor: '#9FD7FF',
@@ -131,11 +116,20 @@ initialize_calendar = function() {
         element.find('.fc-time').addClass('text-center');
         element
           .find('.fc-time')
-          .append('<p class="h6 mt-1">' + schedule.name + '</p>');
+          .append('<p class="name h5 my-2">' + schedule.name + '</p>');
         element
           .find('.fc-time')
-          .after(
-            '<p class="h7 mt-1 text-wrap">' + schedule.spot.address + '</p>',
+          .append(
+            '<p class="h7 mb-1 mt-2 text-wrap"> 入場料金：' +
+              schedule.admission_fee +
+              '</p>',
+          );
+        element
+          .find('.fc-time')
+          .append(
+            '<p class="h7 text-wrap"> 他の費用：' +
+              schedule.other_cost +
+              '</p>',
           );
       },
 

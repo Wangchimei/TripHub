@@ -9,6 +9,8 @@ class Schedule < ApplicationRecord
   after_save :update_duration
   after_destroy :update_travel_cost
 
+  validates :spot_id, presence: true
+
   def all_day?
     self.start == self.start.midnight && self.end == self.end.midnight ? true : false
   end
