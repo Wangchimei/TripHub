@@ -115,9 +115,15 @@ namespace :import do
           name: row["name"],
           admission_fee: row["admission_fee"],
           duration: row["duration"],
+          main_image: row["main_image"],
           latitude: row["latitude"],
           longitude: row["longitude"],
           address: row["address"]
+          formatted_name: row["formatted_name"]
+          phone_num: row["phone_num"]
+          rating: row["rating"]
+          website: row["website"]
+          place_id: row["place_id"]
       }
     end
     puts "start to create spots data"
