@@ -70,10 +70,14 @@
         <%= link_to "スポット一覧へ", spots_path, class:"btn btn-outline-primary"%>
       </div>
     <%else%>
-      <% @saved_spots.each do |spot| %>
+      <% @saved_spots.each.with_index(1) do |spot, index| %>
         <div class="col-6 mb-2 image-grid">
           <label class="radio-box">
+          <% if index == 1 %>
+            <%= f.radio_button :spot_id, spot.id, id: "spot_#{spot.id}", class:"radio-btn", checked: true %>
+          <% else %>
             <%= f.radio_button :spot_id, spot.id, id: "spot_#{spot.id}", class:"radio-btn" %>
+          <% end %>
             <%= image_tag spot.main_image, class:"radio-img image-grid-cover" %>
             <div class="cover-wrapper"><%=spot.name%></div>
           </label>

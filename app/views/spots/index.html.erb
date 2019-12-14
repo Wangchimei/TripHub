@@ -1,5 +1,3 @@
-<%= link_to "CSV", spots_path(format: :csv) %>
-
 <div class="form-group has-search w-50 mx-auto mt-2">
   <%= form_with(url: spots_path, local: true, method: :get) do |f| %>
     <span class="fa fa-search form-control-feedback"></span>
@@ -13,3 +11,5 @@
     <%= render 'spots/spot_cards', spots: @spots %>
   </div>
 </div>
+
+<%#= link_to "CSV", spots_path(format: :csv) %>
