@@ -25,6 +25,7 @@ class Trip < ApplicationRecord
 
   validates :name, :start_day, :end_day, :to_countries, presence: true
   validates :name, length: { maximum: 50 }
+  validate :start_end_check
 
   def self.to_country_build
     trip = self.new
@@ -60,6 +61,13 @@ class Trip < ApplicationRecord
     if self.start_day_changed? || self.end_day_changed?
     old_schedule = self.schedules.where.not(start: (self.start_day.beginning_of_day..self.end_day.end_of_day))
     old_schedule.destroy_all
+    end
+  end
+
+  def start_end_check
+    if end_day < start_day
+      errors.add(:end_day, "の日付を正しく記入してください。") unless
+      self.start_day < self.end_day
     end
   end
 end

@@ -6,8 +6,6 @@ RSpec.describe User, type: :model do
     @country = FactoryBot.create(:country, continent: continent)
     @state = FactoryBot.create(:state, country: @country)
     @city = FactoryBot.create(:city, state: @state)
-    @user = FactoryBot.create(:second_user, country_id: @country.id,
-      state_id: @state.id, city_id: @city.id)
   end
 
   it 'is invalid without a name' do
