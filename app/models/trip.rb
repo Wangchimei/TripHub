@@ -58,14 +58,15 @@ class Trip < ApplicationRecord
   end
 
   def check_schedule
-    if self.start_day_changed? || self.end_day_changed?
+    if (self.start_day && self.end_day) && (self.start_day_changed? || self.end_day_changed?)
     old_schedule = self.schedules.where.not(start_time: (self.start_day.beginning_of_day..self.end_day.end_of_day))
     old_schedule.destroy_all
     end
   end
 
   def start_end_check
-    errors.add(:end_day, "の日付を正しく記入してください。") if
-    self.end_day < self.start_day
+    if (self.start_day && self.end_day) && (self.end_day < self.start_day)
+      errors.add(:end_day, "の日付を正しく記入してください。")
+    end
   end
 end

@@ -35,20 +35,23 @@ class Schedule < ApplicationRecord
   end
 
   def update_duration
-    # schedule duration
-    min = (self.end_time - self.start_time)/60.round(0)
-    self.update(duration: min) if self.duration != min
-    # avg duration
-    scheduled_spots = Schedule.where(spot_id: self.spot_id)
-    time_arr = []
-    scheduled_spots.each { |spot| time_arr << spot.duration }
-    total_min = time_arr.reduce { |sum, n| sum + n }
-    avg_duration = total_min / scheduled_spots.count
-    Spot.find(self.spot_id).update(duration: avg_duration)
+    if (self.start_time && self.end_time)
+      # schedule duration
+      min = (self.end_time - self.start_time)/60.round(0)
+      self.update(duration: min) if self.duration != min
+      # avg duration
+      scheduled_spots = Schedule.where(spot_id: self.spot_id)
+      time_arr = []
+      scheduled_spots.each { |spot| time_arr << spot.duration }
+      total_min = time_arr.reduce { |sum, n| sum + n }
+      avg_duration = total_min / scheduled_spots.count
+      Spot.find(self.spot_id).update(duration: avg_duration)
+    end
   end
 
   def time_check
-    errors.add(:end_time, "の時間を正しく記入してください。") if
-    self.end_time < self.start_time
+    if (self.start_time && self.end_time) && (self.end_time < self.start_time)
+      errors.add(:end_time, "の時間を正しく記入してください。")
+    end
   end
 end
