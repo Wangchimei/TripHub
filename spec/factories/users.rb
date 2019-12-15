@@ -1,19 +1,19 @@
 FactoryBot.define do
   factory :user do
-    association :country
-    association :state
-    association :city
     name { "Shiba" }
     email { "shiba@dic.com" }
     password { "shibaa" }
+    country
+    state
+    city
   end
 
   factory :second_user, class: User do
-    association :country
-    association :state
-    association :city
     name { "Chiitan" }
     email { "chiitan@dic.com" }
     password { "chiitan" }
+    country
+    state
+    city
   end
 end

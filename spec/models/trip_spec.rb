@@ -5,8 +5,8 @@ RSpec.describe Trip, type: :model do
     continent = FactoryBot.create(:continent)
     @country = FactoryBot.create(:country, continent: continent)
     @state = FactoryBot.create(:state, country: @country)
-    @city = FactoryBot.create(:city, state: @state)
-    @user = FactoryBot.create(:user, country_id: @country.id, state_id: @state.id, city_id: @city.id)
+    @city = FactoryBot.create(:city, country: @country, state: @state)
+    @user = FactoryBot.create(:user, country: @country, state: @state)
   end
 
   it 'is invalid without a name' do
@@ -20,7 +20,7 @@ RSpec.describe Trip, type: :model do
     expect(trip).not_to be_valid
   end
 
-  it 'is invalid when start day is greater than end day' do
+  it 'is invalid when the end day is before the start day' do
     trip = Trip.new(
       name: 'Trip',
       start_day: DateTime.now,

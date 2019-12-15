@@ -3,7 +3,6 @@ FactoryBot.define do
     name { "東京タワー" }
     address { "〒105-0011 東京都港区芝公園４丁目２−８" }
     admission_fee { 1200 }
-    duration { 60 }
     latitude { 35.6585805 }
     longitude { 139.7454329 }
     main_image { "https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEwNDMxNH0&utm_source=triphub_app&utm_medium=referral&utm_campaign=api-credit" }
@@ -19,7 +18,6 @@ FactoryBot.define do
     name { "台北101展望台" }
     address { "110 台湾 Taipei City, Xinyi District, Section 5, Xinyi Road, 7號89樓/110樓" }
     admission_fee { 2200 }
-    duration { 180 }
     latitude { 25.0339639 }
     longitude { 121.5644722 }
     main_image { "https://images.unsplash.com/photo-1563125569-f4a59e9f9311" }

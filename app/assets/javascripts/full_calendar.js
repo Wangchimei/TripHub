@@ -99,7 +99,6 @@ initialize_calendar = function() {
 
       eventClick: function(schedule) {
         $.getScript(schedule.edit_url, function() {
-          debugger;
           $('#schedule_date_range').val(
             moment(schedule.start).format('YYYY-MM-DD HH:mm') +
               ' - ' +

@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   end
 
   resources :locations, only: :index do
-    get :get_countries, on: :collection # /locations/get_countries
     get :get_states, on: :collection # /locations/get_states
     get :get_cities, on: :collection # /locations/get_states
     get :to_countries, on: :collection # /locations/to_countries
