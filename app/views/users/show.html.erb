@@ -13,7 +13,7 @@
               <p class="h6 mb-0 text-muted">フォロワー <%= @user.followers.count %> 人</P>
               <p class="h6 mb-3 mt-2 text-muted">旅行<%= @user.visited_countries.count %>ヶ国</p>
               <% if current_user == @user %>
-                <%= link_to " 編集", edit_user_registration_path, class: "btn btn-outline-primary fas fa-user-edit" %>
+                <%= link_to " 編集", edit_user_registration_path, id:"user-edit", class: "btn btn-outline-primary fas fa-user-edit" %>
               <% else %>
                 <%= render 'relationships/follow_form', user: @user %>
               <% end %>

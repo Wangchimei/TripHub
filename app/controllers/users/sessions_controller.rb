@@ -2,7 +2,6 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-  before_action :logged_in_user, only: [:new, :create]
   layout 'welcome', only: [:new, :create]
 
   # GET /resource/sign_in
@@ -27,7 +26,6 @@ class Users::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
-  # after sign-in redirect to feeds/index
   def after_sign_in_path_for(resource)
     user_path(current_user)
   end
