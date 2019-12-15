@@ -86,8 +86,8 @@
     <% end %>
     </div>
     <% end %>
-    <%= f.hidden_field :start, value: @trip.start_day.strftime("%Y-%m-%d %H:%M"), class: 'form-control input-sm start_hidden' %>
-    <%= f.hidden_field :end, value: @trip.end_day.strftime("%Y-%m-%d 23:59"), class:'form-control input-sm end_hidden' %>
+    <%= f.hidden_field :start_time, value: @trip.start_day.strftime("%Y-%m-%d %H:%M"), class: 'form-control input-sm start_hidden' %>
+    <%= f.hidden_field :end_time, value: @trip.end_day.strftime("%Y-%m-%d 23:59"), class:'form-control input-sm end_hidden' %>
     <div class='form-actions text-center'>
       <%= f.submit '保存', class: 'btn btn-primary', id:"submitBtn" if @saved_spots.length != 0%>
       <%= link_to '削除', trip_schedule_path(@trip, schedule), method: :delete, class: 'btn btn-danger', data: { confirm: '削除しますか' }, remote: true unless @schedule.new_record? %>

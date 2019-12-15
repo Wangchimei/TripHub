@@ -71,8 +71,8 @@ initialize_calendar = function() {
         schedule_data = {
           schedule: {
             id: schedule.id,
-            start: schedule.start.format(),
-            end: schedule.end.format(),
+            start_time: schedule.start.format(),
+            end_time: schedule.end.format(),
           },
         };
         $.ajax({
@@ -86,8 +86,8 @@ initialize_calendar = function() {
         schedule_data = {
           schedule: {
             id: schedule.id,
-            start: schedule.start.format(),
-            end: schedule.end.format(),
+            start_time: schedule.start.format(),
+            end_time: schedule.end.format(),
           },
         };
         $.ajax({
@@ -99,6 +99,7 @@ initialize_calendar = function() {
 
       eventClick: function(schedule) {
         $.getScript(schedule.edit_url, function() {
+          debugger;
           $('#schedule_date_range').val(
             moment(schedule.start).format('YYYY-MM-DD HH:mm') +
               ' - ' +
@@ -116,7 +117,7 @@ initialize_calendar = function() {
         element.find('.fc-time').addClass('text-center');
         element
           .find('.fc-time')
-          .append('<p class="name h5 my-2">' + schedule.name + '</p>');
+          .append('<p class="name h6 my-2">' + schedule.name + '</p>');
         element
           .find('.fc-time')
           .append(

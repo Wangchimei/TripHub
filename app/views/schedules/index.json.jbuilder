@@ -2,8 +2,8 @@ json.array! @schedules do |schedule|
   date_format = schedule.all_day? ? '%Y-%m-%d' : '%Y-%m-%d %H:%M'
   json.id schedule.id
   json.name schedule.name
-  json.start schedule.start.strftime(date_format)
-  json.end schedule.end.strftime(date_format)
+  json.start schedule.start_time.strftime(date_format)
+  json.end schedule.end_time.strftime(date_format)
   json.allDay schedule.all_day? ? true : false
   json.admission_fee schedule.admission_fee
   json.other_cost schedule.other_cost

@@ -9,7 +9,7 @@ class TripsController < ApplicationController
   end
 
   def show
-    @schedules = @trip.schedules.order(start: :asc)
+    @schedules = @trip.schedules.order(start_time: :asc)
   end
 
   def new

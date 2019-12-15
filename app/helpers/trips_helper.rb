@@ -8,7 +8,7 @@ module TripsHelper
   end
 
   def daily_schedule(schedules, day)
-    schedules.where('start BETWEEN ? AND ?', day.beginning_of_day, day.end_of_day)
+    schedules.where('start_time BETWEEN ? AND ?', day.beginning_of_day, day.end_of_day)
   end
 
   def status_finished

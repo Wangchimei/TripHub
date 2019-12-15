@@ -9,8 +9,11 @@ class Schedule < ApplicationRecord
   after_save :update_duration
   after_destroy :update_travel_cost
 
+  validates :start_time, :end_time, presence: true
+  validate :time_check
+
   def all_day?
-    self.start == self.start.midnight && self.end == self.end.midnight ? true : false
+    self.start_time == self.start_time.midnight && self.end_time == self.end_time.midnight ? true : false
   end
 
   def update_default_fields
@@ -33,7 +36,7 @@ class Schedule < ApplicationRecord
 
   def update_duration
     # schedule duration
-    min = (self.end - self.start)/60.round(0)
+    min = (self.end_time - self.start_time)/60.round(0)
     self.update(duration: min) if self.duration != min
     # avg duration
     scheduled_spots = Schedule.where(spot_id: self.spot_id)
@@ -42,5 +45,10 @@ class Schedule < ApplicationRecord
     total_min = time_arr.reduce { |sum, n| sum + n }
     avg_duration = total_min / scheduled_spots.count
     Spot.find(self.spot_id).update(duration: avg_duration)
+  end
+
+  def time_check
+    errors.add(:end_time, "の時間を正しく記入してください。") if
+    self.end_time < self.start_time
   end
 end

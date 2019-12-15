@@ -62,7 +62,7 @@ class SchedulesController < ApplicationController
   end
 
   def schedule_params
-    params.require(:schedule).permit(:name, :date_range, :start, :end, :admission_fee, :other_cost, :duration, :note, :feedback, :trip_id, :spot_id, {images: []})
+    params.require(:schedule).permit(:name, :date_range, :start_time, :end_time, :admission_fee, :other_cost, :duration, :note, :feedback, :trip_id, :spot_id, {images: []})
   end
 
   def remove_image_at_index(index)

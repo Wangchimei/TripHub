@@ -47,7 +47,7 @@
           <% daily_schedule(@schedules, trip_day).each do |schedule| %>
             <tr>
               <th scope="row">
-                <div><%= schedule.start.strftime("%H:%M")%></div>
+                <div><%= schedule.start_time.strftime("%H:%M")%></div>
               </th>
               <td class="row">
                 <div class="col-12 col-lg-6 text-left">
@@ -155,7 +155,7 @@
             </tr>
             <tr>
               <th scope="row" class="mt-0 pt-0">
-                <div><%= schedule.end.strftime("%H:%M")%></div>
+                <div><%= schedule.end_time.strftime("%H:%M")%></div>
               </th>
             </tr>
           <% end %>

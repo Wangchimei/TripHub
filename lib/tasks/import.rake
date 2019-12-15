@@ -118,11 +118,11 @@ namespace :import do
           main_image: row["main_image"],
           latitude: row["latitude"],
           longitude: row["longitude"],
-          address: row["address"]
-          formatted_name: row["formatted_name"]
-          phone_num: row["phone_num"]
-          rating: row["rating"]
-          website: row["website"]
+          address: row["address"],
+          formatted_name: row["formatted_name"],
+          phone_num: row["phone_num"],
+          rating: row["rating"],
+          website: row["website"],
           place_id: row["place_id"]
       }
     end

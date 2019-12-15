@@ -28,8 +28,8 @@ ja:
         to_countries: 旅行先
       schedule:
         name: 名前
-        start: 開始時間
-        end: 終了時間
+        start_time: 開始時間
+        end_time: 終了時間
         admission_fee: 入場料金
         other_cost: 他の費用
         duration: 滞在時間
