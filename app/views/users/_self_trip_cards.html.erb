@@ -34,7 +34,7 @@
             <%= render partial:"#{trip.status}_options", locals:{trip: trip} %>
           </div>
         </div>
-      <%= link_to '', trip_path(trip), class:"details-link"%>
+      <%= link_to '', trip_path(trip), class:"show_details_#{trip.id} details-link"%>
       </div>
 
       <div class="card-footer text-center">

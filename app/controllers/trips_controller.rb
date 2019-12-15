@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
-  before_action :set_user_trip, only: %i[edit update destroy toggle_status toggle_privacy]
-  before_action :set_trip, only: :show
+  before_action :set_trip, except: %i[index new create]
+  before_action :authorized_user, only: %i[edit update]
   before_action :status_planning, only: %i[edit]
   before_action :set_chart_latlng, only: %i[edit show]
 
@@ -73,10 +73,6 @@ class TripsController < ApplicationController
 
   def set_trip
     @trip = Trip.find(params[:id])
-  end
-
-  def set_user_trip
-    @trip = current_user.trips.find(params[:id])
   end
 
   def trip_params

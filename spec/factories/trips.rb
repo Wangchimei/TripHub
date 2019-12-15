@@ -10,7 +10,7 @@ FactoryBot.define do
     user
   end
 
-  factory :finished_trip, class: Trip do
+  factory :finished_public_trip, class: Trip do
     name { "Fun Trip" }
     description { "Trip is fun" }
     trip_image { "https://picsum.photos/200" }
@@ -19,11 +19,11 @@ FactoryBot.define do
     status { 1 }
     privacy { false }
     est_amount { 1000 }
-    to_countries_attributes {[FactoryBot.attributes_for(:country)]}
+    # to_countries_attributes {[FactoryBot.attributes_for(:country)]}
     user
   end
 
-  factory :private_trip, class: Trip do
+  factory :finished_private_trip, class: Trip do
     name { "Fun Trip" }
     description { "Trip is fun" }
     trip_image { "https://picsum.photos/200" }
@@ -32,7 +32,7 @@ FactoryBot.define do
     status { 1 }
     privacy { true }
     est_amount { 1000 }
-    to_countries_attributes {[FactoryBot.attributes_for(:country)]}
+    # to_countries_attributes {[FactoryBot.attributes_for(:country)]}
     user
   end
 end

@@ -17,7 +17,7 @@ RSpec.describe "Users", type: :system do
       select 'Shibuya-ku', from: 'user[city_id]'
     end
 
-    it 'cannot access main pages before sign up or login' do
+    it 'is only able to access main pages after sign up or login' do
       visit trips_path
       expect(current_path).to eq('/login')
     end
@@ -70,18 +70,18 @@ RSpec.describe "Users", type: :system do
       fill_in('user_password', with: @user.password)
     end
 
-    it 'failed to login' do
+    it 'failed to login with wrong info' do
       fill_in('user_password', with:'aaaaaa')
       click_on 'ログイン'
       expect(page).to have_content 'メールアドレスまたはパスワードが違います。'
     end
 
-    it 'successfully login' do
+    it 'can successfully login' do
       click_on 'ログイン'
       expect(page).to have_content 'ログインしました。'
     end
 
-    it 'successfully logout' do
+    it 'can successfully logout' do
       click_on 'ログイン'
       click_on 'navbarDropdownMenuLink'
       click_on 'ログアウト'
@@ -103,14 +103,14 @@ RSpec.describe "Users", type: :system do
       click_on 'ログイン'
     end
 
-    it 'can follow other user after logged in' do
+    it 'can follow other user after login' do
       visit user_path(@second_user)
       click_on 'register-button'
       sleep 0.5
       expect(@user.following.count).to eq 1
     end
 
-    it 'can unfollow other user after logged in' do
+    it 'can unfollow other user after login' do
       visit user_path(@second_user)
       click_on 'register-button'
       sleep 0.5
