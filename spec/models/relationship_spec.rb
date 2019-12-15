@@ -20,5 +20,4 @@ RSpec.describe Relationship, type: :model do
     relationship = Relationship.create(follower_id: @first_user.id, followed_id: @third_user.id)
     expect(relationship).to be_valid
   end
-
 end
