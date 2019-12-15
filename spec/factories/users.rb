@@ -16,4 +16,13 @@ FactoryBot.define do
     state
     city
   end
+
+  factory :third_user, class: User do
+    name { "Butters" }
+    email { "butters@dic.com" }
+    password { "butters" }
+    country
+    state
+    city
+  end
 end
