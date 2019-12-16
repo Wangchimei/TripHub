@@ -24,11 +24,9 @@ CarrierWave.configure do |config|
   # config.cache_storage = :fog
 
   # 環境ごとにS3のバケットを指定
-  case Rails.env
-    when 'production'
-      config.fog_directory = 'triphub-production'
-      config.asset_host = 'https://triphub-production.s3-ap-northeast-1.amazonaws.com'
-    end
+  if Rails.env.production?
+    config.fog_directory = 'triphub-production'
+    config.asset_host = 'https://triphub-production.s3-ap-northeast-1.amazonaws.com'
   end
 end
 

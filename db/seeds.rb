@@ -17,14 +17,14 @@
 end
 
 50.times do |trip|
-  name = Faker::Lorem.paragraph
+  name = Faker::Lorem.sentence(word_count: 3)
   description = Faker::Lorem.paragraph
   trip_image = "https://source.unsplash.com/user/jeremybishop/500x500"
   start_day = Faker::Date.backward(days: 1)
   end_day = Faker::Date.forward(days: 1)
   status = rand(2)
   privacy = [true, false].sample
-  user_id = rand(50..74)
+  user_id = rand(1..25)
   Trip.create!(
     name: name,
     description: description,
