@@ -27,13 +27,13 @@ CarrierWave.configure do |config|
   case Rails.env
     when 'production'
       config.fog_directory = ENV['S3_BUCKET']
-      config.asset_host = 'https://momento-production.s3-ap-northeast-1.amazonaws.com'
+      config.asset_host = 'https://triphub-production.s3-ap-northeast-1.amazonaws.com'
     when 'development'
-      # config.fog_directory = 'momento-development'
-      # config.asset_host = 'https://momento-development.s3-ap-northeast-1.amazonaws.com'
+      # config.fog_directory = 'triphub-development'
+      # config.asset_host = 'https://triphub-development.s3-ap-northeast-1.amazonaws.com'
       # when 'test'
-      #   config.fog_directory = 'momento-test'
-      #   config.asset_host = 'https://momento-test.s3-ap-northeast-1.amazonaws.com'
+      #   config.fog_directory = 'triphub-test'
+      #   config.asset_host = 'https://triphub-test.s3-ap-northeast-1.amazonaws.com'
   end
 end
 
