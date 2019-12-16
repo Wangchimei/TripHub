@@ -1,6 +1,6 @@
 25.times do |user|
   name = Faker::Name.unique.name
-  email = "user_#{user}@dic.com"
+  email = "user_#{user+1}@dic.com"
   password = "testtest"
   date = Faker::Date.backward(days: 30)
   User.create!(
