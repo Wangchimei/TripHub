@@ -255,6 +255,9 @@ function autocomplete() {
     anchorPoint: new google.maps.Point(0, -29),
   });
 
+  google.maps.event.trigger(input, 'focus');
+  google.maps.event.trigger(input, 'keydown', { keyCode: 13 });
+
   autocomplete.addListener('place_changed', function() {
     infowindow.close();
     marker.setVisible(false);
@@ -275,6 +278,15 @@ function autocomplete() {
     }
     marker.setPosition(place.geometry.location);
     marker.setVisible(true);
+
+    document.getElementById('trigger-search').onclick = function() {
+      var input = document.getElementById('pac-input');
+
+      google.maps.event.trigger(input, 'focus');
+      google.maps.event.trigger(input, 'keydown', {
+        keyCode: 13,
+      });
+    };
 
     // output to info window
     infowindowContent.children['place-name'].textContent = place.name;

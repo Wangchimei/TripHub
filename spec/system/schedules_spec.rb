@@ -21,7 +21,6 @@ RSpec.describe "Schedules", type: :system do
   end
 
   it 'can create a new schedule' do
-    # UserSpot.create(user_id: @user.id, spot_id: @spot.id)
     visit trip_schedules_path(@planning_trip)
     find('.fc-add_event-button').click
     fill_in('date-range-picker', with: "2019-12-15 10:00 - 2019-12-15 14:00")
