@@ -1,19 +1,14 @@
 <div align="center">
-  <img alt="Logo" src="https://imgur.com/z1ubeIb.png" width="80" />
+  <img alt="Logo" src="https://imgur.com/L55dJZ5.png" width="450" />
 </div>
-<h1 align="center">
-  TripHub
-</h1>
-<div align="center">
-  <div align="center">
-    <a href="https://trip-hub.herokuapp.com/">
-      <img src="https://imgur.com/L55dJZ5.png" width="150">
-    </a>
-  </div>
-  <p>A graduation project of a four-month coding bootcamp in DIVE INTO CODE.</p>
-  <p>Triphub is where travel enthusiasts can share their travel schedules while exploring the world.</p>
-  <p>This application is built with Ruby on Rails and hosted with Heroku</p>
-</div>
+<h4 align="center">
+  Link to <a href="https://www.netlify.com/" target="_blank">Triphub</a>
+</h4>
+<p align="center">
+  A graduation project of a four-month coding bootcamp in DIVE INTO CODE.
+  Triphub is where travel enthusiasts can share their travel schedules while exploring the world.
+  This application is built with Ruby on Rails and hosted with Heroku.
+</p>
 
 ## 概要
 
@@ -46,25 +41,31 @@ Rails 5.2.3
   - 観光スポット作成（Google Places Library）
   - スポット保存機能
 
-## 要件定義：カタログ設計
+## カタログ設計
 
-[Direct Link](https://drive.google.com/file/d/1R0O7ygGzgbY4058xtdGCCMOlUri4GKpD/view?usp=sharing)
+Please see details [Here](https://drive.google.com/file/d/1R0O7ygGzgbY4058xtdGCCMOlUri4GKpD/view?usp=sharing)
 
-## 要件定義：テーブル定義書
+## テーブル定義書
 
-[Direct Link](https://drive.google.com/file/d/1mrcARaz8X_r2vWIWIKYUmGdjGRlgZ8yv/view?usp=sharing)
+Please see details [Here](https://drive.google.com/file/d/1mrcARaz8X_r2vWIWIKYUmGdjGRlgZ8yv/view?usp=sharing)
 
-## 要件定義：[画面遷移図](https://drive.google.com/file/d/1dD1-RK0_-XHlh0WIrr8jnxg6UKk317aZ/view?usp=sharing)
+## 画面遷移図
 
-<img src="https://imgur.com/nZ2NG4A.png" width="650px">
+<a href="https://drive.google.com/file/d/1dD1-RK0_-XHlh0WIrr8jnxg6UKk317aZ/view?usp=sharing">
+  <img src="https://imgur.com/nZ2NG4A.png" width="650px">
+</a>
 
-## 要件定義：[ER 図](https://drive.google.com/file/d/1u6-avgjb6W-fgFCMFn-Irl_LW5RBCu6P/view?usp=sharing)
+## ER 図
 
-<img src="https://imgur.com/PtfEAW1.png" width="650px">
+<a href="https://drive.google.com/file/d/1u6-avgjb6W-fgFCMFn-Irl_LW5RBCu6P/view?usp=sharing">
+  <img src="https://imgur.com/PtfEAW1.png" width="650px">
+</a>
 
-## 要件定義：[ワイヤーフレーム](https://drive.google.com/file/d/1uu_QNMKeaifBNTgNSvwJsZ41ntMBSJDh/view?usp=sharing)
+## ワイヤーフレーム
 
-<img src="https://imgur.com/AqTuFT0.png" width="650px">
+<a href="https://drive.google.com/file/d/1uu_QNMKeaifBNTgNSvwJsZ41ntMBSJDh/view?usp=sharing">
+  <img src="https://imgur.com/AqTuFT0.png" width="650px">
+</a>
 
 ## 使用予定 Gem
 
