@@ -1,5 +1,7 @@
 # <img src="https://imgur.com/z1ubeIb.png" width="30"> TripHub
 
+<img src="https://imgur.com/Lo93GfL.png">
+
 ## 概要
 
 旅行のスケジュールを計画とシェアできるアプリです。  
@@ -33,17 +35,21 @@ Rails 5.2.3
 
 ## 要件定義
 
-#### [カタログ設計](https://drive.google.com/file/d/1R0O7ygGzgbY4058xtdGCCMOlUri4GKpD/view?usp=sharing)
+### [カタログ設計](https://drive.google.com/file/d/1R0O7ygGzgbY4058xtdGCCMOlUri4GKpD/view?usp=sharing)
 
-[テーブル定義書](https://drive.google.com/file/d/1mrcARaz8X_r2vWIWIKYUmGdjGRlgZ8yv/view?usp=sharing)
+### [テーブル定義書](https://drive.google.com/file/d/1mrcARaz8X_r2vWIWIKYUmGdjGRlgZ8yv/view?usp=sharing)
 
-[画面遷移図](https://drive.google.com/file/d/1dD1-RK0_-XHlh0WIrr8jnxg6UKk317aZ/view?usp=sharing)
+### [ER 図](https://drive.google.com/file/d/1u6-avgjb6W-fgFCMFn-Irl_LW5RBCu6P/view?usp=sharing)
 
-[ER 図](https://drive.google.com/file/d/1u6-avgjb6W-fgFCMFn-Irl_LW5RBCu6P/view?usp=sharing)
-<img src="https://imgur.com/PtfEAW1.png" style="width: 100%; height: 300px;">
+<img src="https://imgur.com/PtfEAW1.png" sizes="70vw">
 
-[ワイヤーフレーム](https://drive.google.com/file/d/1uu_QNMKeaifBNTgNSvwJsZ41ntMBSJDh/view?usp=sharing)
-<img src="https://imgur.com/AqTuFT0.png" style="width: 100%; height: 300px;">
+### [ワイヤーフレーム](https://drive.google.com/file/d/1uu_QNMKeaifBNTgNSvwJsZ41ntMBSJDh/view?usp=sharing)
+
+<img src="https://imgur.com/AqTuFT0.png" sizes="70vw">
+
+### [画面遷移図](https://drive.google.com/file/d/1dD1-RK0_-XHlh0WIrr8jnxg6UKk317aZ/view?usp=sharing)
+
+<img src="https://imgur.com/nZ2NG4A.png" sizes="70vw">
 
 ## 使用予定 Gem
 
