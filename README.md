@@ -1,4 +1,4 @@
-# ![](https://imgur.com/z1ubeIb.png) TripHub
+# <img src="https://imgur.com/z1ubeIb.png" width="20">TripHub
 
 ## 概要
 
@@ -33,9 +33,9 @@ Rails 5.2.3
 
 [テーブル定義書](https://drive.google.com/file/d/1mrcARaz8X_r2vWIWIKYUmGdjGRlgZ8yv/view?usp=sharing)
 
-[ER 図](https://drive.google.com/file/d/1u6-avgjb6W-fgFCMFn-Irl_LW5RBCu6P/view?usp=sharing)
-
 [画面遷移図](https://drive.google.com/file/d/1dD1-RK0_-XHlh0WIrr8jnxg6UKk317aZ/view?usp=sharing)
+
+[ER 図](https://drive.google.com/file/d/1u6-avgjb6W-fgFCMFn-Irl_LW5RBCu6P/view?usp=sharing)
 
 [ワイヤーフレーム](https://drive.google.com/file/d/1uu_QNMKeaifBNTgNSvwJsZ41ntMBSJDh/view?usp=sharing)
 
