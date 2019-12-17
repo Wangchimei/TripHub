@@ -2,7 +2,7 @@
   <img alt="Logo" src="https://imgur.com/L55dJZ5.png" width="450" />
 </div>
 <h4 align="center">
-  Link to <a href="https://www.netlify.com/" target="_blank">Triphub</a>
+  Link to <a href="https://trip-hub.herokuapp.com/" target="_blank">Triphub</a>
 </h4>
 <p align="center">
   A graduation project of a four-month coding bootcamp in DIVE INTO CODE.
