@@ -6,9 +6,12 @@
 </h4>
 <p align="center">
   A graduation project of a four-month coding bootcamp in DIVE INTO CODE.
+  <br>
   Triphub is where travel enthusiasts can share their travel schedules while exploring the world.
+  <br>
   This application is built with Ruby on Rails and hosted with Heroku.
 </p>
+<br>
 
 ## 概要
 
