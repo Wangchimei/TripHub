@@ -1,3 +1,14 @@
 <div id="scheduleMap"></div>
 
-<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=#{ENV['GOOGLE_API_KEY']}&libraries=places&callback=initMap"%>
+<%#= javascript_include_tag "https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=#{ENV['GOOGLE_API_KEY']}&libraries=places&callback=initMap"%>
+
+<script>
+  if(window.google) {
+    initMap();
+  } else {
+    $.ajax("https://maps.googleapis.com/maps/api/js??language=ja&region=JP&key=<%="#{ENV['GOOGLE_API_KEY']}"%>&libraries=places&callback=initMap", {
+      crossDomain: true,
+      dataType: 'script'
+    });
+  }
+</script>

@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>TripHub</title>
-    <%= Gon::Base.render_data %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= favicon_link_tag asset_path('favicon.png') %>
@@ -19,6 +18,7 @@
 
   <body class="site-wrapper">
     <div class="main-content">
+    <%= Gon::Base.render_data %>
     <%= render 'shared/navbar'%>
     <%= render 'shared/flash_msg'%>
       <%= yield %>

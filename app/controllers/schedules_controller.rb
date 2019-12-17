@@ -1,7 +1,7 @@
 class SchedulesController < ApplicationController
   before_action :set_trip
-  before_action :set_schedule, except: %i[index new create]
   before_action :set_js_variables, except: %i[destroy]
+  before_action :set_schedule, except: %i[index new create]
   before_action :status_planning, only: :index
   before_action :status_finished, only: %i[edit_details update_details]
 
