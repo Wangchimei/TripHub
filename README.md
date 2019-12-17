@@ -1,9 +1,9 @@
-# <img src="https://imgur.com/z1ubeIb.png" width="20">TripHub
+# <img src="https://imgur.com/z1ubeIb.png" width="30"> TripHub
 
 ## 概要
 
-旅行のスケジュールを計画とシェアできるアプリです。
-他のユーザの公開した旅行スケジュールを参考できできます。
+旅行のスケジュールを計画とシェアできるアプリです。  
+他のユーザの公開した旅行スケジュールを参考できできます。  
 気になるスポットを見つけたらその場で保存、自分のオリジナルプランを作成することができます。
 
 ## バージョン情報
@@ -14,30 +14,36 @@ Rails 5.2.3
 ## 機能一覧
 
 - ユーザ
+
   - ユーザ登録機能
   - ユーザログイン機能（及びパスワードリセット）
   - ユーザフォーロー機能
+
 - トリップ / スケジュール
+
   - トリップを作成、編集、削除機能
   - ユーザが公開中のスケジュールの一覧表示
   - 公開中のスケジュールから観光スポットを保存機能
   - スケジュールに入れましたスポットを Google Map にて表示機能
   - スポットで使う費用から、トリップの費用概算機能
+
 - 観光スポット
   - 観光スポット作成（Google Places Library）
   - スポット保存機能
 
 ## 要件定義
 
-[カタログ設計](https://drive.google.com/file/d/1R0O7ygGzgbY4058xtdGCCMOlUri4GKpD/view?usp=sharing)
+#### [カタログ設計](https://drive.google.com/file/d/1R0O7ygGzgbY4058xtdGCCMOlUri4GKpD/view?usp=sharing)
 
 [テーブル定義書](https://drive.google.com/file/d/1mrcARaz8X_r2vWIWIKYUmGdjGRlgZ8yv/view?usp=sharing)
 
 [画面遷移図](https://drive.google.com/file/d/1dD1-RK0_-XHlh0WIrr8jnxg6UKk317aZ/view?usp=sharing)
 
 [ER 図](https://drive.google.com/file/d/1u6-avgjb6W-fgFCMFn-Irl_LW5RBCu6P/view?usp=sharing)
+<img src="https://imgur.com/PtfEAW1.png" style="width: 100%; height: 300px;">
 
 [ワイヤーフレーム](https://drive.google.com/file/d/1uu_QNMKeaifBNTgNSvwJsZ41ntMBSJDh/view?usp=sharing)
+<img src="https://imgur.com/AqTuFT0.png" style="width: 100%; height: 300px;">
 
 ## 使用予定 Gem
 
