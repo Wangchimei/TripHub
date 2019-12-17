@@ -51,8 +51,8 @@
                   <div class="mt-4 form-group country-area text-left">
                     <p>在住国：
                       <%= current_user.country.name %>
-                      <%= current_user.state.name if current_user.state%>
-                      <%= current_user.city.name if current_user.city%>
+                      <%= current_user.state.name if current_user.state %>
+                      <%= current_user.city.name if current_user.city %>
                     </p>
                     <%= f.collection_select :country_id, Country.order(:name), :id, :name, {prompt: "お住まいの国をお選びください"}, {class: "form-control"} %>
                   </div>
@@ -60,7 +60,7 @@
                     <%= f.collection_select :state_id, State.where(country_id: current_user.country.id).order(:name), :id, :name, {prompt: "お住まいの国をお選びください"}, {class: "form-control"} %>
                   </div>
                   <div class="form-group city-area">
-                    <%= f.collection_select :city_id, City.where(state_id: current_user.state.id).order(:name), :id, :name, {prompt: "区をお選びください（オプションの）"}, {class: "form-control"} %>
+                    <%= f.collection_select :city_id, City.where(state_id: current_user.state.id).order(:name), :id, :name, {prompt: "区をお選びください（オプション）"}, {class: "form-control"} %>
                   </div>
                   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

@@ -1,4 +1,4 @@
 <%= f.fields_for :to_cities do |f| %>
   <br>
-  <%= f.collection_select :city_id, cities || [], :id, :name, {prompt: 'オプションの選択'}, {class: "form-control mt-2"} %>
+  <%= f.collection_select :city_id, cities || [], :id, :name, {prompt: 'オプション選択'}, {class: "form-control mt-2"} %>
 <%end%>

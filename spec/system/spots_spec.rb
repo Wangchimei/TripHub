@@ -22,13 +22,13 @@ RSpec.describe "Spots", type: :system do
 
   it 'can create new spot' do
     visit new_spot_path
-    sleep 0.5
+    sleep 1
     fill_in('pac-input', with:'浅草寺')
     find('#pac-input').click
-    sleep 0.5
+    sleep 1
     find('#pac-input').native.send_keys :arrow_down
     find('#pac-input').native.send_keys :enter
-    sleep 0.5
+    sleep 1
     click_on 'commit'
     expect(page).to have_content('スポットを作成しました')
   end

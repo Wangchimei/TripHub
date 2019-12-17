@@ -14,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    UserMailer.with(user: @user).welcome_email.deliver
+    UserMailer.with(user: @user).welcome_email.deliver if @user.save
   end
 
 

@@ -5,6 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # after_create :send_welcome_mail
   belongs_to :country
   belongs_to :state, optional: true
   belongs_to :city, optional: true
@@ -23,6 +24,10 @@ class User < ApplicationRecord
 
   validates :name, :country, presence: true
   before_save :set_default_avatar
+
+  # def send_welcome_mail
+  #   UserMailer.with(user: self).welcome_email(self).deliver
+  # end
 
   def save_spot!(spot)
     user_spots.create!(spot_id: spot.id)
