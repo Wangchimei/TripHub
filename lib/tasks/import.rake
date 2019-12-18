@@ -78,8 +78,8 @@ end
 namespace :import do
   desc "Import cities from csv"
 
-  task cities: :environment do
-    path = File.join Rails.root, "db/csv/cities.csv"
+  task cities_1: :environment do
+    path = File.join Rails.root, "db/csv/cities_batch_1.csv"
     puts "path: #{path}"
     cities = []
     CSV.foreach(path, headers: true) do |row|
@@ -96,7 +96,119 @@ namespace :import do
     puts "start to create cities data"
     begin
       City.create!(cities)
-      puts "Succssfully imported cities data"
+      puts "Succssfully imported cities_1 data"
+    rescue ActiveModel::UnknownAttributeError => invalid
+      puts "Error : unknown attribute"
+    end
+  end
+end
+
+namespace :import do
+  desc "Import cities from csv"
+
+  task cities_2: :environment do
+    path = File.join Rails.root, "db/csv/cities_batch_2.csv"
+    puts "path: #{path}"
+    cities = []
+    CSV.foreach(path, headers: true) do |row|
+      cities << {
+          name: row["name"],
+          country_code: row["country_code"],
+          state_code: row["state_code"],
+          latitude: row["latitude"],
+          longitude: row["longitude"],
+          state_id: row["state_id"],
+          country_id: row["country_id"]
+      }
+    end
+    puts "start to create cities data"
+    begin
+      City.create!(cities)
+      puts "Succssfully imported cities_2 data"
+    rescue ActiveModel::UnknownAttributeError => invalid
+      puts "Error : unknown attribute"
+    end
+  end
+end
+
+namespace :import do
+  desc "Import cities from csv"
+
+  task cities_3: :environment do
+    path = File.join Rails.root, "db/csv/cities_batch_3.csv"
+    puts "path: #{path}"
+    cities = []
+    CSV.foreach(path, headers: true) do |row|
+      cities << {
+          name: row["name"],
+          country_code: row["country_code"],
+          state_code: row["state_code"],
+          latitude: row["latitude"],
+          longitude: row["longitude"],
+          state_id: row["state_id"],
+          country_id: row["country_id"]
+      }
+    end
+    puts "start to create cities data"
+    begin
+      City.create!(cities)
+      puts "Succssfully imported cities_3 data"
+    rescue ActiveModel::UnknownAttributeError => invalid
+      puts "Error : unknown attribute"
+    end
+  end
+end
+
+namespace :import do
+  desc "Import cities from csv"
+
+  task cities_4: :environment do
+    path = File.join Rails.root, "db/csv/cities_batch_4.csv"
+    puts "path: #{path}"
+    cities = []
+    CSV.foreach(path, headers: true) do |row|
+      cities << {
+          name: row["name"],
+          country_code: row["country_code"],
+          state_code: row["state_code"],
+          latitude: row["latitude"],
+          longitude: row["longitude"],
+          state_id: row["state_id"],
+          country_id: row["country_id"]
+      }
+    end
+    puts "start to create cities data"
+    begin
+      City.create!(cities)
+      puts "Succssfully imported cities_4 data"
+    rescue ActiveModel::UnknownAttributeError => invalid
+      puts "Error : unknown attribute"
+    end
+  end
+end
+
+namespace :import do
+  desc "Import cities from csv"
+
+  task cities_5: :environment do
+    path = File.join Rails.root, "db/csv/cities_batch_5.csv"
+    puts "path: #{path}"
+    cities = []
+    CSV.foreach(path, headers: true) do |row|
+      cities << {
+          name: row["name"],
+          country_code: row["country_code"],
+          state_code: row["state_code"],
+          latitude: row["latitude"],
+          longitude: row["longitude"],
+          state_id: row["state_id"],
+          country_id: row["country_id"]
+      }
+    end
+    puts "start to create cities data"
+    begin
+      City.create!(cities)
+      puts "Succssfully imported cities_5 data"
     rescue ActiveModel::UnknownAttributeError => invalid
       puts "Error : unknown attribute"
     end
