@@ -1,13 +1,13 @@
 class LocationsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[get_states get_cities]
+  skip_before_action :authenticate_user!, only: %i[get_states]
 
   def get_states
     render partial: 'select_state', locals: {country_id: params[:country_id]}
   end
 
-  def get_cities
-    render partial: 'select_city', locals: {state_id: params[:state_id]}
-  end
+  # def get_cities
+  #   render partial: 'select_city', locals: {state_id: params[:state_id]}
+  # end
 
   def to_countries
     @trip = Trip.to_country_build
@@ -21,11 +21,11 @@ class LocationsController < ApplicationController
     render partial: "to_states", layout: false, locals: {states: @states}
   end
 
-  def to_cities
-    @trip = Trip.to_city_build
-    @cities = State.find(params[:state_id]).cities.order(name: :asc)
-    render partial: "to_cities", layout: false, locals: {cities: @cities}
-  end
+  # def to_cities
+  #   @trip = Trip.to_city_build
+  #   @cities = State.find(params[:state_id]).cities.order(name: :asc)
+  #   render partial: "to_cities", layout: false, locals: {cities: @cities}
+  # end
 
   def index
   end

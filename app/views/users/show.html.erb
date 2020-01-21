@@ -57,15 +57,17 @@
               <% end %>
             </div>
             <div class="tab-pane fade text-left mx-1 mt-4" id="trip-photo" role="tabpanel" aria-labelledby="trip-photo-tab">
-              <div class="user-gallery">
+              <div>
                 <% if uploaded_photos(@user).length != 0 %>
+                <div class="user-gallery">
                   <% uploaded_photos(@user).each do |image| %>
                     <%= image_tag image.url :thumb %>
                   <% end %>
+                </div>
                 <% else %>
                   <div class="text-center">
                     <p class="h6 my-5 text-muted"> 現在アップロードした写真がありません。</p>
-                </div>
+                  </div>
                 <% end %>
               </div>
             </div>

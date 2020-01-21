@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get :get_cities, on: :collection # /locations/get_states
     get :to_countries, on: :collection # /locations/to_countries
     get :to_states, on: :collection # /locations/to_states
-    get :to_cities, on: :collection # /locations/to_states
+    # get :to_cities, on: :collection # /locations/to_states
   end
 
   resources :trips do
@@ -37,5 +37,5 @@ Rails.application.routes.draw do
   resources :spots, only: %i[index new create]
   resources :countries, only: %i[index]
   resources :states, only: %i[index]
-  resources :cities, only: %i[index]
+  # resources :cities, only: %i[index]
 end

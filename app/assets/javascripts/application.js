@@ -29,28 +29,28 @@ $(document).on('change', '#user_country_id', function() {
 });
 
 // City dropdown
-$(document).on('change', '#user_state_id', function() {
-  return $.ajax({
-    type: 'GET',
-    url: '/locations/get_cities',
-    data: {
-      state_id: $(this).val(),
-    },
-  }).done(function(data) {
-    if (data.includes('option')) {
-      $('.city-area').html(data);
-      $('.city-area').show();
-    } else {
-      $('.city-area').hide();
-    }
-  });
-});
+// $(document).on('change', '#user_state_id', function() {
+//   return $.ajax({
+//     type: 'GET',
+//     url: '/locations/get_cities',
+//     data: {
+//       state_id: $(this).val(),
+//     },
+//   }).done(function(data) {
+//     if (data.includes('option')) {
+//       $('.city-area').html(data);
+//       $('.city-area').show();
+//     } else {
+//       $('.city-area').hide();
+//     }
+//   });
+// });
 
 // Trip
 // Country dropdown
 $(document).on('change', '#trip_continent_id', function() {
   $('#trip_to_states_attributes_0_state_id').val('');
-  $('#trip_to_cities_attributes_0_city_id').val('');
+  // $('#trip_to_cities_attributes_0_city_id').val('');
   $('.state-area').hide();
   $('.city-area').hide();
   return $.ajax({
@@ -74,7 +74,7 @@ $(document).on(
   'change',
   '#trip_to_countries_attributes_0_country_id',
   function() {
-    $('#trip_to_cities_attributes_0_city_id').val('');
+    // $('#trip_to_cities_attributes_0_city_id').val('');
     $('.city-area').hide();
     return $.ajax({
       type: 'GET',
@@ -95,45 +95,25 @@ $(document).on(
 );
 
 // City dropdown
-$(document).on('change', '#trip_to_states_attributes_0_state_id', function() {
-  return $.ajax({
-    type: 'GET',
-    url: '/locations/to_cities',
-    data: {
-      state_id: $(this).val(),
-    },
-  }).done(function(data) {
-    if (data.includes('option')) {
-      $('.city-area').html(data);
-      $('#addCityBtn').show();
-      $('#addCityBtn').on('click', function() {
-        $('.city-area').slideToggle();
-      });
-    } else {
-      $('.city-area').hide();
-    }
-  });
-});
-
-$(document).on('change', '#trip_to_states_attributes_0_state_id', function() {
-  return $.ajax({
-    type: 'GET',
-    url: '/locations/to_cities',
-    data: {
-      state_id: $(this).val(),
-    },
-  }).done(function(data) {
-    if (data.includes('option')) {
-      $('.city-area').html(data);
-      $('#addCityBtn').show();
-      $('#addCityBtn').on('click', function() {
-        $('.city-area').show();
-      });
-    } else {
-      $('.city-area').hide();
-    }
-  });
-});
+// $(document).on('change', '#trip_to_states_attributes_0_state_id', function() {
+//   return $.ajax({
+//     type: 'GET',
+//     url: '/locations/to_cities',
+//     data: {
+//       state_id: $(this).val(),
+//     },
+//   }).done(function(data) {
+//     if (data.includes('option')) {
+//       $('.city-area').html(data);
+//       $('#addCityBtn').show();
+//       $('#addCityBtn').on('click', function() {
+//         $('.city-area').slideToggle();
+//       });
+//     } else {
+//       $('.city-area').hide();
+//     }
+//   });
+// });
 
 // Toggle for schedule form
 $(document).on('click', '#showInfo', function() {

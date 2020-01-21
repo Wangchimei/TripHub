@@ -16,7 +16,7 @@ class TripsController < ApplicationController
     @trip = Trip.new
     @countries = Country.limit(2)
     @states = State.limit(2)
-    @cities = City.limit(2)
+    # @cities = City.limit(2)
   end
 
   def create
@@ -76,7 +76,7 @@ class TripsController < ApplicationController
   end
 
   def trip_params
-    params.require(:trip).permit(:name, :description, :trip_image, :start_day, :end_day,:status, :privacy, :est_amount, :user_id, to_countries_attributes: [:id, :country_id, :_destroy], to_states_attributes: [:id, :state_id, :_destroy], to_cities_attributes: [:id, :city_id, :_destroy])
+    params.require(:trip).permit(:name, :description, :trip_image, :start_day, :end_day,:status, :privacy, :est_amount, :user_id, to_countries_attributes: [:id, :country_id, :_destroy], to_states_attributes: [:id, :state_id, :_destroy])
   end
 
   def not_been_to?(countries)
